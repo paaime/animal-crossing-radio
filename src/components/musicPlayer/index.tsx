@@ -18,9 +18,7 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     if (audioRef.current) {
-      console.log(volume);
       audioRef.current.volume = volume / 100;
-      console.log(audioRef.current.volume);
     }
   }, [volume]);
 
@@ -33,7 +31,6 @@ export default function MusicPlayer() {
     // when the user hit the space bar, play/pause the music
     const handleSpaceBar = (e: KeyboardEvent) => {
       if (e.code === 'Space') {
-        console.log(isPlaying);
         handlePlay();
       }
     };

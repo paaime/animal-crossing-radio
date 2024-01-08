@@ -19,7 +19,6 @@ export default function Clock() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('tick');
       let newHour = new Date().getHours();
       setHour(newHour % 12 === 0 ? 12 : newHour % 12);
       let newMinute = new Date().getMinutes();
