@@ -140,7 +140,7 @@ export default function MusicPlayer() {
         <source src={music} type="audio/mpeg" />
       </audio>
       <div className="flex gap-3 mt-2 items-end">
-        <p className="text-xl  tracking-tight">
+        <p className="text-lg tracking-tight">
           {game} - <span className="font-medium">{currentHour}</span>
         </p>
       </div>
