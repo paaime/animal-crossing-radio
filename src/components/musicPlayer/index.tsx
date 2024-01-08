@@ -58,7 +58,7 @@ export default function MusicPlayer() {
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [currentHour, isPlaying]);
+  }, [currentHour, isPlaying, game]);
 
   const fadeOut = () => {
     if (audioRef.current) {
