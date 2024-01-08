@@ -3,6 +3,7 @@ import { Inter, Poppins, Roboto } from 'next/font/google';
 import './globals.css';
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({

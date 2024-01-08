@@ -7,6 +7,7 @@ import { Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Settings from '@/components/settings';
 import { useSettingsStore } from '@/stores/settings';
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
@@ -29,6 +30,8 @@ export default function Home() {
       {settingsOpen && (
         <div className="hider absolute top-0 left-0 w-full h-full bg-[#00000000] z-20 backdrop-blur"></div>
       )}
+      <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
+
       <div className="self-end">
         <SettingsButton setSettingsOpen={setSettingsOpen} />
       </div>
