@@ -107,12 +107,31 @@ export default function MusicPlayer() {
     }
   };
 
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: game + ' - ' + currentHour,
+      artist: 'Animal Crossing Radio',
+      album: 'Animal Crossing Radio',
+      artwork: [
+        { src: '/img/icon.png', sizes: '192x192', type: 'image/png' },
+        { src: '/img/icon.png', sizes: '512x512', type: 'image/png' },
+      ],
+    });
+
+    navigator.mediaSession.setActionHandler('play', () => {
+      handlePlay();
+    });
+
+    navigator.mediaSession.setActionHandler('pause', () => {
+      handlePlay();
+    });
+  }
+
   return (
     <div className="flex flex-col items-center gap-2">
       <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
       <audio
         loop
-        controls
         ref={audioRef}
         className="hidden"
         onPause={() => setIsPlaying(false)}
