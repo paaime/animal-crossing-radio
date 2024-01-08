@@ -15,7 +15,7 @@ export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   return (
     <main
-      className="flex min-h-screen flex-col items-center justify-between p-5 md:p-8"
+      className="flex h-dvh flex-col items-center justify-between p-5 md:p-8"
       style={{
         backgroundImage: `url(${background.src})`,
         backgroundSize: 'cover',

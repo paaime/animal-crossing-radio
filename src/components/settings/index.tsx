@@ -38,7 +38,7 @@ export default function Settings({
       {open.volume && <Volume />}
       {open.games && <Games />}
       <span className="absolute top-[-10px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#E2826A] before:rounded-full inline-block w-fit z-20  text-md tracking-wide">
-        <span className="relative px-3 text-xl rotate-[0.022deg]">
+        <span className="relative px-3 text-xl rotate-[0.022deg] font-medium">
           Settings
         </span>
       </span>

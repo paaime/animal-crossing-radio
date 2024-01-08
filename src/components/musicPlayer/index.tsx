@@ -66,12 +66,14 @@ export default function MusicPlayer() {
 
   const fadeOut = () => {
     if (audioRef.current) {
-      if (audioRef.current.volume > 0) {
+      while (audioRef.current.volume > 0) {
         audioRef.current.volume -= Math.min(audioRef.current.volume, 0.01);
-        setTimeout(fadeOut, 2);
-      } else {
-        audioRef.current.pause();
+        // setTimeout(fadeOut, 2);
       }
+      audioRef.current.pause();
+      // } else {
+      //   audioRef.current.pause();
+      // }
     }
   };
 
@@ -87,7 +89,8 @@ export default function MusicPlayer() {
 
   const handlePlay = () => {
     if (isPlaying) {
-      fadeOut();
+      // fadeOut();
+      audioRef.current?.pause();
     } else {
       fadeIn();
     }
@@ -110,7 +113,14 @@ export default function MusicPlayer() {
   return (
     <div className="flex flex-col items-center gap-2">
       <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
-      <audio loop controls ref={audioRef} className="hidden">
+      <audio
+        loop
+        controls
+        ref={audioRef}
+        className="hidden"
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      >
         <source src={music} type="audio/mpeg" />
       </audio>
       <div className="flex gap-3 mt-3">
