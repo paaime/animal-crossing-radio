@@ -3,6 +3,7 @@
 import Volume from './components/Volume';
 import Games from './components/Games';
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import Backgrounds from './components/Backgrounds';
 
 export default function Settings({
   setSettingsOpen,
@@ -15,6 +16,7 @@ export default function Settings({
   const [open, setOpen] = useState({
     volume: false,
     games: false,
+    backgrounds: false,
   });
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function Settings({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref]);
+  }, [ref, setSettingsOpen]);
 
   return (
     <div
@@ -37,6 +39,7 @@ export default function Settings({
     >
       {open.volume && <Volume />}
       {open.games && <Games />}
+      {open.backgrounds && <Backgrounds />}
       <span className="absolute top-[-10px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#E2826A] before:rounded-full inline-block w-fit z-20  text-md tracking-wide">
         <span className="relative px-3 text-xl rotate-[0.022deg] font-medium">
           Settings
@@ -65,6 +68,7 @@ export default function Settings({
             setOpen({
               volume: !open.volume,
               games: false,
+              backgrounds: false,
             });
           }}
         >
@@ -79,12 +83,28 @@ export default function Settings({
             setOpen({
               volume: false,
               games: !open.games,
+              backgrounds: false,
             });
           }}
         >
           <span className="relative">Change Game</span>
         </span>
         <span
+          className={`hover:before:block before:${
+            open.backgrounds ? 'block' : 'hidden'
+          } before:absolute before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
+          onClick={() => {
+            audio.play();
+            setOpen({
+              volume: false,
+              games: false,
+              backgrounds: !open.backgrounds,
+            });
+          }}
+        >
+          <span className="relative">Backgrounds</span>
+        </span>
+        {/* <span
           className="hover:before:block before:hidden before:absolute before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit"
           onClick={() => {
             setSettingsOpen(false);
@@ -92,7 +112,7 @@ export default function Settings({
           }}
         >
           <span className="relative">Close</span>
-        </span>
+        </span> */}
       </div>
     </div>
   );

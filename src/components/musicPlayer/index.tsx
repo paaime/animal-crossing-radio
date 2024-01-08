@@ -53,7 +53,6 @@ export default function MusicPlayer() {
       if (newHour !== currentHour) {
         setCurrentHour(newHour);
         handleChangeMusic();
-        // Your logic to update the state goes here
       }
     };
 
@@ -123,9 +122,9 @@ export default function MusicPlayer() {
       >
         <source src={music} type="audio/mpeg" />
       </audio>
-      <div className="flex gap-3 mt-3">
-        <p className="text-xl font-medium">
-          {game} - {currentHour}
+      <div className="flex gap-3 mt-2 items-end">
+        <p className="text-xl  tracking-tight">
+          {game} - <span className="font-medium">{currentHour}</span>
         </p>
       </div>
     </div>
