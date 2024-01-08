@@ -46,15 +46,16 @@ export default function MusicPlayer() {
     const updateStateEveryHour = () => {
       // Get the current hour
       const newHour = convertTo12HourFormat(new Date().getHours());
+
       // Update the music when the hour changes
       if (newHour !== currentHour) {
         setCurrentHour(newHour);
-        handleChangeMusic();
+        handleChangeMusic(newHour);
       }
     };
 
     // Set interval to update state every hour (3600000 milliseconds = 1 hour)
-    const intervalId = setInterval(updateStateEveryHour, 1000);
+    const intervalId = setInterval(updateStateEveryHour, 5000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
@@ -93,9 +94,9 @@ export default function MusicPlayer() {
     setIsPlaying(!isPlaying);
   };
 
-  const handleChangeMusic = () => {
+  const handleChangeMusic = (newHour = currentHour) => {
     if (audioRef.current) {
-      let newMusic = formatFileName(currentHour, game);
+      let newMusic = formatFileName(newHour, game);
       fadeOut();
       audioRef.current.src = newMusic;
       audioRef.current.load();
