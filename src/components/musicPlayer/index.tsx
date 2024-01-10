@@ -2,18 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 import PlayButton from '../button/PlayButton';
-import { convertTo12HourFormat, formatFileName } from '@/utils/time';
+import { formatFileName } from '@/utils/time';
 import { useSettingsStore } from '@/stores/settings';
+import { useTimeStore } from '@/stores/time';
 
 export default function MusicPlayer() {
   const volume = useSettingsStore((state) => state.volume);
   const game = useSettingsStore((state) => state.game);
 
+  const { hour, ampm } = useTimeStore((state) => state);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [currentHour, setCurrentHour] = useState(
-    convertTo12HourFormat(new Date().getHours())
-  );
+  const [currentHour, setCurrentHour] = useState(`${hour} ${ampm}`);
   const [music, setMusic] = useState(formatFileName(currentHour, game));
 
   useEffect(() => {
@@ -42,24 +43,27 @@ export default function MusicPlayer() {
     };
   }, [isPlaying]);
 
+  const updateMusic = () => {
+    // Get the current hour
+    let newHour = `${hour} ${ampm}`;
+
+    // Update the music when the hour changes
+    if (newHour !== currentHour) {
+      setCurrentHour(newHour);
+      handleChangeMusic(newHour);
+    }
+  };
+
   useEffect(() => {
-    const updateStateEveryHour = () => {
-      // Get the current hour
-      const newHour = convertTo12HourFormat(new Date().getHours());
-
-      // Update the music when the hour changes
-      if (newHour !== currentHour) {
-        setCurrentHour(newHour);
-        handleChangeMusic(newHour);
-      }
-    };
-
-    // Set interval to update state every hour (3600000 milliseconds = 1 hour)
-    const intervalId = setInterval(updateStateEveryHour, 5000);
+    const intervalId = setInterval(updateMusic, 5000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, [currentHour, isPlaying, game]);
+
+  useEffect(() => {
+    updateMusic();
+  }, [hour]);
 
   const fadeOut = () => {
     if (audioRef.current) {

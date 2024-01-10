@@ -4,7 +4,7 @@ export function convertTo12HourFormat(hour: number) {
   }
 
   const ampm = hour >= 12 ? 'PM' : 'AM';
-  const twelveHour = hour % 12 || 12; // Convert 0 to 12
+  const twelveHour = hour % 12 === 0 ? 12 : hour % 12
 
   return `${twelveHour} ${ampm}`;
 }

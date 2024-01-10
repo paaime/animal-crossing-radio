@@ -19,7 +19,7 @@
 }
 
 body {
-  cursor: url('/img/cursor.png'), auto;
+  cursor: url('/img/cursor.png') 16 16, auto;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -29,8 +29,9 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-button {
-  cursor: url('/img/cursor_link.png'), auto;
+button,
+.custom-pointer {
+  cursor: url('/img/cursor_link.png') 16 16, auto;
 }
 
 /* SLIDER RANGE */
@@ -59,78 +60,50 @@ button {
   border-radius: 50%;
 }
 
-/* WAVE */
-
-.wave-container {
-  & .wave-bar {
-    display: inline-block;
-    width: 4px;
-    height: 27px;
-    margin-left: 5px;
-    border-radius: 10px;
-    background-color: #fff;
-    animation: beat1 2s infinite;
-    transform-origin: 0 100%;
-    transform: scaleY(0.1);
-
-    &:nth-child(2n) {
-      animation-name: beat2;
-      animation-delay: 0.2s;
-      background-color: #eee;
-    }
-    &:nth-child(3n) {
-      animation-name: beat3;
-      animation-delay: 0.5s;
-      animation-duration: 2s;
-      /* background-color: #ccc; */
-    }
-    &:nth-child(4n) {
-      animation-name: beat2;
-      animation-delay: 0.4s;
-      animation-duration: 2.4s;
-    }
-    &:nth-child(5n) {
-      animation-delay: 0.6s;
-    }
-    &:nth-child(6n) {
-      animation-delay: 0.2s;
-      background-color: #ddd;
-    }
+@keyframes blob {
+  0% {
+    transform: rotate(0.3deg) scale(1);
+  }
+  100% {
+    transform: rotate(-0.3deg) scale(0.99);
   }
 }
 
-@keyframes beat1 {
+@keyframes blob2 {
   0% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(0.7);
+    transform: translateY(0px);
   }
   100% {
-    transform: scaleY(0);
+    transform: translateY(-2px);
   }
 }
 
-@keyframes beat2 {
-  0% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(0.5);
-  }
-  100% {
-    transform: scaleY(0);
-  }
+.button-bg {
+  background-image: linear-gradient(
+    145deg,
+    transparent 10%,
+    #07b8ae 10% 20%,
+    transparent 20% 30%,
+    #07b8ae 30% 40%,
+    transparent 40% 50%,
+    #07b8ae 50% 60%,
+    transparent 60% 70%,
+    #07b8ae 70% 80%,
+    transparent 80% 90%,
+    #07b8ae 90% 100%
+  );
+  background-size: 94px;
 }
 
-@keyframes beat3 {
+.ac-button:hover .button-bg {
+  animation: background 7s linear infinite;
+}
+
+@keyframes background {
   0% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(0.3);
+    background-position: 0 0;
   }
   100% {
-    transform: scaleY(0);
+    background-position: 400px 0;
   }
 }

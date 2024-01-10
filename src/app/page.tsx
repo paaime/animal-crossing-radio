@@ -3,11 +3,12 @@
 import Clock from '@/components/clock';
 import background2 from '/public/img/background2.png';
 import SettingsButton from '@/components/button/SettingsButton';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Settings from '@/components/settings';
 import { useSettingsStore } from '@/stores/settings';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
+import { useTimeStore } from '@/stores/time';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
@@ -16,6 +17,8 @@ const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
 export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const background = useSettingsStore((state) => state.background);
+  const setTime = useSettingsStore((state) => state.setTime);
+  const hour = useTimeStore((state) => state.hour);
 
   return (
     <main
