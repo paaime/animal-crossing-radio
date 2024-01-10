@@ -41,7 +41,7 @@ export default function Games() {
               setGame(game);
             }}
           >
-            <span className="relative">{game}</span>
+            <h2 className="relative">{game}</h2>
           </span>
         ))}
       </div>

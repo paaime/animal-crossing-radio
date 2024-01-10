@@ -41,9 +41,9 @@ export default function Backgrounds() {
               setBackground(background);
             }}
           >
-            <span className="relative">
+            <h4 className="relative">
               {background.charAt(0).toUpperCase() + background.slice(1)}
-            </span>
+            </h4>
           </span>
         ))}
       </div>

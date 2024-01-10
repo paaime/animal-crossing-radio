@@ -18,13 +18,13 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://animalcrossing.radio'),
+  metadataBase: new URL('https://animal-crossing-radio.com'),
   title: 'Animal Crossing Radio',
   description:
     'Animal Crossing music from all the series in real times ! Tune in and let the soothing melodies of your favorite AC games transport you instantly!',
   openGraph: {
     type: 'website',
-    url: 'https://animalcrossing.radio',
+    url: 'https://animal-crossing-radio.com',
     images: [
       {
         url: '/img/og-image.png',

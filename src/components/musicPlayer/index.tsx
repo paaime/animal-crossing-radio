@@ -144,9 +144,9 @@ export default function MusicPlayer() {
         <source src={music} type="audio/mpeg" />
       </audio>
       <div className="flex gap-3 mt-2 items-end">
-        <p className="text-lg tracking-tight">
+        <h1 className="text-lg tracking-tight">
           {game} - <span className="font-medium">{currentHour}</span>
-        </p>
+        </h1>
       </div>
     </div>
   );
