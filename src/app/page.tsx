@@ -1,14 +1,14 @@
 'use client';
 
 import Clock from '@/components/clock';
-import background2 from '/public/img/background2.png';
 import SettingsButton from '@/components/button/SettingsButton';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Settings from '@/components/settings';
 import { useSettingsStore } from '@/stores/settings';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
-import { useTimeStore } from '@/stores/time';
+import MusicButton from '@/components/button/MusicButton';
+import MusicLibrary from '@/components/musicLibrary';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
@@ -16,9 +16,8 @@ const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
 
 export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [libraryOpen, setLibraryOpen] = useState(false);
   const background = useSettingsStore((state) => state.background);
-  const setTime = useSettingsStore((state) => state.setTime);
-  const hour = useTimeStore((state) => state.hour);
 
   return (
     <main
@@ -30,26 +29,21 @@ export default function Home() {
       }}
     >
       {settingsOpen && <Settings setSettingsOpen={setSettingsOpen} />}
-      {settingsOpen && (
+      {(settingsOpen || libraryOpen) && (
         <div className="hider absolute top-0 left-0 w-full h-full bg-[#00000000] z-20 backdrop-blur"></div>
       )}
-      <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
-
+      {process.env.ENV === 'production' && (
+        <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
+      )}
       <div className="self-end">
         <SettingsButton setSettingsOpen={setSettingsOpen} />
       </div>
-      <Suspense
-        fallback={
-          <div>
-            <p className="text-white text-3xl">Loading...</p>
-          </div>
-        }
-      >
-        <MusicPlayer />
-      </Suspense>
-      <div className="self-start">
+      <MusicPlayer />
+      <div className="self-start w-full flex items-end justify-between">
         <Clock />
+        <MusicButton setLibraryOpen={setLibraryOpen} />
       </div>
+      {libraryOpen && <MusicLibrary setLibraryOpen={setLibraryOpen} />}
     </main>
   );
 }

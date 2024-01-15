@@ -4,7 +4,7 @@ export default function PauseIcon() {
       width="18"
       height="20"
       viewBox="0 0 18 25"
-      fill="none"
+      fill="white"
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width="7" height="25" rx="3.5" fill="white" />

@@ -15,7 +15,8 @@ const config: Config = {
       },
       fontFamily: {
         poppins: 'var(--font-poppins)',
-        roboto: 'var(--font-roboto)',
+        seurat: 'var(--font-seurat)',
+        bokutoh: 'var(--font-bokutoh)',
       },
     },
   },

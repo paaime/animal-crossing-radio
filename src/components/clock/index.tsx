@@ -14,7 +14,7 @@ export default function Clock() {
   useEffect(() => {
     const interval = setInterval(() => {
       updateTime();
-    }, 5000);
+    }, 2000);
     return () => clearInterval(interval);
   }, [customTime]);
 
@@ -23,7 +23,7 @@ export default function Clock() {
   }, [customTime]);
 
   return (
-    <div className="flex flex-col gap-1 font-medium">
+    <div className="flex flex-col gap-1 font-medium text-white">
       <p className="text-3xl">
         {hour}:{minute < 10 ? '0' + minute : minute}{' '}
         <span className="text-xl">{ampm}</span>

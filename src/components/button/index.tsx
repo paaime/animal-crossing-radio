@@ -1,29 +1,33 @@
 export default function Button({
   children,
   onClick,
+  small = false,
 }: {
   children: React.ReactNode;
   onClick?: () => void;
+  small?: boolean;
 }) {
   return (
     <button
-      className="flex items-center justify-center hover:scale-95 transition duration-200 h-[50px] w-[65px] ac-button"
+      className={`flex items-center justify-center hover:scale-95 transition duration-200 ${
+        small ? 'h-[40px] w-[50px]' : 'h-[50px] w-[65px]'
+      } ac-button`}
       onClick={onClick}
     >
       <div
         className="button-bg"
         style={{
           backgroundColor: '#0CC0B5',
-          width: '57px',
-          height: '44px',
+          width: small ? '42px' : '57px',
+          height: small ? '33px' : '44px',
           borderRadius: '50%',
           position: 'absolute',
           zIndex: 10,
         }}
       ></div>
       <svg
-        width="71"
-        height="50"
+        width={small ? '50' : '71'}
+        height={small ? '37' : '50'}
         viewBox="0 0 71 55"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

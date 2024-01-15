@@ -2,20 +2,70 @@
 
 import { useEffect, useRef, useState } from 'react';
 import PlayButton from '../button/PlayButton';
-import { formatFileName } from '@/utils/time';
 import { useSettingsStore } from '@/stores/settings';
 import { useTimeStore } from '@/stores/time';
+import { useMusicStore } from '@/stores/music';
+import NextButton from '../button/NextButton';
+import PrevButton from '../button/PrevButton';
+import * as musicHelper from '@/utils/musicPlayer';
 
 export default function MusicPlayer() {
   const volume = useSettingsStore((state) => state.volume);
   const game = useSettingsStore((state) => state.game);
+
+  const {
+    music,
+    hourlyMode,
+    nextMode,
+    setMusic,
+    getMusicPath,
+    setHourlyMusic,
+    setHourlyMode,
+  } = useMusicStore((state) => state);
 
   const { hour, ampm } = useTimeStore((state) => state);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [currentHour, setCurrentHour] = useState(`${hour} ${ampm}`);
-  const [music, setMusic] = useState(formatFileName(currentHour, game));
+
+  // Importing the musicHelper functions
+  const handlePrev = () =>
+    musicHelper.handlePrev(audioRef, music, setMusic, hourlyMode);
+  const handleNext = () =>
+    musicHelper.handleNext(audioRef, music, setMusic, hourlyMode, nextMode);
+  const play = () => musicHelper.play(audioRef, volume);
+  const pause = () => musicHelper.pause(audioRef);
+  const handlePlay = () =>
+    musicHelper.handlePlay(isPlaying, setIsPlaying, play, pause);
+  const setMediaSession = () => musicHelper.setMediaSession(music, handlePlay);
+  const handleChangeMusic = () =>
+    musicHelper.handleChangeMusic(
+      audioRef,
+      getMusicPath,
+      isPlaying,
+      setIsPlaying,
+      play,
+      pause,
+      hourlyMode
+    );
+  const updateMusic = () =>
+    musicHelper.updateMusic(
+      hourlyMode,
+      setMusic,
+      setCurrentHour,
+      hour,
+      ampm,
+      currentHour,
+      game,
+      handleChangeMusic
+    );
+
+  useEffect(() => {
+    if (!hourlyMode) {
+      handleChangeMusic();
+    }
+  }, [music]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -25,6 +75,12 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     // change the music when the game changes
+    setMusic({
+      album: game,
+      name: `${hour} ${ampm}`,
+      index: null,
+    });
+    setHourlyMode(true);
     handleChangeMusic();
   }, [game]);
 
@@ -43,82 +99,25 @@ export default function MusicPlayer() {
     };
   }, [isPlaying]);
 
-  const updateMusic = () => {
-    // Get the current hour
-    let newHour = `${hour} ${ampm}`;
-
-    // Update the music when the hour changes
-    if (newHour !== currentHour) {
-      setCurrentHour(newHour);
-      handleChangeMusic(newHour);
-    }
-  };
-
   useEffect(() => {
-    const intervalId = setInterval(updateMusic, 5000);
+    const intervalId = setInterval(updateMusic, 1000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [currentHour, isPlaying, game]);
+  }, [currentHour, isPlaying, game, hourlyMode]);
 
   useEffect(() => {
     updateMusic();
   }, [hour]);
 
-  const fadeOut = () => {
-    if (audioRef.current) {
-      while (audioRef.current.volume > 0) {
-        audioRef.current.volume -= Math.min(audioRef.current.volume, 0.01);
-        // setTimeout(fadeOut, 2);
-      }
-      audioRef.current.pause();
-      // } else {
-      //   audioRef.current.pause();
-      // }
-    }
-  };
-
-  const fadeIn = () => {
-    if (audioRef.current) {
-      if (audioRef.current.volume < volume / 100) {
-        audioRef.current.volume += Math.min(1 - audioRef.current.volume, 0.01);
-        setTimeout(fadeIn, 2);
-      }
-      audioRef.current.play();
-    }
-  };
-
-  const handlePlay = () => {
-    if (isPlaying) {
-      // fadeOut();
-      audioRef.current?.pause();
-    } else {
-      fadeIn();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleChangeMusic = (newHour = currentHour) => {
-    if (audioRef.current) {
-      let newMusic = formatFileName(newHour, game);
-      fadeOut();
-      audioRef.current.src = newMusic;
-      audioRef.current.load();
-      setMusic(newMusic);
-      if (isPlaying) {
-        fadeIn();
-      }
-    }
-  };
-
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: game + ' - ' + currentHour,
+      title: music.album + ' - ' + music.name,
       artist: 'Animal Crossing Radio',
       album: 'Animal Crossing Radio',
       artwork: [
-        { src: '/img/icon.png', sizes: '192x192', type: 'image/png' },
-        { src: '/img/icon.png', sizes: '512x512', type: 'image/png' },
+        { src: '/img/icon192.png', sizes: '192x192', type: 'image/png' },
+        { src: '/img/icon512.png', sizes: '512x512', type: 'image/png' },
       ],
     });
 
@@ -133,20 +132,38 @@ export default function MusicPlayer() {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
+      <div className="flex gap-5 items-center">
+        {!hourlyMode && <PrevButton onClick={handlePrev} />}
+        <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
+        {!hourlyMode && <NextButton onClick={handleNext} />}
+      </div>
       <audio
-        loop
         ref={audioRef}
         className="hidden"
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
+        onEnded={handleNext}
       >
-        <source src={music} type="audio/mpeg" />
+        <source
+          src={`/sounds/${music.album}/${music.name}.mp3`}
+          type="audio/mpeg"
+        />
       </audio>
-      <div className="flex gap-3 mt-2 items-end">
-        <h1 className="text-lg tracking-tight">
-          {game} - <span className="font-medium">{currentHour}</span>
+      <div className="flex gap-1 mt-2 items-center flex-col text-white">
+        <h1 className="text-lg tracking-tight text-center">
+          {music.album} - <span className="font-medium">{music.name}</span>
         </h1>
+        {!hourlyMode && (
+          <p
+            className="text-sm hover:underline custom-pointer"
+            onClick={() => {
+              setHourlyMusic();
+              handleChangeMusic();
+            }}
+          >
+            Switch to <span className="font-medium">Hourly Mode</span>
+          </p>
+        )}
       </div>
     </div>
   );

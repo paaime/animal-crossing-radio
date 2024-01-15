@@ -1,20 +1,38 @@
 import type { Metadata } from 'next';
-import { Inter, Poppins, Roboto } from 'next/font/google';
+import { Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-poppins',
 });
 
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '700', '900'],
-  variable: '--font-roboto',
+const seurat = localFont({
+  src: [
+    {
+      path: '../../public/fonts/SeuratBold.otf',
+      weight: 'bold',
+    },
+    {
+      path: '../../public/fonts/SeuratNormal.otf',
+      weight: 'normal',
+    },
+  ],
+  variable: '--font-seurat',
+});
+
+const bokutoh = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Bokutoh.otf',
+      weight: 'normal',
+    },
+  ],
+  variable: '--font-bokutoh',
 });
 
 export const metadata: Metadata = {
@@ -46,11 +64,13 @@ const NoSSR = dynamic(() => Promise.resolve(_NoSSR), {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <link rel="apple-touch-icon" href="/logo192.png" />
         <link rel="manifest" href="/manifest.json" />
@@ -60,7 +80,9 @@ export default function RootLayout({
           href={process.env.NEXT_PUBLIC_BASE_PATH || '' + '/favicon.ico'}
         />
       </head>
-      <body className={`${poppins.variable} ${roboto.variable} font-poppins`}>
+      <body
+        className={`${poppins.variable} ${seurat.variable} ${bokutoh.variable} font-poppins`}
+      >
         <NoSSR>{children}</NoSSR>
       </body>
     </html>

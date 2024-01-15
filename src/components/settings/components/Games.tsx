@@ -1,5 +1,4 @@
 import { useSettingsStore } from '@/stores/settings';
-import range from '/public/img/range.png';
 import { games } from '@/data/games';
 
 export default function Games() {
@@ -9,8 +8,8 @@ export default function Games() {
   const audio = new Audio('/sounds/click.mp3');
 
   return (
-    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[230px] w-[245px] right-[-15px] md:-right-[125px] -top-[185px] md:-top-[110px]">
-      <span className="absolute top-[-2px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#725d42] before:rounded-full inline-block w-fit z-20  text-md tracking-wide">
+    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[230px] w-[265px] right-[-15px] md:-right-[125px] -top-[185px] md:-top-[110px]">
+      <span className="absolute top-[-2px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#725d42] before:rounded-full inline-block w-fit z-20 text-md tracking-wide" >
         <span className="relative px-3 rotate-[0.022deg] text-white">
           Games
         </span>
@@ -29,13 +28,13 @@ export default function Games() {
           fill="#FFEEA0"
         />
       </svg>
-      <div className="flex flex-col items-start justify-center ml-12 gap-1 w-3/4">
+      <div className="flex flex-col items-start justify-center ml-12 text-[#7C684D] font-seurat gap-1 w-3/4">
         {games.map((game, key) => (
           <span
             key={key}
-            className={`hover:before:block before:${
-              game === activeGame ? 'block' : 'hidden'
-            } before:absolute before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
+            className={`hover:before:absolute before:${
+              game === activeGame ? 'absolute font-bold' : 'hidden'
+            }  before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
             onClick={() => {
               audio.play();
               setGame(game);
