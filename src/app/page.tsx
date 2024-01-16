@@ -33,7 +33,7 @@ export default function Home() {
         <div className="hider absolute top-0 left-0 w-full h-full bg-[#00000000] z-20 backdrop-blur"></div>
       )}
       {/* {process.env.NODE_ENV === 'production' && ( */}
-      {/* <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews /> */}
+      <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
       {/* )} */}
       <div className="self-end">
         <SettingsButton setSettingsOpen={setSettingsOpen} />
