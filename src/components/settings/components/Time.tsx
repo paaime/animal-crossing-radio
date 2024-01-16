@@ -24,7 +24,7 @@ export default function Time() {
   const audio = new Audio('/sounds/click.mp3');
 
   return (
-    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[135px] w-[275px] right-[-10px] md:-right-[125px] -top-[115px] md:-top-[50px]">
+    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[135px] w-[275px] right-[-10px] md:-right-[125px] -top-[130px] md:-top-[110px]">
       <span className="absolute top-[-2px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#725d42] before:rounded-full inline-block w-fit z-20 tracking-wide text-md">
         <span className="relative px-3 rotate-[0.022deg] text-white">Time</span>
       </span>

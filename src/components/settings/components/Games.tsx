@@ -8,7 +8,7 @@ export default function Games() {
   const audio = new Audio('/sounds/click.mp3');
 
   return (
-    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[230px] w-[265px] right-[-15px] md:-right-[125px] -top-[185px] md:-top-[110px]">
+    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[230px] w-[265px] right-[-15px] md:-right-[125px] -top-[220px] md:-top-[180px]">
       <span className="absolute top-[-2px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#725d42] before:rounded-full inline-block w-fit z-20 text-md tracking-wide" >
         <span className="relative px-3 rotate-[0.022deg] text-white">
           Games

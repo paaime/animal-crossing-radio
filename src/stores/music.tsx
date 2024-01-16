@@ -19,11 +19,12 @@ export const useMusicStore = create<IMusicStore>((set, get) => ({
   setNextMode: (nextMode: NextMode) => set({ nextMode }),
   setMusic: (music: IMusic) => set({ music }),
   setHourlyMusic: () => {
+    const weather = useSettingsStore.getState().getWeather();
     const { hour, ampm } = useTimeStore.getState();
     set({
       music: {
         album: useSettingsStore.getState().game,
-        name: `${hour} ${ampm}`,
+        name: `${hour} ${ampm}${weather}`,
         index: null,
       },
       hourlyMode: true,

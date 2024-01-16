@@ -142,11 +142,12 @@ export const updateMusic = (
   ampm: string,
   currentHour: string,
   game: string,
-  handleChangeMusic: () => void
+  handleChangeMusic: () => void,
+  getWeather: () => string
 ) => {
   if (!hourlyMode) return;
   // Get the current hour
-  let newHour = `${hour} ${ampm}`;
+  let newHour = `${hour} ${ampm}${getWeather()}`;
   // Update the music when the hour changes
   if (newHour !== currentHour) {
     setMusic({

@@ -10,8 +10,7 @@ import PrevButton from '../button/PrevButton';
 import * as musicHelper from '@/utils/musicPlayer';
 
 export default function MusicPlayer() {
-  const volume = useSettingsStore((state) => state.volume);
-  const game = useSettingsStore((state) => state.game);
+  const { volume, game, getWeather, weather } = useSettingsStore();
 
   const {
     music,
@@ -58,7 +57,8 @@ export default function MusicPlayer() {
       ampm,
       currentHour,
       game,
-      handleChangeMusic
+      handleChangeMusic,
+      getWeather
     );
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function MusicPlayer() {
     // change the music when the game changes
     setMusic({
       album: game,
-      name: `${hour} ${ampm}`,
+      name: `${hour} ${ampm}${getWeather()}`,
       index: null,
     });
     setHourlyMode(true);
@@ -109,6 +109,10 @@ export default function MusicPlayer() {
   useEffect(() => {
     updateMusic();
   }, [hour]);
+
+  useEffect(() => {
+    updateMusic();
+  }, [weather]);
 
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({

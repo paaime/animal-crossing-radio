@@ -3,3 +3,9 @@ export enum NextMode {
   RANDOM,
   REPEAT,
 }
+
+export enum Weather {
+  SUNNY,
+  RAINY,
+  SNOWY,
+}

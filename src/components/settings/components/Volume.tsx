@@ -4,7 +4,7 @@ export default function Volume() {
   const volume = useSettingsStore((state) => state.volume);
   const setVolume = useSettingsStore((state) => state.setVolume);
   return (
-    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[100px] w-[275px] right-[-15px] md:-right-[125px] -top-[80px] md:-top-[50px]">
+    <div className="absolute z-30 flex justify-center text-[#725D42] font-medium h-[100px] w-[275px] right-[-15px] md:-right-[125px] -top-[110px] md:-top-[90px]">
       <span className="absolute top-[-2px] left-5 before:block before:absolute before:-inset-1 -rotate-[8deg] before:bg-[#725d42] before:rounded-full inline-block w-fit z-20 tracking-wide text-md">
         <span className="relative px-3 rotate-[0.022deg] text-white">
           Volume

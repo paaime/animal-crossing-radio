@@ -18,16 +18,100 @@ export const albums: IAlbum[] = [
         name: '1 AM 🌧️',
       },
       {
-        duration: '2:16',
-        name: '1 PM',
+        duration: '3:42',
+        name: '2 AM',
       },
       {
-        duration: '2:16',
-        name: '1 PM ❄️',
+        duration: '3:42',
+        name: '2 AM ❄️',
       },
       {
-        duration: '2:16',
-        name: '1 PM 🌧️',
+        duration: '3:42',
+        name: '2 AM 🌧️',
+      },
+      {
+        duration: '2:02',
+        name: '3 AM',
+      },
+      {
+        duration: '2:02',
+        name: '3 AM ❄️',
+      },
+      {
+        duration: '2:02',
+        name: '3 AM 🌧️',
+      },
+      {
+        duration: '2:17',
+        name: '4 AM',
+      },
+      {
+        duration: '2:17',
+        name: '4 AM ❄️',
+      },
+      {
+        duration: '2:17',
+        name: '4 AM 🌧️',
+      },
+      {
+        duration: '3:46',
+        name: '5 AM',
+      },
+      {
+        duration: '3:46',
+        name: '5 AM ❄️',
+      },
+      {
+        duration: '3:46',
+        name: '5 AM 🌧️',
+      },
+      {
+        duration: '2:28',
+        name: '6 AM',
+      },
+      {
+        duration: '2:28',
+        name: '6 AM ❄️',
+      },
+      {
+        duration: '2:28',
+        name: '6 AM 🌧️',
+      },
+      {
+        duration: '2:49',
+        name: '7 AM',
+      },
+      {
+        duration: '2:49',
+        name: '7 AM ❄️',
+      },
+      {
+        duration: '2:49',
+        name: '7 AM 🌧️',
+      },
+      {
+        duration: '2:40',
+        name: '8 AM',
+      },
+      {
+        duration: '2:40',
+        name: '8 AM ❄️',
+      },
+      {
+        duration: '2:40',
+        name: '8 AM 🌧️',
+      },
+      {
+        duration: '2:10',
+        name: '9 AM',
+      },
+      {
+        duration: '2:10',
+        name: '9 AM ❄️',
+      },
+      {
+        duration: '2:10',
+        name: '9 AM 🌧️',
       },
       {
         duration: '2:41',
@@ -42,18 +126,6 @@ export const albums: IAlbum[] = [
         name: '10 AM 🌧️',
       },
       {
-        duration: '2:27',
-        name: '10 PM',
-      },
-      {
-        duration: '2:40',
-        name: '10 PM ❄️',
-      },
-      {
-        duration: '2:30',
-        name: '10 PM 🌧️',
-      },
-      {
         duration: '2:59',
         name: '11 AM',
       },
@@ -64,6 +136,139 @@ export const albums: IAlbum[] = [
       {
         duration: '2:59',
         name: '11 AM 🌧️',
+      },
+      {
+        duration: '2:28',
+        name: '12 PM',
+      },
+      {
+        duration: '2:28',
+        name: '12 PM ❄️',
+      },
+      {
+        duration: '2:28',
+        name: '12 PM 🌧️',
+      },
+      {
+        duration: '2:16',
+        name: '1 PM',
+      },
+      {
+        duration: '2:16',
+        name: '1 PM ❄️',
+      },
+      {
+        duration: '2:16',
+        name: '1 PM 🌧️',
+      },
+      {
+        duration: '3:06',
+        name: '2 PM',
+      },
+      {
+        duration: '3:06',
+        name: '2 PM ❄️',
+      },
+      {
+        duration: '3:06',
+        name: '2 PM 🌧️',
+      },
+
+      {
+        duration: '2:13',
+        name: '3 PM',
+      },
+      {
+        duration: '2:13',
+        name: '3 PM 🌧️',
+      },
+      {
+        duration: '2:13',
+        name: '3 PM. ❄️',
+      },
+      {
+        duration: '2:17',
+        name: '4 PM',
+      },
+      {
+        duration: '2:20',
+        name: '4 PM ❄️',
+      },
+      {
+        duration: '2:17',
+        name: '4 PM 🌧️',
+      },
+      {
+        duration: '3:39',
+        name: '5 PM',
+      },
+      {
+        duration: '3:39',
+        name: '5 PM ❄️',
+      },
+      {
+        duration: '3:39',
+        name: '5 PM 🌧️',
+      },
+      {
+        duration: '2:12',
+        name: '6 PM',
+      },
+      {
+        duration: '2:12',
+        name: '6 PM ❄️',
+      },
+      {
+        duration: '2:12',
+        name: '6 PM 🌧️',
+      },
+      {
+        duration: '3:51',
+        name: '7 PM',
+      },
+      {
+        duration: '3:51',
+        name: '7 PM ❄️',
+      },
+      {
+        duration: '3:51',
+        name: '7 PM 🌧️',
+      },
+      {
+        duration: '2:05',
+        name: '8 PM',
+      },
+      {
+        duration: '2:07',
+        name: '8 PM ❄️',
+      },
+      {
+        duration: '2:07',
+        name: '8 PM 🌧️',
+      },
+      {
+        duration: '2:15',
+        name: '9 PM',
+      },
+      {
+        duration: '2:17',
+        name: '9 PM ❄️',
+      },
+      {
+        duration: '2:17',
+        name: '9 PM 🌧️',
+      },
+      {
+        duration: '2:27',
+        name: '10 PM',
+      },
+      {
+        duration: '2:40',
+        name: '10 PM ❄️',
+      },
+      {
+        duration: '2:30',
+        name: '10 PM 🌧️',
       },
       {
         duration: '2:44',
@@ -88,210 +293,6 @@ export const albums: IAlbum[] = [
       {
         duration: '2:40',
         name: '12 AM 🌧️',
-      },
-      {
-        duration: '2:28',
-        name: '12 PM',
-      },
-      {
-        duration: '2:28',
-        name: '12 PM ❄️',
-      },
-      {
-        duration: '2:28',
-        name: '12 PM 🌧️',
-      },
-      {
-        duration: '3:42',
-        name: '2 AM',
-      },
-      {
-        duration: '3:42',
-        name: '2 AM ❄️',
-      },
-      {
-        duration: '3:42',
-        name: '2 AM 🌧️',
-      },
-      {
-        duration: '3:06',
-        name: '2 PM',
-      },
-      {
-        duration: '3:06',
-        name: '2 PM ❄️',
-      },
-      {
-        duration: '3:06',
-        name: '2 PM 🌧️',
-      },
-      {
-        duration: '2:02',
-        name: '3 AM',
-      },
-      {
-        duration: '2:02',
-        name: '3 AM ❄️',
-      },
-      {
-        duration: '2:02',
-        name: '3 AM 🌧️',
-      },
-      {
-        duration: '2:13',
-        name: '3 PM',
-      },
-      {
-        duration: '2:13',
-        name: '3 PM 🌧️',
-      },
-      {
-        duration: '2:13',
-        name: '3 PM. ❄️',
-      },
-      {
-        duration: '2:17',
-        name: '4 AM',
-      },
-      {
-        duration: '2:17',
-        name: '4 AM ❄️',
-      },
-      {
-        duration: '2:17',
-        name: '4 AM 🌧️',
-      },
-      {
-        duration: '2:17',
-        name: '4 PM',
-      },
-      {
-        duration: '2:20',
-        name: '4 PM ❄️',
-      },
-      {
-        duration: '2:17',
-        name: '4 PM 🌧️',
-      },
-      {
-        duration: '3:46',
-        name: '5 AM',
-      },
-      {
-        duration: '3:46',
-        name: '5 AM ❄️',
-      },
-      {
-        duration: '3:46',
-        name: '5 AM 🌧️',
-      },
-      {
-        duration: '3:39',
-        name: '5 PM',
-      },
-      {
-        duration: '3:39',
-        name: '5 PM ❄️',
-      },
-      {
-        duration: '3:39',
-        name: '5 PM 🌧️',
-      },
-      {
-        duration: '2:28',
-        name: '6 AM',
-      },
-      {
-        duration: '2:28',
-        name: '6 AM ❄️',
-      },
-      {
-        duration: '2:28',
-        name: '6 AM 🌧️',
-      },
-      {
-        duration: '2:12',
-        name: '6 PM',
-      },
-      {
-        duration: '2:12',
-        name: '6 PM ❄️',
-      },
-      {
-        duration: '2:12',
-        name: '6 PM 🌧️',
-      },
-      {
-        duration: '2:49',
-        name: '7 AM',
-      },
-      {
-        duration: '2:49',
-        name: '7 AM ❄️',
-      },
-      {
-        duration: '2:49',
-        name: '7 AM 🌧️',
-      },
-      {
-        duration: '3:51',
-        name: '7 PM',
-      },
-      {
-        duration: '3:51',
-        name: '7 PM ❄️',
-      },
-      {
-        duration: '3:51',
-        name: '7 PM 🌧️',
-      },
-      {
-        duration: '2:40',
-        name: '8 AM',
-      },
-      {
-        duration: '2:40',
-        name: '8 AM ❄️',
-      },
-      {
-        duration: '2:40',
-        name: '8 AM 🌧️',
-      },
-      {
-        duration: '2:05',
-        name: '8 PM',
-      },
-      {
-        duration: '2:07',
-        name: '8 PM ❄️',
-      },
-      {
-        duration: '2:07',
-        name: '8 PM 🌧️',
-      },
-      {
-        duration: '2:10',
-        name: '9 AM',
-      },
-      {
-        duration: '2:10',
-        name: '9 AM ❄️',
-      },
-      {
-        duration: '2:10',
-        name: '9 AM 🌧️',
-      },
-      {
-        duration: '2:15',
-        name: '9 PM',
-      },
-      {
-        duration: '2:17',
-        name: '9 PM ❄️',
-      },
-      {
-        duration: '2:17',
-        name: '9 PM 🌧️',
       },
       {
         duration: '1:54',
@@ -616,16 +617,100 @@ export const albums: IAlbum[] = [
         name: '1 AM 🌧️',
       },
       {
-        duration: '1:36',
-        name: '1 PM',
+        duration: '2:58',
+        name: '2 AM',
       },
       {
-        duration: '1:36',
-        name: '1 PM ❄️',
+        duration: '2:57',
+        name: '2 AM ❄️',
       },
       {
-        duration: '1:32',
-        name: '1 PM 🌧️',
+        duration: '2:57',
+        name: '2 AM 🌧️',
+      },
+      {
+        duration: '1:33',
+        name: '3 AM',
+      },
+      {
+        duration: '1:33',
+        name: '3 AM ❄️',
+      },
+      {
+        duration: '1:33',
+        name: '3 AM 🌧️',
+      },
+      {
+        duration: '2:07',
+        name: '4 AM',
+      },
+      {
+        duration: '2:05',
+        name: '4 AM ❄️',
+      },
+      {
+        duration: '2:08',
+        name: '4 AM 🌧️',
+      },
+      {
+        duration: '1:58',
+        name: '5 AM',
+      },
+      {
+        duration: '1:58',
+        name: '5 AM ❄️',
+      },
+      {
+        duration: '1:58',
+        name: '5 AM 🌧️',
+      },
+      {
+        duration: '1:28',
+        name: '6 AM',
+      },
+      {
+        duration: '1:28',
+        name: '6 AM ❄️',
+      },
+      {
+        duration: '1:28',
+        name: '6 AM 🌧️',
+      },
+      {
+        duration: '1:45',
+        name: '7 AM',
+      },
+      {
+        duration: '1:42',
+        name: '7 AM ❄️',
+      },
+      {
+        duration: '1:42',
+        name: '7 AM 🌧️',
+      },
+      {
+        duration: '1:37',
+        name: '8 AM',
+      },
+      {
+        duration: '1:40',
+        name: '8 AM ❄️',
+      },
+      {
+        duration: '1:40',
+        name: '8 AM 🌧️',
+      },
+      {
+        duration: '1:09',
+        name: '9 AM',
+      },
+      {
+        duration: '1:10',
+        name: '9 AM ❄️',
+      },
+      {
+        duration: '1:10',
+        name: '9 AM 🌧️',
       },
       {
         duration: '1:35',
@@ -640,18 +725,6 @@ export const albums: IAlbum[] = [
         name: '10 AM 🌧️',
       },
       {
-        duration: '1:25',
-        name: '10 PM',
-      },
-      {
-        duration: '1:26',
-        name: '10 PM ❄️',
-      },
-      {
-        duration: '1:26',
-        name: '10 PM 🌧️',
-      },
-      {
         duration: '1:36',
         name: '11 AM',
       },
@@ -662,6 +735,138 @@ export const albums: IAlbum[] = [
       {
         duration: '1:38',
         name: '11 AM 🌧️',
+      },
+      {
+        duration: '1:41',
+        name: '12 PM',
+      },
+      {
+        duration: '1:42',
+        name: '12 PM ❄️',
+      },
+      {
+        duration: '1:38',
+        name: '12 PM 🌧️',
+      },
+      {
+        duration: '1:36',
+        name: '1 PM',
+      },
+      {
+        duration: '1:36',
+        name: '1 PM ❄️',
+      },
+      {
+        duration: '1:32',
+        name: '1 PM 🌧️',
+      },
+      {
+        duration: '1:44',
+        name: '2 PM',
+      },
+      {
+        duration: '1:45',
+        name: '2 PM ❄️',
+      },
+      {
+        duration: '1:45',
+        name: '2 PM 🌧️',
+      },
+      {
+        duration: '1:11',
+        name: '3 PM',
+      },
+      {
+        duration: '1:15',
+        name: '3 PM ❄️',
+      },
+      {
+        duration: '1:15',
+        name: '3 PM 🌧️',
+      },
+      {
+        duration: '1:43',
+        name: '4 PM',
+      },
+      {
+        duration: '1:43',
+        name: '4 PM ❄️',
+      },
+      {
+        duration: '1:43',
+        name: '4 PM 🌧️',
+      },
+      {
+        duration: '2:33',
+        name: '5 PM',
+      },
+      {
+        duration: '2:37',
+        name: '5 PM ❄️',
+      },
+      {
+        duration: '2:37',
+        name: '5 PM 🌧️',
+      },
+      {
+        duration: '1:41',
+        name: '6 PM',
+      },
+      {
+        duration: '1:42',
+        name: '6 PM ❄️',
+      },
+      {
+        duration: '1:40',
+        name: '6 PM 🌧️',
+      },
+      {
+        duration: '1:42',
+        name: '7 PM',
+      },
+      {
+        duration: '1:40',
+        name: '7 PM ❄️',
+      },
+      {
+        duration: '1:42',
+        name: '7 PM 🌧️',
+      },
+      {
+        duration: '1:36',
+        name: '8 PM',
+      },
+      {
+        duration: '1:36',
+        name: '8 PM ❄️',
+      },
+      {
+        duration: '1:36',
+        name: '8 PM 🌧️',
+      },
+      {
+        duration: '1:47',
+        name: '9 PM',
+      },
+      {
+        duration: '1:51',
+        name: '9 PM ❄️',
+      },
+      {
+        duration: '1:51',
+        name: '9 PM 🌧️',
+      },
+      {
+        duration: '1:25',
+        name: '10 PM',
+      },
+      {
+        duration: '1:26',
+        name: '10 PM ❄️',
+      },
+      {
+        duration: '1:26',
+        name: '10 PM 🌧️',
       },
       {
         duration: '2:15',
@@ -686,210 +891,6 @@ export const albums: IAlbum[] = [
       {
         duration: '1:24',
         name: '12 AM 🌧️',
-      },
-      {
-        duration: '1:41',
-        name: '12 PM',
-      },
-      {
-        duration: '1:42',
-        name: '12 PM ❄️',
-      },
-      {
-        duration: '1:38',
-        name: '12 PM 🌧️',
-      },
-      {
-        duration: '2:58',
-        name: '2 AM',
-      },
-      {
-        duration: '2:57',
-        name: '2 AM ❄️',
-      },
-      {
-        duration: '2:57',
-        name: '2 AM 🌧️',
-      },
-      {
-        duration: '1:44',
-        name: '2 PM',
-      },
-      {
-        duration: '1:45',
-        name: '2 PM ❄️',
-      },
-      {
-        duration: '1:45',
-        name: '2 PM 🌧️',
-      },
-      {
-        duration: '1:33',
-        name: '3 AM',
-      },
-      {
-        duration: '1:33',
-        name: '3 AM ❄️',
-      },
-      {
-        duration: '1:33',
-        name: '3 AM 🌧️',
-      },
-      {
-        duration: '1:11',
-        name: '3 PM',
-      },
-      {
-        duration: '1:15',
-        name: '3 PM ❄️',
-      },
-      {
-        duration: '1:15',
-        name: '3 PM 🌧️',
-      },
-      {
-        duration: '2:07',
-        name: '4 AM',
-      },
-      {
-        duration: '2:05',
-        name: '4 AM ❄️',
-      },
-      {
-        duration: '2:08',
-        name: '4 AM 🌧️',
-      },
-      {
-        duration: '1:43',
-        name: '4 PM',
-      },
-      {
-        duration: '1:43',
-        name: '4 PM ❄️',
-      },
-      {
-        duration: '1:43',
-        name: '4 PM 🌧️',
-      },
-      {
-        duration: '1:58',
-        name: '5 AM',
-      },
-      {
-        duration: '1:58',
-        name: '5 AM ❄️',
-      },
-      {
-        duration: '1:58',
-        name: '5 AM 🌧️',
-      },
-      {
-        duration: '2:33',
-        name: '5 PM',
-      },
-      {
-        duration: '2:37',
-        name: '5 PM ❄️',
-      },
-      {
-        duration: '2:37',
-        name: '5 PM 🌧️',
-      },
-      {
-        duration: '1:28',
-        name: '6 AM',
-      },
-      {
-        duration: '1:28',
-        name: '6 AM ❄️',
-      },
-      {
-        duration: '1:28',
-        name: '6 AM 🌧️',
-      },
-      {
-        duration: '1:41',
-        name: '6 PM',
-      },
-      {
-        duration: '1:42',
-        name: '6 PM ❄️',
-      },
-      {
-        duration: '1:40',
-        name: '6 PM 🌧️',
-      },
-      {
-        duration: '1:45',
-        name: '7 AM',
-      },
-      {
-        duration: '1:42',
-        name: '7 AM ❄️',
-      },
-      {
-        duration: '1:42',
-        name: '7 AM 🌧️',
-      },
-      {
-        duration: '1:42',
-        name: '7 PM',
-      },
-      {
-        duration: '1:40',
-        name: '7 PM ❄️',
-      },
-      {
-        duration: '1:42',
-        name: '7 PM 🌧️',
-      },
-      {
-        duration: '1:37',
-        name: '8 AM',
-      },
-      {
-        duration: '1:40',
-        name: '8 AM ❄️',
-      },
-      {
-        duration: '1:40',
-        name: '8 AM 🌧️',
-      },
-      {
-        duration: '1:36',
-        name: '8 PM',
-      },
-      {
-        duration: '1:36',
-        name: '8 PM ❄️',
-      },
-      {
-        duration: '1:36',
-        name: '8 PM 🌧️',
-      },
-      {
-        duration: '1:09',
-        name: '9 AM',
-      },
-      {
-        duration: '1:10',
-        name: '9 AM ❄️',
-      },
-      {
-        duration: '1:10',
-        name: '9 AM 🌧️',
-      },
-      {
-        duration: '1:47',
-        name: '9 PM',
-      },
-      {
-        duration: '1:51',
-        name: '9 PM ❄️',
-      },
-      {
-        duration: '1:51',
-        name: '9 PM 🌧️',
       },
       {
         duration: '1:07',
@@ -1274,16 +1275,100 @@ export const albums: IAlbum[] = [
         name: '1 AM 🌧️',
       },
       {
-        duration: '1:52',
-        name: '1 PM',
+        duration: '2:31',
+        name: '2 AM',
       },
       {
-        duration: '1:52',
-        name: '1 PM ❄️',
+        duration: '2:31',
+        name: '2 AM ❄️',
       },
       {
-        duration: '1:52',
-        name: '1 PM 🌧️',
+        duration: '2:31',
+        name: '2 AM 🌧️',
+      },
+      {
+        duration: '1:59',
+        name: '3 AM',
+      },
+      {
+        duration: '1:59',
+        name: '3 AM ❄️',
+      },
+      {
+        duration: '1:59',
+        name: '3 AM 🌧️',
+      },
+      {
+        duration: '1:01',
+        name: '4 AM',
+      },
+      {
+        duration: '1:51',
+        name: '4 AM ❄️',
+      },
+      {
+        duration: '1:01',
+        name: '4 AM 🌧️',
+      },
+      {
+        duration: '2:38',
+        name: '5 AM',
+      },
+      {
+        duration: '2:38',
+        name: '5 AM ❄️',
+      },
+      {
+        duration: '2:38',
+        name: '5 AM 🌧️',
+      },
+      {
+        duration: '1:30',
+        name: '6 AM',
+      },
+      {
+        duration: '1:30',
+        name: '6 AM ❄️',
+      },
+      {
+        duration: '1:30',
+        name: '6 AM 🌧️',
+      },
+      {
+        duration: '1:35',
+        name: '7 AM',
+      },
+      {
+        duration: '1:35',
+        name: '7 AM ❄️',
+      },
+      {
+        duration: '1:35',
+        name: '7 AM 🌧️',
+      },
+      {
+        duration: '1:03',
+        name: '8 AM',
+      },
+      {
+        duration: '1:03',
+        name: '8 AM ❄️',
+      },
+      {
+        duration: '1:03',
+        name: '8 AM 🌧️',
+      },
+      {
+        duration: '1:22',
+        name: '9 AM',
+      },
+      {
+        duration: '1:22',
+        name: '9 AM ❄️',
+      },
+      {
+        duration: '1:22',
+        name: '9 AM 🌧️',
       },
       {
         duration: '1:33',
@@ -1298,18 +1383,6 @@ export const albums: IAlbum[] = [
         name: '10 AM 🌧️',
       },
       {
-        duration: '3:18',
-        name: '10 PM',
-      },
-      {
-        duration: '3:18',
-        name: '10 PM ❄️',
-      },
-      {
-        duration: '3:18',
-        name: '10 PM 🌧️',
-      },
-      {
         duration: '2:02',
         name: '11 AM',
       },
@@ -1320,6 +1393,138 @@ export const albums: IAlbum[] = [
       {
         duration: '2:02',
         name: '11 AM 🌧️',
+      },
+      {
+        duration: '3:17',
+        name: '12 PM',
+      },
+      {
+        duration: '3:17',
+        name: '12 PM ❄️',
+      },
+      {
+        duration: '3:17',
+        name: '12 PM 🌧️',
+      },
+      {
+        duration: '1:52',
+        name: '1 PM',
+      },
+      {
+        duration: '1:52',
+        name: '1 PM ❄️',
+      },
+      {
+        duration: '1:52',
+        name: '1 PM 🌧️',
+      },
+      {
+        duration: '2:10',
+        name: '2 PM',
+      },
+      {
+        duration: '2:10',
+        name: '2 PM ❄️',
+      },
+      {
+        duration: '2:10',
+        name: '2 PM 🌧️',
+      },
+      {
+        duration: '1:27',
+        name: '3 PM',
+      },
+      {
+        duration: '1:27',
+        name: '3 PM ❄️',
+      },
+      {
+        duration: '1:27',
+        name: '3 PM 🌧️',
+      },
+      {
+        duration: '1:51',
+        name: '4 PM',
+      },
+      {
+        duration: '1:51',
+        name: '4 PM ❄️',
+      },
+      {
+        duration: '1:51',
+        name: '4 PM 🌧️',
+      },
+      {
+        duration: '1:31',
+        name: '5 PM',
+      },
+      {
+        duration: '1:31',
+        name: '5 PM ❄️',
+      },
+      {
+        duration: '1:31',
+        name: '5 PM 🌧️',
+      },
+      {
+        duration: '2:00',
+        name: '6 PM',
+      },
+      {
+        duration: '2:00',
+        name: '6 PM ❄️',
+      },
+      {
+        duration: '2:00',
+        name: '6 PM 🌧️',
+      },
+      {
+        duration: '1:59',
+        name: '7 PM',
+      },
+      {
+        duration: '1:59',
+        name: '7 PM ❄️',
+      },
+      {
+        duration: '1:59',
+        name: '7 PM 🌧️',
+      },
+      {
+        duration: '2:40',
+        name: '8 PM',
+      },
+      {
+        duration: '2:40',
+        name: '8 PM ❄️',
+      },
+      {
+        duration: '2:40',
+        name: '8 PM 🌧️',
+      },
+      {
+        duration: '1:48',
+        name: '9 PM',
+      },
+      {
+        duration: '1:48',
+        name: '9 PM ❄️',
+      },
+      {
+        duration: '1:48',
+        name: '9 PM 🌧️',
+      },
+      {
+        duration: '3:18',
+        name: '10 PM',
+      },
+      {
+        duration: '3:18',
+        name: '10 PM ❄️',
+      },
+      {
+        duration: '3:18',
+        name: '10 PM 🌧️',
       },
       {
         duration: '2:42',
@@ -1344,210 +1549,6 @@ export const albums: IAlbum[] = [
       {
         duration: '1:59',
         name: '12 AM 🌧️',
-      },
-      {
-        duration: '3:17',
-        name: '12 PM',
-      },
-      {
-        duration: '3:17',
-        name: '12 PM ❄️',
-      },
-      {
-        duration: '3:17',
-        name: '12 PM 🌧️',
-      },
-      {
-        duration: '2:31',
-        name: '2 AM',
-      },
-      {
-        duration: '2:31',
-        name: '2 AM ❄️',
-      },
-      {
-        duration: '2:31',
-        name: '2 AM 🌧️',
-      },
-      {
-        duration: '2:10',
-        name: '2 PM',
-      },
-      {
-        duration: '2:10',
-        name: '2 PM ❄️',
-      },
-      {
-        duration: '2:10',
-        name: '2 PM 🌧️',
-      },
-      {
-        duration: '1:59',
-        name: '3 AM',
-      },
-      {
-        duration: '1:59',
-        name: '3 AM ❄️',
-      },
-      {
-        duration: '1:59',
-        name: '3 AM 🌧️',
-      },
-      {
-        duration: '1:27',
-        name: '3 PM',
-      },
-      {
-        duration: '1:27',
-        name: '3 PM ❄️',
-      },
-      {
-        duration: '1:27',
-        name: '3 PM 🌧️',
-      },
-      {
-        duration: '1:01',
-        name: '4 AM',
-      },
-      {
-        duration: '1:51',
-        name: '4 AM ❄️',
-      },
-      {
-        duration: '1:01',
-        name: '4 AM 🌧️',
-      },
-      {
-        duration: '1:51',
-        name: '4 PM',
-      },
-      {
-        duration: '1:51',
-        name: '4 PM ❄️',
-      },
-      {
-        duration: '1:51',
-        name: '4 PM 🌧️',
-      },
-      {
-        duration: '2:38',
-        name: '5 AM',
-      },
-      {
-        duration: '2:38',
-        name: '5 AM ❄️',
-      },
-      {
-        duration: '2:38',
-        name: '5 AM 🌧️',
-      },
-      {
-        duration: '1:31',
-        name: '5 PM',
-      },
-      {
-        duration: '1:31',
-        name: '5 PM ❄️',
-      },
-      {
-        duration: '1:31',
-        name: '5 PM 🌧️',
-      },
-      {
-        duration: '1:30',
-        name: '6 AM',
-      },
-      {
-        duration: '1:30',
-        name: '6 AM ❄️',
-      },
-      {
-        duration: '1:30',
-        name: '6 AM 🌧️',
-      },
-      {
-        duration: '2:00',
-        name: '6 PM',
-      },
-      {
-        duration: '2:00',
-        name: '6 PM ❄️',
-      },
-      {
-        duration: '2:00',
-        name: '6 PM 🌧️',
-      },
-      {
-        duration: '1:35',
-        name: '7 AM',
-      },
-      {
-        duration: '1:35',
-        name: '7 AM ❄️',
-      },
-      {
-        duration: '1:35',
-        name: '7 AM 🌧️',
-      },
-      {
-        duration: '1:59',
-        name: '7 PM',
-      },
-      {
-        duration: '1:59',
-        name: '7 PM ❄️',
-      },
-      {
-        duration: '1:59',
-        name: '7 PM 🌧️',
-      },
-      {
-        duration: '1:03',
-        name: '8 AM',
-      },
-      {
-        duration: '1:03',
-        name: '8 AM ❄️',
-      },
-      {
-        duration: '1:03',
-        name: '8 AM 🌧️',
-      },
-      {
-        duration: '2:40',
-        name: '8 PM',
-      },
-      {
-        duration: '2:40',
-        name: '8 PM ❄️',
-      },
-      {
-        duration: '2:40',
-        name: '8 PM 🌧️',
-      },
-      {
-        duration: '1:22',
-        name: '9 AM',
-      },
-      {
-        duration: '1:22',
-        name: '9 AM ❄️',
-      },
-      {
-        duration: '1:22',
-        name: '9 AM 🌧️',
-      },
-      {
-        duration: '1:48',
-        name: '9 PM',
-      },
-      {
-        duration: '1:48',
-        name: '9 PM ❄️',
-      },
-      {
-        duration: '1:48',
-        name: '9 PM 🌧️',
       },
       {
         duration: '1:07',
@@ -1816,12 +1817,20 @@ export const albums: IAlbum[] = [
         name: '1 AM ❄️',
       },
       {
+        duration: '1:41',
+        name: '1 AM 🌧️',
+      },
+      {
         duration: '2:34',
         name: '2 AM',
       },
       {
         duration: '2:34',
         name: '2 AM ❄️',
+      },
+      {
+        duration: '2:34',
+        name: '2 AM 🌧️',
       },
       {
         duration: '1:32',
@@ -1832,12 +1841,20 @@ export const albums: IAlbum[] = [
         name: '3 AM ❄️',
       },
       {
+        duration: '1:32',
+        name: '3 AM 🌧️',
+      },
+      {
         duration: '0:59',
         name: '4 AM',
       },
       {
         duration: '0:59',
         name: '4 AM ❄️',
+      },
+      {
+        duration: '0:59',
+        name: '4 AM 🌧️',
       },
       {
         duration: '1:55',
@@ -1848,12 +1865,20 @@ export const albums: IAlbum[] = [
         name: '5 AM ❄️',
       },
       {
+        duration: '1:55',
+        name: '5 AM 🌧️',
+      },
+      {
         duration: '2:19',
         name: '6 AM',
       },
       {
         duration: '2:19',
         name: '6 AM ❄️',
+      },
+      {
+        duration: '2:19',
+        name: '6 AM 🌧️',
       },
       {
         duration: '1:34',
@@ -1864,12 +1889,20 @@ export const albums: IAlbum[] = [
         name: '7 AM ❄️',
       },
       {
+        duration: '1:34',
+        name: '7 AM 🌧️',
+      },
+      {
         duration: '1:05',
         name: '8 AM',
       },
       {
         duration: '1:05',
         name: '8 AM ❄️',
+      },
+      {
+        duration: '1:05',
+        name: '8 AM 🌧️',
       },
       {
         duration: '1:25',
@@ -1880,12 +1913,20 @@ export const albums: IAlbum[] = [
         name: '9 AM ❄️',
       },
       {
+        duration: '1:25',
+        name: '9 AM 🌧️',
+      },
+      {
         duration: '1:31',
         name: '10 AM',
       },
       {
         duration: '1:31',
         name: '10 AM ❄️',
+      },
+      {
+        duration: '1:31',
+        name: '10 AM 🌧️',
       },
       {
         duration: '2:02',
@@ -1896,12 +1937,20 @@ export const albums: IAlbum[] = [
         name: '11 AM ❄️',
       },
       {
+        duration: '2:02',
+        name: '11 AM 🌧️',
+      },
+      {
         duration: '0:53',
         name: '12 PM',
       },
       {
         duration: '0:53',
         name: '12 PM ❄️',
+      },
+      {
+        duration: '0:53',
+        name: '12 PM 🌧️',
       },
       {
         duration: '1:57',
@@ -1912,12 +1961,20 @@ export const albums: IAlbum[] = [
         name: '1 PM ❄️',
       },
       {
+        duration: '1:57',
+        name: '1 PM 🌧️',
+      },
+      {
         duration: '1:25',
         name: '2 PM',
       },
       {
         duration: '1:25',
         name: '2 PM ❄️',
+      },
+      {
+        duration: '1:25',
+        name: '2 PM 🌧️',
       },
       {
         duration: '1:32',
@@ -1928,12 +1985,20 @@ export const albums: IAlbum[] = [
         name: '3 PM ❄️',
       },
       {
+        duration: '1:32',
+        name: '3 PM 🌧️',
+      },
+      {
         duration: '1:54',
         name: '4 PM',
       },
       {
         duration: '1:54',
         name: '4 PM ❄️',
+      },
+      {
+        duration: '1:54',
+        name: '4 PM 🌧️',
       },
       {
         duration: '1:30',
@@ -1944,12 +2009,20 @@ export const albums: IAlbum[] = [
         name: '5 PM ❄️',
       },
       {
+        duration: '1:30',
+        name: '5 PM 🌧️',
+      },
+      {
         duration: '2:08',
         name: '6 PM',
       },
       {
         duration: '2:08',
         name: '6 PM ❄️',
+      },
+      {
+        duration: '2:08',
+        name: '6 PM 🌧️',
       },
       {
         duration: '1:45',
@@ -1960,12 +2033,20 @@ export const albums: IAlbum[] = [
         name: '7 PM ❄️',
       },
       {
+        duration: '1:45',
+        name: '7 PM 🌧️',
+      },
+      {
         duration: '2:42',
         name: '8 PM',
       },
       {
         duration: '2:42',
         name: '8 PM ❄️',
+      },
+      {
+        duration: '2:42',
+        name: '8 PM 🌧️',
       },
       {
         duration: '1:53',
@@ -1976,12 +2057,20 @@ export const albums: IAlbum[] = [
         name: '9 PM ❄️',
       },
       {
+        duration: '1:53',
+        name: '9 PM 🌧️',
+      },
+      {
         duration: '2:59',
         name: '10 PM',
       },
       {
         duration: '2:59',
         name: '10 PM ❄️',
+      },
+      {
+        duration: '2:59',
+        name: '10 PM 🌧️',
       },
       {
         duration: '2:49',
@@ -1992,12 +2081,20 @@ export const albums: IAlbum[] = [
         name: '11 PM ❄️',
       },
       {
+        duration: '2:49',
+        name: '11 PM 🌧️',
+      },
+      {
         duration: '1:29',
         name: '12 AM',
       },
       {
         duration: '1:29',
         name: '12 AM ❄️',
+      },
+      {
+        duration: '1:29',
+        name: '12 AM 🌧️',
       },
       {
         duration: '1:06',
@@ -2158,96 +2255,192 @@ export const albums: IAlbum[] = [
         name: '1 AM',
       },
       {
-        duration: '2:31',
-        name: '1 PM',
-      },
-      {
-        duration: '2:11',
-        name: '10 AM',
-      },
-      {
-        duration: '1:50',
-        name: '10 PM',
-      },
-      {
-        duration: '2:36',
-        name: '11 AM',
-      },
-      {
-        duration: '1:30',
-        name: '11 PM',
-      },
-      {
-        duration: '2:18',
-        name: '12 AM',
-      },
-      {
-        duration: '2:06',
-        name: '12 PM',
+        duration: '1:02',
+        name: '1 AM ❄️',
       },
       {
         duration: '1:40',
         name: '2 AM',
       },
       {
-        duration: '2:19',
-        name: '2 PM',
+        duration: '1:40',
+        name: '2 AM ❄️',
       },
       {
         duration: '20.06',
         name: '3 AM',
       },
       {
-        duration: '0:50',
-        name: '3 PM',
+        duration: '20.06',
+        name: '3 AM ❄️',
       },
       {
         duration: '2:31',
         name: '4 AM',
       },
       {
-        duration: '2:23',
-        name: '4 PM',
+        duration: '2:31',
+        name: '4 AM ❄️',
       },
       {
         duration: '3:08',
         name: '5 AM',
       },
       {
-        duration: '2:18',
-        name: '5 PM',
+        duration: '3:08',
+        name: '5 AM ❄️',
       },
       {
         duration: '2:56',
         name: '6 AM',
       },
       {
-        duration: '2:18',
-        name: '6 PM',
+        duration: '2:56',
+        name: '6 AM ❄️',
       },
       {
         duration: '2:31',
         name: '7 AM',
       },
       {
-        duration: '2:20',
-        name: '7 PM',
+        duration: '2:31',
+        name: '7 AM ❄️',
       },
       {
         duration: '2:34',
         name: '8 AM',
       },
       {
-        duration: '2:06',
-        name: '8 PM',
+        duration: '2:34',
+        name: '8 AM ❄️',
       },
       {
         duration: '1:25',
         name: '9 AM',
       },
       {
+        duration: '1:25',
+        name: '9 AM ❄️',
+      },
+      {
+        duration: '2:11',
+        name: '10 AM',
+      },
+      {
+        duration: '2:11',
+        name: '10 AM ❄️',
+      },
+      {
+        duration: '2:36',
+        name: '11 AM',
+      },
+      {
+        duration: '2:36',
+        name: '11 AM ❄️',
+      },
+      {
+        duration: '2:06',
+        name: '12 PM',
+      },
+      {
+        duration: '2:06',
+        name: '12 PM ❄️',
+      },
+      {
+        duration: '2:31',
+        name: '1 PM',
+      },
+      {
+        duration: '2:31',
+        name: '1 PM ❄️',
+      },
+      {
+        duration: '2:19',
+        name: '2 PM',
+      },
+      {
+        duration: '2:19',
+        name: '2 PM ❄️',
+      },
+      {
+        duration: '0:50',
+        name: '3 PM',
+      },
+      {
+        duration: '0:50',
+        name: '3 PM ❄️',
+      },
+      {
+        duration: '2:23',
+        name: '4 PM',
+      },
+      {
+        duration: '2:23',
+        name: '4 PM ❄️',
+      },
+      {
+        duration: '2:18',
+        name: '5 PM',
+      },
+      {
+        duration: '2:18',
+        name: '5 PM ❄️',
+      },
+      {
+        duration: '2:18',
+        name: '6 PM',
+      },
+      {
+        duration: '2:18',
+        name: '6 PM ❄️',
+      },
+      {
+        duration: '2:20',
+        name: '7 PM',
+      },
+      {
+        duration: '2:20',
+        name: '7 PM ❄️',
+      },
+      {
+        duration: '2:06',
+        name: '8 PM',
+      },
+      {
+        duration: '2:06',
+        name: '8 PM ❄️',
+      },
+      {
         duration: '2:40',
         name: '9 PM',
+      },
+      {
+        duration: '2:40',
+        name: '9 PM ❄️',
+      },
+      {
+        duration: '1:50',
+        name: '10 PM',
+      },
+      {
+        duration: '1:50',
+        name: '10 PM ❄️',
+      },
+      {
+        duration: '1:30',
+        name: '11 PM',
+      },
+      {
+        duration: '1:30',
+        name: '11 PM ❄️',
+      },
+      {
+        duration: '2:18',
+        name: '12 AM',
+      },
+      {
+        duration: '2:18',
+        name: '12 AM ❄️',
       },
       {
         duration: '2:23',
