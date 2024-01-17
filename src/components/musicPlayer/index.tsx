@@ -132,6 +132,18 @@ export default function MusicPlayer() {
     navigator.mediaSession.setActionHandler('pause', () => {
       handlePlay();
     });
+
+    if (!hourlyMode) {
+      navigator.mediaSession.setActionHandler('nexttrack', () => {
+        handleNext();
+      });
+    }
+
+    if (!hourlyMode) {
+      navigator.mediaSession.setActionHandler('previoustrack', () => {
+        handlePrev();
+      });
+    }
   }
 
   return (

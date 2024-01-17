@@ -1158,7 +1158,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '1:18',
-        name: 'Super T&amp;T (Supermarket)',
+        name: 'Super T&T (Supermarket)',
       },
       {
         duration: '1:26',
@@ -1170,11 +1170,11 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '1:38',
-        name: 'T&amp;T Emporium (Department Store)',
+        name: 'T&T Emporium (Department Store)',
       },
       {
         duration: '1:54',
-        name: 'T&amp;T Mart (Convenience Store)',
+        name: 'T&T Mart (Convenience Store)',
       },
       {
         duration: '1:24',
@@ -1772,7 +1772,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '2:11',
-        name: 'TV - News (K.K. D &amp; B)',
+        name: 'TV - News (K.K. D & B)',
       },
       {
         duration: '1:02',
@@ -2614,7 +2614,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '1:57',
-        name: 'K.K. D&amp;B',
+        name: 'K.K. D&B',
       },
       {
         duration: '2:11',
@@ -3160,7 +3160,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '0:49',
-        name: 'Acorn Chase (Chase Level 1&amp;2)',
+        name: 'Acorn Chase (Chase Level 1&2)',
       },
       {
         duration: '0:35',
