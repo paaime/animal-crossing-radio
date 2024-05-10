@@ -37,9 +37,9 @@ const bokutoh = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://animal-crossing-radio.com'),
-  title: 'Animal Crossing Radio',
+  title: 'Animal Crossing Radio | Live Hourly Animal Crossing Music',
   description:
-    'Animal Crossing music from all the series in real times ! Tune in and let the soothing melodies of your favorite AC games transport you instantly!',
+    'Animal Crossing music from all the games in live ! Enjoy the best hourly Animal Crossing music right now ! If you love this game, this radio is made for you !',
   openGraph: {
     type: 'website',
     url: 'https://animal-crossing-radio.com',
