@@ -70,7 +70,7 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   return (
-    <html lang={locale}>
+    <html lang="en">
       <head>
         <link rel="apple-touch-icon" href="/logo192.png" />
         <link rel="manifest" href="/manifest.json" />

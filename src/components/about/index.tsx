@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import RedditIcon from '../icons/RedditIcon';
 import XIcon from '../icons/XIcon';
 
@@ -24,9 +25,7 @@ export default function About() {
       </span>
       <div className="w-full h-full p-7 flex flex-col">
         <div className="flex items-center mb-3">
-          {/* <div className="h-[1.5px] rounded-full w-1/12 bg-[#775B46] mx-2"></div> */}
           <p className="text-[#775B46] text-lg font-bold">Socials</p>
-          {/* <div className="h-[1.5px] rounded-full w-full bg-[#775B46] mx-2"></div> */}
         </div>
         <div className="flex gap-5">
           <a
@@ -47,18 +46,19 @@ export default function About() {
           </a>
         </div>
         <div className="flex items-center mb-3 mt-3">
-          {/* <div className="h-[1.5px] rounded-full w-1/12 bg-[#775B46] mx-2"></div> */}
           <p className="text-[#775B46] font-bold text-lg">Email</p>
-          {/* <div className="h-[1.5px] rounded-full w-full bg-[#775B46] mx-2"></div> */}
         </div>
         <p className="text-sm ">contact@animal-crossing-radio.com</p>
         <div className="flex items-center mb-3 mt-3">
-          {/* <div className="h-[1.5px] rounded-full w-1/12 bg-[#775B46] mx-2"></div> */}
+          <p className="text-[#775B46] font-bold text-lg">Blogs</p>
+        </div>
+        <Link href="/blog" className="text-sm">
+          Read our latest blogs
+        </Link>
+        <div className="flex items-center mb-3 mt-3">
           <p className="text-[#775B46] font-bold text-lg">Made by</p>
-          {/* <div className="h-[1.5px] rounded-full w-full bg-[#775B46] mx-2"></div> */}
         </div>
         <p className="text-sm ">An Animal Crossing Fan ❤️</p>
-
       </div>
     </div>
   );
