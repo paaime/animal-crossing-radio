@@ -2,8 +2,112 @@ import { IBlog } from "@/types/Blog"
 
 export const blogs: IBlog[] = [
     {
+        "title": "Discover the Magic of LEGO Animal Crossing Sets Coming in Summer 2024",
+        "description": "The beloved world of Animal Crossing is about to get even more enchanting with the upcoming release of LEGO sets inspired by the game. Scheduled for a summer 2024 launch, these sets promise to bring the charm and creativity of the Animal Crossing universe into your hands, allowing fans to recreate their favorite scenes and characters in LEGO form.",
+        "meta": "Discover the enchanting new LEGO Animal Crossing sets coming in summer 2024. Get details on K.K. Slider’s Concert and Fly with Dodo Airlines sets.",
+        "tags": ["LEGO", "Toys", "K.K. Slider", "Dodo Airlines"],
+        "cover": "https://press-start.com.au/wp-content/uploads/2024/03/lego-ac-770x433.jpg",
+        "date": "05-16-2024",
+        "content": [
+            {
+                "type": "title",
+                "content": "Exciting New Sets to Look Forward To"
+            },
+            {
+                "type": "paragraph",
+                "content": "LEGO has announced a series of sets that will capture the essence of 'Animal Crossing,' complete with detailed builds and minifigures of beloved characters. Here are the highlights:"
+            },
+            {
+                "type": "subtitle",
+                "content": "K.K.'s Concert at the Plaza (77052)"
+            },
+            {
+                "type": "subparagraph",
+                "content": "This set features the iconic K.K. Slider performing in a beautifully detailed town plaza. The build includes a bandstand, audience seating, and various accessories to recreate the festive atmosphere of K.K.'s concerts."
+            },
+            {
+                "type": "subtitle",
+                "content": "Fly with Dodo Airlines (77051)",
+            },
+            {
+                "type": "subparagraph",
+                "content": "Take to the skies with this set that includes the Dodo Airlines airplane and airport dock. Minifigures of Wilbur the pilot and the orange-themed cat Tangy are among the characters included, along with a buildable plane and scenic dock."
+            },
+            {
+                "type": "image",
+                "src": "https://www.brickfanatics.com/wp-content/uploads/2024/04/LEGO-Animal-Crossing-Summer-20242.png",
+            },
+            {
+                "type": "title",
+                "content": 'Why Fans Are Excited'
+            },
+            {
+                "type": "paragraph",
+                "content": "The LEGO Animal Crossing sets are highly anticipated for several reasons:"
+            },
+            {
+                "type": "subtitle",
+                "content": "Faithful Recreation"
+            },
+            {
+                "type": "subparagraph",
+                "content": "The sets promise to capture the whimsical and serene environment of 'Animal Crossing,' allowing fans to bring the game’s charm into the physical world."
+            },
+            {
+                "type": "subtitle",
+                "content": "Beloved Characters"
+            },
+            {
+                "type": "subparagraph",
+                "content": "With minifigures of iconic characters like Isabelle, K.K. Slider, Audie, and Tangy, fans can enjoy their favorite villagers in a new medium."
+            },
+            {
+                "type": "subtitle",
+                "content": "Detailed Builds"
+            },
+            {
+                "type": "subparagraph",
+                "content": "From the town hall to tea stalls and docks, each set is meticulously designed to reflect the intricate details that fans love about the game"
+            },
+            {
+                "type": "image",
+                "src": "https://www.brickfanatics.com/wp-content/uploads/2024/04/LEGO-Animal-Crossing-Summer-20241.png",
+            },
+            {
+                "type": "title",
+                "content": "Perfect for All Ages"
+            },
+            {
+                "type": "paragraph",
+                "content": "Whether you’re a longtime fan of 'Animal Crossing' or new to the series, these LEGO sets offer something for everyone. They provide a fun and engaging way to explore the world of 'Animal Crossing' through creative building and imaginative play."
+            },
+            {
+                "type": "title",
+                "content": "Stay Tuned for More Updates"
+            },
+            {
+                "type": "paragraph",
+                "content": "As we approach the release date, more details and images of the LEGO Animal Crossing sets will be revealed. Make sure to stay tuned to our blog for the latest updates, sneak peeks, and in-depth reviews once the sets are available."
+            },
+            {
+                "type": "paragraph",
+                "content": "In the meantime, start planning which sets you'll add to your collection and get ready to embark on a new building adventure with LEGO and 'Animal Crossing.'"
+            },
+            {
+                "type": "title",
+                "content": "Final Thoughts"
+            },
+            {
+                "type": "paragraph",
+                "content": "The LEGO Animal Crossing sets coming in summer 2024 are set to be a delightful addition to any fan’s collection. Combining the creative fun of LEGO with the charming world of 'Animal Crossing,' these sets are sure to be a hit. Don’t miss out on the chance to bring your favorite game to life in a whole new way."
+            }
+        ],
+        "slug": "lego-animal-crossing-sets-summer-2024"
+    },
+    {
         "title": "Why Animal Crossing Music Is So Nostalgic: Exploring the Melodies of Our Favorite Game",
         "description": "In the enchanting world of Animal Crossing, there's something truly magical about the music that accompanies our virtual lives. Whether we're fishing by the river, chatting with villagers, or simply strolling through our peaceful town, the melodies of Animal Crossing have a way of evoking deep feelings of nostalgia and warmth. But what is it about this music that makes it so unforgettable?",
+        "meta": "In the enchanting world of Animal Crossing, there's something truly magical about the music that accompanies our virtual lives. Whether we're fishing by the river, chatting with villagers, or simply strolling through our peaceful town, the melodies of Animal Crossing have a way of evoking deep feelings of nostalgia and warmth. But what is it about this music that makes it so unforgettable?",
         "tags": ["Music", "Animal Crossing", "Nostalgia"],
         "cover": "https://i.ytimg.com/vi/w8h3vAaZHNo/maxresdefault.jpg",
         "date": "05-15-2024",
