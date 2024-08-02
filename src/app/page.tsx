@@ -28,7 +28,7 @@ export default function Home() {
         backgroundPosition: 'center',
       }}
     >
-      {settingsOpen && <Settings setSettingsOpen={setSettingsOpen} />}
+      <Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />
       {(settingsOpen || libraryOpen) && (
         <div className="hider absolute top-0 left-0 w-full h-full bg-[#00000000] z-20 backdrop-blur"></div>
       )}
@@ -43,7 +43,7 @@ export default function Home() {
         <Clock />
         <MusicButton setLibraryOpen={setLibraryOpen} />
       </div>
-      {libraryOpen && <MusicLibrary setLibraryOpen={setLibraryOpen} />}
+      <MusicLibrary open={libraryOpen} setLibraryOpen={setLibraryOpen} />
     </main>
   );
 }

@@ -167,8 +167,16 @@ export const setMediaSession = (music: IMusic, handlePlay: () => void) => {
       artist: 'Animal Crossing Radio',
       album: 'Animal Crossing Radio',
       artwork: [
-        { src: '/img/icon192.png', sizes: '192x192', type: 'image/png' },
-        { src: '/img/icon512.png', sizes: '512x512', type: 'image/png' },
+        {
+          src: `img/artworks/${music.album}/192x192.png`,
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: `img/artworks/${music.album}/512x512.png`,
+          sizes: '512x512',
+          type: 'image/png',
+        },
       ],
     });
 
