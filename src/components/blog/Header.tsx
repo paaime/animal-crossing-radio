@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuIcon from '../icons/MenuIcon';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CloseIcon from '../icons/CloseIcon';
 
 export default function Header() {

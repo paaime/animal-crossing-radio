@@ -30,6 +30,14 @@ export default function Settings({
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setSettingsOpen(false);
+        setOpen({
+          volume: false,
+          games: false,
+          backgrounds: false,
+          weather: false,
+          time: false,
+          about: false,
+        });
       }
     };
 
@@ -67,23 +75,6 @@ export default function Settings({
               Settings
             </span>
           </span>
-          {/* <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="739"
-        height="220"
-        viewBox="0 0 739 525"
-        fill="none"
-        className="w-full absolute settings-svg"
-        style={{
-          animation:
-            'blob 1.5s cubic-bezier(0.37, 0, 0.63, 1) 0.3s infinite alternate',
-        }}
-      >
-        <path
-          d="M658.95 27.2894C525.341 -10.2604 214.196 -7.91365 75.0963 27.2894C-32.8892 93.0023 -0.859615 259.631 27.5094 337.078C27.5094 381.669 15.6127 475.544 53.1331 494.319C75.0963 529.522 460.672 535.78 658.95 506.053C722.643 500.421 714.773 402.791 709.282 337.078C779.748 154.021 709.282 41.4349 658.95 27.2894Z"
-          fill="#FFFBE7"
-        />
-      </svg> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="739"

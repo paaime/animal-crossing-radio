@@ -1,4 +1,3 @@
-import { IAlbum } from '@/types/Album';
 import { IMusic } from '@/types/Music';
 import { albums } from '@/data/albums';
 import { NextMode } from '@/types/Enum';

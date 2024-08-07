@@ -8,9 +8,17 @@ import { useMusicStore } from '@/stores/music';
 import NextButton from '../button/NextButton';
 import PrevButton from '../button/PrevButton';
 import * as musicHelper from '@/utils/musicPlayer';
+import Link from 'next/link';
 
 export default function MusicPlayer() {
-  const { volume, game, getWeather, weather } = useSettingsStore();
+  const {
+    volume,
+    game,
+    getWeather,
+    weather,
+    showExtensionMessage,
+    setShowExtensionMessage,
+  } = useSettingsStore();
 
   const {
     music,
@@ -187,6 +195,26 @@ export default function MusicPlayer() {
           >
             Switch to <span className="font-medium">Hourly Mode</span>
           </p>
+        )}
+        {showExtensionMessage && (
+          <div className="mt-3 group">
+            <span className="bg-purple-400 rounded-full py-1 px-3 text-sm font-semibold mr-2">
+              NEW
+            </span>
+            <Link
+              href="https://chromewebstore.google.com/detail/animal-crossing-radio-liv/nffhjilgaekcabipkpjkfnkmdacnnink"
+              target="_blank"
+              className="custom-pointer text-white group-hover:underline"
+            >
+              Chrome extension is <span className="font-semibold">here</span> !
+            </Link>
+            <span
+              className="custom-pointer ml-2 text-xs hover:underline"
+              onClick={() => setShowExtensionMessage(false)}
+            >
+              ( hide )
+            </span>
+          </div>
         )}
       </div>
     </div>

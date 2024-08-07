@@ -8,12 +8,14 @@ type Settings = {
   background: string;
   time: { hour: number; minute: number };
   weather: Weather;
+  showExtensionMessage: boolean;
   setVolume: (volume: number) => void;
   setGame: (game: string) => void;
   setBackground: (background: string) => void;
   setTime: (time: { hour: number; minute: number }) => void;
   setWeather: (weather: Weather) => void;
   getWeather: () => string;
+  setShowExtensionMessage: (showExtensionMessage: boolean) => void;
 };
 
 export const useSettingsStore = create(
@@ -23,6 +25,7 @@ export const useSettingsStore = create(
       game: 'New Leaf',
       background: 'Celeste',
       weather: Weather.SUNNY,
+      showExtensionMessage: true,
       time: {
         hour: 0,
         minute: 0,
@@ -44,6 +47,8 @@ export const useSettingsStore = create(
             return ' ❄️';
         }
       },
+      setShowExtensionMessage: (showExtensionMessage: boolean) =>
+        set({ showExtensionMessage }),
     }),
     {
       name: 'settings',

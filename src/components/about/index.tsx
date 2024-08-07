@@ -62,6 +62,18 @@ export default function About({ open }: { open: boolean }) {
               Read our latest blogs
             </Link>
             <div className="flex items-center mb-3 mt-3">
+              <p className="text-[#775B46] font-bold text-lg">
+                Chrome Extension
+              </p>
+            </div>
+            <Link
+              href="https://chromewebstore.google.com/detail/animal-crossing-radio-liv/nffhjilgaekcabipkpjkfnkmdacnnink"
+              target="_blank"
+              className="text-sm"
+            >
+              Download the extension
+            </Link>
+            <div className="flex items-center mb-3 mt-3">
               <p className="text-[#775B46] font-bold text-lg">Made by</p>
             </div>
             <p className="text-sm ">An Animal Crossing Fan ❤️</p>

@@ -13,7 +13,7 @@ export default function Album({
   const audio = new Audio('/sounds/click.mp3');
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const { music, setMusic, setHourlyMode } = useMusicStore((state) => state);
+  const { music } = useMusicStore((state) => state);
 
   useEffect(() => {
     if (music.album === album.name && music.index !== null) {
@@ -25,7 +25,7 @@ export default function Album({
 
   return (
     <div
-      className={`flex bg-[#FDFFF3] text-[#775B46] font-bold py-3 px-5 font-bold rounded-full justify-between items-center music-item ${
+      className={`flex bg-[#FDFFF3] text-[#775B46] py-3 px-5 font-bold rounded-full justify-between items-center music-item ${
         isPlaying && 'active'
       }`}
       onClick={() => {

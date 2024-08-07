@@ -1,7 +1,5 @@
-import PreviewCard from '@/components/blog/PreviewCard';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { blogs } from '@/data/blogs';
 import BlogList from '@/components/blog/BlogList';
 
 export const metadata: Metadata = {

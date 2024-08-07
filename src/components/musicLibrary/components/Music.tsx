@@ -42,7 +42,6 @@ export default function Music({
           {sound.duration}
         </span>
       </p>
-      {/* <p className="text-sm text-[#4BB6B8] font-medium">{sound.type}</p> */}
     </div>
   );
 }
