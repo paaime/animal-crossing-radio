@@ -2,16 +2,16 @@ import Link from 'next/link';
 import RedditIcon from '../icons/RedditIcon';
 import XIcon from '../icons/XIcon';
 import { motion, AnimatePresence } from 'framer-motion';
+import TwitchIcon from '../icons/TwitchIcon';
 
 export default function About({ open }: { open: boolean }) {
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute rounded-[30px] z-30 w-[375px] font-seurat flex items-center justify-center bg-[#F0F2E6]"
+          className="absolute rounded-[30px] z-30 w-[375px] font-seurat flex items-center justify-center bg-[#F0F2E6] bottom-0 md:bottom-[35vh]"
           style={{
             maxWidth: 'calc(100vw - 40px)',
-            bottom: '35vh',
           }}
           initial={{ opacity: 0, transform: 'scale(0.95)' }}
           animate={{ opacity: 1, transform: 'scale(1)' }}
@@ -49,6 +49,14 @@ export default function About({ open }: { open: boolean }) {
                 className="bg-red-500 rounded-xl w-10 h-10 flex items-center justify-center"
               >
                 <RedditIcon />
+              </a>
+              <a
+                href="https://www.twitch.tv/animal_crossing_radio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-700 rounded-xl w-10 h-10 flex items-center justify-center"
+              >
+                <TwitchIcon />
               </a>
             </div>
             <div className="flex items-center mb-3 mt-3">

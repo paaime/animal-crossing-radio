@@ -10,7 +10,7 @@ import PrevButton from '../button/PrevButton';
 import * as musicHelper from '@/utils/musicPlayer';
 import Link from 'next/link';
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
     volume,
     game,
@@ -40,12 +40,18 @@ export default function MusicPlayer() {
   const handlePrev = () =>
     musicHelper.handlePrev(audioRef, music, setMusic, hourlyMode);
   const handleNext = () =>
-    musicHelper.handleNext(audioRef, music, setMusic, hourlyMode, nextMode);
+    musicHelper.handleNext(
+      audioRef,
+      music,
+      setMusic,
+      hourlyMode,
+      nextMode,
+      isLive
+    );
   const play = () => musicHelper.play(audioRef, volume);
   const pause = () => musicHelper.pause(audioRef);
   const handlePlay = () =>
     musicHelper.handlePlay(isPlaying, setIsPlaying, play, pause);
-  const setMediaSession = () => musicHelper.setMediaSession(music, handlePlay);
   const handleChangeMusic = () =>
     musicHelper.handleChangeMusic(
       audioRef,
@@ -88,7 +94,7 @@ export default function MusicPlayer() {
       name: `${hour} ${ampm}${getWeather()}`,
       index: null,
     });
-    setHourlyMode(true);
+    if (!isLive) setHourlyMode(true);
     handleChangeMusic();
   }, [game]);
 
@@ -164,11 +170,13 @@ export default function MusicPlayer() {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-5 items-center">
-        {!hourlyMode && <PrevButton onClick={handlePrev} />}
-        <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
-        {!hourlyMode && <NextButton onClick={handleNext} />}
-      </div>
+      {!isLive && (
+        <div className="flex gap-5 items-center">
+          {!hourlyMode && <PrevButton onClick={handlePrev} />}
+          <PlayButton onClick={handlePlay} isPlaying={isPlaying} />
+          {!hourlyMode && <NextButton onClick={handleNext} />}
+        </div>
+      )}
       <audio
         ref={audioRef}
         className="hidden"
@@ -182,10 +190,12 @@ export default function MusicPlayer() {
         />
       </audio>
       <div className="flex gap-1 mt-2 items-center flex-col text-white">
-        <h1 className="text-lg tracking-tight text-center">
-          {music.album} - <span className="font-medium">{music.name}</span>
-        </h1>
-        {!hourlyMode && (
+        {!isLive && (
+          <h1 className="text-lg tracking-tight text-center">
+            {music.album} - <span className="font-medium">{music.name}</span>
+          </h1>
+        )}
+        {!hourlyMode && !isLive && (
           <p
             className="text-sm hover:underline custom-pointer"
             onClick={() => {

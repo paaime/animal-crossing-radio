@@ -2,6 +2,7 @@ import { IMusic } from '@/types/Music';
 import { albums } from '@/data/albums';
 import { NextMode } from '@/types/Enum';
 import { SetStateAction } from 'react';
+import { liveAlbums } from '@/data/liveAlbums';
 
 export const handlePrev = (
   audioRef: React.RefObject<HTMLAudioElement>,
@@ -36,11 +37,13 @@ export const handleNext = (
   music: IMusic,
   setMusic: (music: IMusic) => void,
   hourlyMode: boolean,
-  nextMode: NextMode
+  nextMode: NextMode,
+  isLive: boolean
 ) => {
   if (audioRef.current) {
     if (!hourlyMode && music.index !== null) {
       const album = albums.find((album) => album.name === music.album);
+      let nextAlbum = album; // Default to the current album
 
       if (album) {
         let nextIndex;
@@ -52,8 +55,15 @@ export const handleNext = (
             break;
           }
           case NextMode.RANDOM: {
-            nextIndex = Math.floor(Math.random() * album.sounds.length);
-            nextMusic = album.sounds[nextIndex];
+            if (isLive) {
+              nextAlbum =
+                liveAlbums[Math.floor(Math.random() * liveAlbums.length)];
+              nextIndex = Math.floor(Math.random() * nextAlbum.sounds.length);
+              nextMusic = nextAlbum.sounds[nextIndex];
+            } else {
+              nextIndex = Math.floor(Math.random() * album.sounds.length);
+              nextMusic = album.sounds[nextIndex];
+            }
             break;
           }
           case NextMode.REPEAT: {
@@ -64,12 +74,11 @@ export const handleNext = (
         }
 
         setMusic({
-          album: music.album,
+          album: nextAlbum?.name!,
           name: nextMusic.name,
           index: nextIndex,
         });
       }
-      // audioRef.current.play();
     } else {
       audioRef.current.play();
     }

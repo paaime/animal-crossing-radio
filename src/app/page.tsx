@@ -9,6 +9,7 @@ import { useSettingsStore } from '@/stores/settings';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import MusicButton from '@/components/button/MusicButton';
 import MusicLibrary from '@/components/musicLibrary';
+import TwitchButton from '@/components/button/TwitchButton';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
@@ -35,10 +36,11 @@ export default function Home() {
       {process.env.NEXT_PUBLIC_ENV === 'production' && (
         <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
       )}
-      <div className="self-end">
+      <div className="flex gap-4 self-end">
+        <TwitchButton />
         <SettingsButton setSettingsOpen={setSettingsOpen} />
       </div>
-      <MusicPlayer />
+      <MusicPlayer isLive={false} />
       <div className="self-start w-full flex items-end justify-between">
         <Clock />
         <MusicButton setLibraryOpen={setLibraryOpen} />

@@ -26,6 +26,7 @@ export default function MusicLibrary({
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setLibraryOpen(false);
+        setAlbum(null);
       }
     };
 
@@ -62,7 +63,7 @@ export default function MusicLibrary({
             </span>
           </span>
           <span
-            className={`rotate-[4deg] absolute top-[-20px] right-[80px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20  text-md tracking-wide h-[35px] w-[35px] flex items-center justify-center library-player-button ${
+            className={`rotate-[4deg] absolute top-[-20px] right-[80px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20 text-md tracking-wide h-[35px] flex items-center justify-center library-player-button ${
               nextMode === NextMode.REPEAT && 'active'
             }`}
             onClick={() => {
@@ -76,7 +77,7 @@ export default function MusicLibrary({
             </span>
           </span>
           <span
-            className={`rotate-[4deg] absolute top-[-20px] right-[25px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20  text-md tracking-wide h-[35px] w-[35px] flex items-center justify-center library-player-button ${
+            className={`rotate-[4deg] absolute top-[-20px] right-[25px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20  text-md tracking-wide h-[35px] flex items-center justify-center library-player-button ${
               nextMode === NextMode.RANDOM && 'active'
             }`}
             onClick={() => {
@@ -115,7 +116,7 @@ export default function MusicLibrary({
           </div>
           {album && (
             <span
-              className="absolute bottom-[-10px] left-[-10px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20  text-md tracking-wide h-[35px] w-[35px] flex items-center justify-center"
+              className="absolute bottom-[-10px] left-[-10px] before:block before:absolute before:-inset-1 before:bg-[#E2826A] before:rounded-full w-fit z-20  text-md tracking-wide h-[35px] flex items-center justify-center"
               style={{
                 rotate: '-8deg',
                 animation:

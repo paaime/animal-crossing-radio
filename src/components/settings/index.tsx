@@ -14,7 +14,7 @@ export default function Settings({
   settingsOpen: boolean;
   setSettingsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  const audio = new Audio('/public/sounds/click.mp3');
+  const audio = new Audio('/sounds/click.mp3');
   const ref = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState({
