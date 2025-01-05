@@ -24,18 +24,11 @@ export default function LiveMusicName() {
   };
 
   return (
-    <div
-      className=" absolute bottom-10 left-10"
-      // style={{
-      //   background:
-      //     'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%)',
-      // }}
-    >
+    <div className=" absolute bottom-10 left-10">
       <div
         className="flex  h-full bg-black/55  rounded-2xl min-w-[500px]"
         onClick={startLive}
       >
-        {/* <div className="w-[40px] h-[2px] bg-white rounded-full" /> */}
         <Image
           src={`/img/artworks/${music.album}/512x512.png`}
           alt={music.name}
@@ -66,7 +59,6 @@ export default function LiveMusicName() {
             {music.album}
           </motion.h1>
         </div>
-        {/* <div className="w-[40px] h-[2px] bg-white rounded-full" /> */}
       </div>
     </div>
   );
