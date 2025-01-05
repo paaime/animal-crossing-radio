@@ -46,10 +46,10 @@ export default function LiveAds() {
             transition={{ duration: 0.5 }}
             className="flex flex-col text-center text-xl text-white justify-center"
           >
-            <p className="font-medium text-3xl whitespace-nowrap">
+            <p className="font-semibold text-3xl whitespace-nowrap">
               {ads[currentAdIndex].title}
             </p>
-            <h1 className="text-2xl font-extralight">
+            <h1 className="text-2xl font-light">
               {ads[currentAdIndex].subtitle}
             </h1>
           </motion.div>

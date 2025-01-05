@@ -39,7 +39,7 @@ export default function LiveMusicName() {
         />
         <div className="flex flex-col gap-0.5 tracking-tight text-white px-8 justify-center">
           <motion.p
-            className="font-medium text-4xl"
+            className="font-semibold text-4xl"
             key={music.name} // Ensure the animation triggers when the music name changes
             initial={{ opacity: 0, y: -10 }} // Initial state
             animate={{ opacity: 1, y: 0 }} // Animate to this state
@@ -49,7 +49,7 @@ export default function LiveMusicName() {
             {music.name}
           </motion.p>
           <motion.h1
-            className="text-3xl font-extralight"
+            className="text-3xl font-light"
             key={music.album} // Ensure the animation triggers when the album changes
             initial={{ opacity: 0, y: 10 }} // Initial state
             animate={{ opacity: 1, y: 0 }} // Animate to this state
