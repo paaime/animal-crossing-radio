@@ -32,14 +32,14 @@ export default function LiveMusicName() {
         <Image
           src={`/img/artworks/${music.album}/512x512.png`}
           alt={music.name}
-          width={110}
-          height={110}
-          className="rounded-2xl w-[110px] h-[110px] "
+          width={120}
+          height={120}
+          className="rounded-2xl w-[120px] h-[120px] "
           priority
         />
         <div className="flex flex-col gap-0.5 tracking-tight text-white px-8 justify-center">
           <motion.p
-            className="font-medium text-3xl"
+            className="font-medium text-4xl"
             key={music.name} // Ensure the animation triggers when the music name changes
             initial={{ opacity: 0, y: -10 }} // Initial state
             animate={{ opacity: 1, y: 0 }} // Animate to this state
@@ -49,7 +49,7 @@ export default function LiveMusicName() {
             {music.name}
           </motion.p>
           <motion.h1
-            className="text-2xl font-extralight"
+            className="text-3xl font-extralight"
             key={music.album} // Ensure the animation triggers when the album changes
             initial={{ opacity: 0, y: 10 }} // Initial state
             animate={{ opacity: 1, y: 0 }} // Animate to this state
