@@ -29,7 +29,7 @@ export default function LiveAds() {
 
   return (
     <div className="absolute top-10 right-10">
-      <div className="flex gap-5 h-full bg-black/55 px-8 py-4 rounded-2xl items-center">
+      <div className="flex gap-5 h-full bg-black/65 px-8 py-4 rounded-2xl items-center justify-center">
         <Image
           src="/img/icon512.png"
           alt="Logo"
@@ -46,7 +46,9 @@ export default function LiveAds() {
             transition={{ duration: 0.5 }}
             className="flex flex-col text-center text-xl text-white justify-center"
           >
-            <p className="font-medium text-2xl">{ads[currentAdIndex].title}</p>
+            <p className="font-medium text-2xl whitespace-nowrap">
+              {ads[currentAdIndex].title}
+            </p>
             <h1 className="text-xl font-extralight">
               {ads[currentAdIndex].subtitle}
             </h1>

@@ -37,7 +37,7 @@ export default function Home() {
         <GoogleAnalytics gaMeasurementId="G-GBEQ7L6BRJ" trackPageViews />
       )}
       <div className="flex gap-4 self-end">
-        <TwitchButton />
+        {/* <TwitchButton /> */}
         <SettingsButton setSettingsOpen={setSettingsOpen} />
       </div>
       <MusicPlayer isLive={false} />

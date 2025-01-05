@@ -1250,7 +1250,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '2:22',
-        name: "We'll Be Closing Shortly....",
+        name: "We'll Be Closing Shortly...",
       },
       {
         duration: '0:52',

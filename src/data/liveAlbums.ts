@@ -273,11 +273,11 @@ export const liveAlbums: IAlbum[] = [
       },
       {
         duration: '0:40',
-        name: 'Downtown by Day',
+        name: 'Downtown by Day 1',
       },
       {
         duration: '0:48',
-        name: 'Downtown by Night',
+        name: 'Downtown by Night 1',
       },
       {
         duration: '2:48',
@@ -302,10 +302,6 @@ export const liveAlbums: IAlbum[] = [
       {
         duration: '2:31',
         name: "New Year's Day",
-      },
-      {
-        duration: '1:49',
-        name: 'Nookling Junction',
       },
       {
         duration: '1:17',
@@ -337,7 +333,7 @@ export const liveAlbums: IAlbum[] = [
       },
       {
         duration: '2:22',
-        name: "We'll Be Closing Shortly....",
+        name: "We'll Be Closing Shortly...",
       },
     ],
   },

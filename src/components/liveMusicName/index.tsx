@@ -26,7 +26,7 @@ export default function LiveMusicName() {
   return (
     <div className=" absolute bottom-10 left-10">
       <div
-        className="flex  h-full bg-black/55  rounded-2xl min-w-[500px]"
+        className="flex h-full bg-black/55 rounded-2xl min-w-[500px]"
         onClick={startLive}
       >
         <Image
