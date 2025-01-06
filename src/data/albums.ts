@@ -300,7 +300,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '0:54',
-        name: 'amiibo Phone - Invite an amiibo?',
+        name: 'amiibo Phone - Invite an amiibo',
       },
       {
         duration: '2:19',
@@ -328,11 +328,11 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '2:06',
-        name: 'Festivale - Festivale with Pavé',
+        name: 'Festivale - Festivale with Pavé',
       },
       {
         duration: '2:06',
-        name: 'Festivale - Pavé must DANCE! (~Unused Version~)',
+        name: 'Festivale - Pavé must DANCE! (~Unused Version~)',
       },
       {
         duration: '2:18',
@@ -1138,7 +1138,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '1:19',
-        name: 'Prologue - Where Do You Want Your House?',
+        name: 'Prologue - Where Do You Want Your House',
       },
       {
         duration: '0:39',
@@ -1178,7 +1178,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '1:24',
-        name: 'The Roost Café',
+        name: 'The Roost Café',
       },
       {
         duration: '0:38',

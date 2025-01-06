@@ -29,7 +29,7 @@ export default function LiveAds() {
 
   return (
     <div className="absolute top-10 right-10">
-      <div className="flex gap-5 h-full bg-black/65 px-8 py-4 rounded-2xl items-center justify-center">
+      <div className="flex gap-5 h-full bg-black/55 px-8 py-4 rounded-2xl items-center justify-center">
         <Image
           src="/img/icon512.png"
           alt="Logo"

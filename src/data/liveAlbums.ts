@@ -119,7 +119,7 @@ export const liveAlbums: IAlbum[] = [
       },
       {
         duration: '2:06',
-        name: 'Festivale - Festivale with Pavé',
+        name: 'Festivale - Festivale with Pavé',
       },
       {
         duration: '2:57',
@@ -321,7 +321,7 @@ export const liveAlbums: IAlbum[] = [
       },
       {
         duration: '1:24',
-        name: 'The Roost Café',
+        name: 'The Roost Café',
       },
       {
         duration: '1:47',
