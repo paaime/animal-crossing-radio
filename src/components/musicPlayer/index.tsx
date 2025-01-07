@@ -8,7 +8,7 @@ import { useMusicStore } from '@/stores/music';
 import NextButton from '../button/NextButton';
 import PrevButton from '../button/PrevButton';
 import * as musicHelper from '@/utils/musicPlayer';
-import Link from 'next/link';
+import StreamChoice from '../streamChoice';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
@@ -18,6 +18,8 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     weather,
     showExtensionMessage,
     setShowExtensionMessage,
+    showLiveMessage,
+    setShowLiveMessage,
   } = useSettingsStore();
 
   const {
@@ -34,7 +36,10 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const audio = new Audio('/sounds/click.mp3');
   const [currentHour, setCurrentHour] = useState(`${hour} ${ampm}`);
+
+  const [showStreamChoice, setShowStreamChoice] = useState(false);
 
   // Importing the musicHelper functions
   const handlePrev = () =>
@@ -206,7 +211,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
             Switch to <span className="font-medium">Hourly Mode</span>
           </p>
         )}
-        {showExtensionMessage && (
+        {/* {showExtensionMessage && (
           <div className="mt-3 group">
             <span className="bg-purple-400 rounded-full py-1 px-3 text-sm font-semibold mr-2">
               NEW
@@ -225,7 +230,31 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
               ( hide )
             </span>
           </div>
-        )}
+        )} */}
+        {/* {showLiveMessage && !isLive && (
+          <div className="flex items-center mt-3 group">
+            <span className="bg-purple-400 rounded-full py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold mr-2">
+              NEW
+            </span>
+            <p
+              className="custom-pointer text-white group-hover:underline text-xs sm:text-base"
+              onClick={() => {
+              audio.play();
+                setShowStreamChoice(true);
+              }}
+            >
+              24/7 live on <span className="font-semibold">Youtube</span> and{' '}
+              <span className="font-semibold">Twitch</span> !
+            </p>
+            <span
+              className="custom-pointer ml-2 text-xs hover:underline"
+              onClick={() => setShowLiveMessage(false)}
+            >
+              ( hide )
+            </span>
+          </div>
+        )} */}
+        <StreamChoice open={showStreamChoice} setOpen={setShowStreamChoice} />
       </div>
     </div>
   );

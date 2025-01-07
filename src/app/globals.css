@@ -134,3 +134,9 @@ button,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+
+.iframe-player iframe {
+  width: 300%;
+  height: 100%;
+  margin-left: -100%;
+}

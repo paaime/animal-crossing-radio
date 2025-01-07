@@ -10,6 +10,7 @@ import { GoogleAnalytics } from 'nextjs-google-analytics';
 import MusicButton from '@/components/button/MusicButton';
 import MusicLibrary from '@/components/musicLibrary';
 import TwitchButton from '@/components/button/TwitchButton';
+import StreamChoice from '@/components/streamChoice';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,

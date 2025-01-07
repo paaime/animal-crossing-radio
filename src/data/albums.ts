@@ -1796,7 +1796,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '2:13',
-        name: 'TV - Weather 3 (Café K.K.)',
+        name: 'TV - Weather 3 (Café K.K.)',
       },
       {
         duration: '0:46',

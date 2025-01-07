@@ -9,6 +9,7 @@ type Settings = {
   time: { hour: number; minute: number };
   weather: Weather;
   showExtensionMessage: boolean;
+  showLiveMessage: boolean;
   setVolume: (volume: number) => void;
   setGame: (game: string) => void;
   setBackground: (background: string) => void;
@@ -16,16 +17,18 @@ type Settings = {
   setWeather: (weather: Weather) => void;
   getWeather: () => string;
   setShowExtensionMessage: (showExtensionMessage: boolean) => void;
+  setShowLiveMessage: (showLiveMessage: boolean) => void;
 };
 
 export const useSettingsStore = create(
   persist<Settings>(
     (set, get) => ({
       volume: 50,
-      game: 'New Leaf',
+      game: 'New Horizons',
       background: 'Celeste',
       weather: Weather.SUNNY,
       showExtensionMessage: true,
+      showLiveMessage: true,
       time: {
         hour: 0,
         minute: 0,
@@ -49,6 +52,8 @@ export const useSettingsStore = create(
       },
       setShowExtensionMessage: (showExtensionMessage: boolean) =>
         set({ showExtensionMessage }),
+      setShowLiveMessage: (showLiveMessage: boolean) =>
+        set({ showLiveMessage }),
     }),
     {
       name: 'settings',

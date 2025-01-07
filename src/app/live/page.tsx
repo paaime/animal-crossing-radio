@@ -9,22 +9,28 @@ const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
 });
 
-const vimeoIds = ['1044053960', '1044129300', '1044053968'];
+const videoIds = [
+  // 'https://youtu.be/9QU5HFXlsPM?t=34',
+  'https://youtu.be/CBG0Px9oaWY',
+  'https://youtu.be/sykEDY-wmxw',
+  'https://youtu.be/b9s_PfMWsbg?t=29',
+  'https://youtu.be/u-4NV0jn2Lc',
+];
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const handleVideoEnd = () => {
-    let newIndex = (currentVideoIndex + 1) % vimeoIds.length;
+    let newIndex = (currentVideoIndex + 1) % videoIds.length;
     setCurrentVideoIndex(newIndex);
-    videoRef.current?.setAttribute('src', vimeoIds[newIndex]);
+    videoRef.current?.setAttribute('src', videoIds[newIndex]);
     videoRef.current?.play();
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {
     const key = parseInt(event.key);
-    if (key >= 1 && key <= vimeoIds.length) {
+    if (key >= 1 && key <= videoIds.length) {
       const newIndex = key - 1;
       setCurrentVideoIndex(newIndex);
     }
@@ -41,15 +47,16 @@ export default function Home() {
     <>
       <main className="flex h-dvh flex-col items-center justify-between p-5 md:p-8 cursor-none">
         <LiveAds />
-        <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute h-full w-full top-0 overflow-hidden aspect-video pointer-events-none z-[-10]">
           <ReactPlayer
-            url={`https://vimeo.com/${vimeoIds[currentVideoIndex]}`}
+            url={videoIds[currentVideoIndex]}
             onEnded={handleVideoEnd}
             playing
+            playsinline
             volume={0}
             width={'100%'}
             height={'100%'}
-            style={{ position: 'relative', zIndex: '-10' }}
+            className="iframe-player"
           />
         </div>
         <MusicPlayer isLive />
