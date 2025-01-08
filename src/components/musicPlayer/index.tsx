@@ -231,15 +231,15 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
             </span>
           </div>
         )} */}
-        {/* {showLiveMessage && !isLive && (
+        {showLiveMessage && !isLive && (
           <div className="flex items-center mt-3 group">
-            <span className="bg-purple-400 rounded-full py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold mr-2">
-              NEW
+            <span className="bg-red-500 rounded-full py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold mr-2">
+              LIVE
             </span>
             <p
               className="custom-pointer text-white group-hover:underline text-xs sm:text-base"
               onClick={() => {
-              audio.play();
+                audio.play();
                 setShowStreamChoice(true);
               }}
             >
@@ -253,7 +253,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
               ( hide )
             </span>
           </div>
-        )} */}
+        )}
         <StreamChoice open={showStreamChoice} setOpen={setShowStreamChoice} />
       </div>
     </div>

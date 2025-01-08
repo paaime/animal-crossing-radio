@@ -3,13 +3,14 @@ import RedditIcon from '../icons/RedditIcon';
 import XIcon from '../icons/XIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 import TwitchIcon from '../icons/TwitchIcon';
+import YoutubeIcon from '../icons/YoutubeIcon';
 
 export default function About({ open }: { open: boolean }) {
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute rounded-[30px] z-30 w-[375px] font-seurat flex items-center justify-center bg-[#F0F2E6] bottom-0 md:bottom-[35vh]"
+          className="absolute rounded-[30px] z-30 w-[375px] font-seurat flex items-center justify-center bg-[#F0F2E6] bottom-0 md:bottom-[28vh]"
           style={{
             maxWidth: 'calc(100vw - 40px)',
           }}
@@ -81,6 +82,27 @@ export default function About({ open }: { open: boolean }) {
             >
               Download the extension
             </Link>
+            <div className="flex items-center my-3">
+              <p className="text-[#775B46] text-lg font-bold">24/7 Stream</p>
+            </div>
+            <div className="flex gap-5">
+              <a
+                href="https://www.youtube.com/@animalcrossingradio-b3c"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-500 rounded-xl w-10 h-10 flex items-center justify-center"
+              >
+                <YoutubeIcon />
+              </a>
+              <a
+                href="https://www.twitch.tv/animal_crossing_radio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-700 rounded-xl w-10 h-10 flex items-center justify-center"
+              >
+                <TwitchIcon />
+              </a>
+            </div>
             <div className="flex items-center mb-3 mt-3">
               <p className="text-[#775B46] font-bold text-lg">Made by</p>
             </div>

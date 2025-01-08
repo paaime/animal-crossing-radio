@@ -62,7 +62,7 @@ export default function StreamChoice({
             <div className="grid grid-cols-2 gap-4">
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                href="https://www.youtube.com/@animalcrossingradio-b3c"
+                href="https://www.youtube.com/watch?v=ADt85jdM4hM"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-red-600 text-white hover:bg-red-700 transition-colors"

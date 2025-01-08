@@ -106,10 +106,6 @@ export const liveAlbums: IAlbum[] = [
         name: 'Able Sisters - Welcome To The Able Sisters!',
       },
       {
-        duration: '2:19',
-        name: 'Bunny Day - Meet... Zipper T. Bunny!',
-      },
-      {
         duration: '2:13',
         name: 'Ceremony',
       },
@@ -356,14 +352,6 @@ export const liveAlbums: IAlbum[] = [
       {
         duration: '1:01',
         name: '4 AM',
-      },
-      {
-        duration: '1:51',
-        name: '4 AM ❄️',
-      },
-      {
-        duration: '1:01',
-        name: '4 AM 🌧️',
       },
       {
         duration: '2:38',
