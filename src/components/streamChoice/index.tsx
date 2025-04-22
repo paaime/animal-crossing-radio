@@ -65,7 +65,7 @@ export default function StreamChoice({
                 href="https://www.youtube.com/watch?v=ADt85jdM4hM"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-red-600 text-white hover:bg-red-700 transition-colors"
+                className="flex flex-col items-center gap-2 p-4 rounded-xl bg-reπd-600 text-white hover:bg-red-700 transition-colors"
               >
                 <YoutubeIcon />
                 <span className="font-medium">YouTube</span>

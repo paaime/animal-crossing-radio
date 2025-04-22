@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Music from './components/Music';
 import { albums } from '@/data/albums';
 import { IAlbum } from '@/types/Album';
@@ -9,14 +9,10 @@ import ShuffleIcon from '../icons/SuffleIcon';
 import { useMusicStore } from '@/stores/music';
 import { NextMode } from '@/types/Enum';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModalStore } from '@/stores/modal';
 
-export default function MusicLibrary({
-  open,
-  setLibraryOpen,
-}: {
-  open: boolean;
-  setLibraryOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function MusicLibrary() {
+  const { libraryOpen, setLibraryOpen } = useModalStore();
   const audio = new Audio('/sounds/click.mp3');
   const { nextMode, setNextMode } = useMusicStore((state) => state);
   const [album, setAlbum] = useState<IAlbum | null>(null);
@@ -38,7 +34,7 @@ export default function MusicLibrary({
 
   return (
     <AnimatePresence>
-      {open && (
+      {libraryOpen && (
         <motion.div
           className="absolute rounded-[30px] z-30 w-[500px] h-[400px] font-seurat flex items-center justify-center bg-[#F0F2E6]"
           ref={ref}

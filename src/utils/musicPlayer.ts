@@ -8,21 +8,74 @@ export const handlePrev = (
   audioRef: React.RefObject<HTMLAudioElement>,
   music: IMusic,
   setMusic: (music: IMusic) => void,
-  hourlyMode: boolean
+  hourlyMode: boolean,
+  nextMode: NextMode,
+  excludedAlbums: string[] = []
 ) => {
   if (audioRef.current) {
     if (!hourlyMode && music.index !== null) {
       const album = albums.find((album) => album.name === music.album);
+      let prevAlbum = album; // Default to the current album
 
       if (album) {
-        const nextIndex =
-          music.index <= 0 ? album.sounds.length - 1 : music.index - 1;
-        const nextMusic = album.sounds[nextIndex];
+        let prevIndex;
+        let prevMusic: { name: string };
+
+        switch (nextMode) {
+          case NextMode.NEXT: {
+            prevIndex =
+              music.index <= 0 ? album.sounds.length - 1 : music.index - 1;
+            prevMusic = album.sounds[prevIndex];
+            break;
+          }
+          case NextMode.RANDOM: {
+            prevIndex = Math.floor(Math.random() * album.sounds.length);
+            prevMusic = album.sounds[prevIndex];
+            break;
+          }
+          case NextMode.REPEAT: {
+            prevIndex = music.index;
+            prevMusic = album.sounds[prevIndex];
+            break;
+          }
+          case NextMode.RANDOM_ALBUM: {
+            const randomAlbum = albums.filter(
+              (album) => !excludedAlbums.includes(album.name)
+            );
+            prevAlbum =
+              randomAlbum[Math.floor(Math.random() * randomAlbum.length)];
+            let availableSounds = [...prevAlbum.sounds]; // Start with all sounds
+            const nonWeatherSounds = availableSounds.filter(
+              (sound) =>
+                !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+            );
+
+            availableSounds = nonWeatherSounds;
+
+            prevIndex = Math.floor(Math.random() * availableSounds.length);
+            prevMusic = availableSounds[prevIndex];
+            prevIndex = prevAlbum.sounds.findIndex(
+              (sound) => sound.name === prevMusic.name
+            );
+            break;
+          }
+          case NextMode.RANDOM_ALBUM_WEATHER: {
+            const randomAlbum = albums.filter(
+              (album) => !excludedAlbums.includes(album.name)
+            );
+            prevAlbum = randomAlbum[
+              Math.floor(Math.random() * randomAlbum.length)
+            ] as typeof album;
+            prevIndex = Math.floor(Math.random() * prevAlbum.sounds.length);
+            prevMusic = prevAlbum.sounds[prevIndex];
+            break;
+          }
+        }
 
         setMusic({
-          album: music.album,
-          name: nextMusic.name,
-          index: nextIndex,
+          album: prevAlbum?.name!,
+          name: prevMusic.name,
+          index: prevIndex,
         });
       }
       audioRef.current.play();
@@ -38,7 +91,8 @@ export const handleNext = (
   setMusic: (music: IMusic) => void,
   hourlyMode: boolean,
   nextMode: NextMode,
-  isLive: boolean
+  isLive: boolean,
+  excludedAlbums: string[]
 ) => {
   if (audioRef.current) {
     if (!hourlyMode && music.index !== null) {
@@ -47,7 +101,7 @@ export const handleNext = (
 
       if (album) {
         let nextIndex;
-        let nextMusic;
+        let nextMusic: { name: string };
         switch (nextMode) {
           case NextMode.NEXT: {
             nextIndex = (music.index + 1) % album.sounds.length;
@@ -69,6 +123,38 @@ export const handleNext = (
           case NextMode.REPEAT: {
             nextIndex = music.index;
             nextMusic = album.sounds[nextIndex];
+            break;
+          }
+          case NextMode.RANDOM_ALBUM: {
+            const randomAlbum = albums.filter(
+              (album) => !excludedAlbums.includes(album.name)
+            );
+            nextAlbum =
+              randomAlbum[Math.floor(Math.random() * randomAlbum.length)];
+            let availableSounds = [...nextAlbum.sounds]; // Start with all sounds
+            const nonWeatherSounds = availableSounds.filter(
+              (sound) =>
+                !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+            );
+
+            availableSounds = nonWeatherSounds;
+
+            nextIndex = Math.floor(Math.random() * availableSounds.length);
+            nextMusic = availableSounds[nextIndex];
+            nextIndex = nextAlbum.sounds.findIndex(
+              (sound) => sound.name === nextMusic.name
+            );
+            break;
+          }
+          case NextMode.RANDOM_ALBUM_WEATHER: {
+            const randomAlbum = albums.filter(
+              (album) => !excludedAlbums.includes(album.name)
+            );
+            nextAlbum = randomAlbum[
+              Math.floor(Math.random() * randomAlbum.length)
+            ] as typeof album;
+            nextIndex = Math.floor(Math.random() * nextAlbum.sounds.length);
+            nextMusic = nextAlbum.sounds[nextIndex];
             break;
           }
         }

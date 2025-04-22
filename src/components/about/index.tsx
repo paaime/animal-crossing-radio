@@ -86,14 +86,14 @@ export default function About({ open }: { open: boolean }) {
               <p className="text-[#775B46] text-lg font-bold">24/7 Stream</p>
             </div>
             <div className="flex gap-5">
-              <a
+              {/* <a
                 href="https://www.youtube.com/@animalcrossingradio-b3c"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-500 rounded-xl w-10 h-10 flex items-center justify-center"
               >
                 <YoutubeIcon />
-              </a>
+              </a> */}
               <a
                 href="https://www.twitch.tv/animal_crossing_radio"
                 target="_blank"

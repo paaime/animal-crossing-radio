@@ -9,6 +9,8 @@ import NextButton from '../button/NextButton';
 import PrevButton from '../button/PrevButton';
 import * as musicHelper from '@/utils/musicPlayer';
 import StreamChoice from '../streamChoice';
+import { NextMode } from '@/types/Enum';
+import RandomModePopup from '../randomMode';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
@@ -16,10 +18,9 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     game,
     getWeather,
     weather,
-    showExtensionMessage,
-    setShowExtensionMessage,
     showLiveMessage,
     setShowLiveMessage,
+    excludedAlbums,
   } = useSettingsStore();
 
   const {
@@ -30,20 +31,27 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     getMusicPath,
     setHourlyMusic,
     setHourlyMode,
+    setNextMode,
   } = useMusicStore((state) => state);
 
   const { hour, ampm } = useTimeStore((state) => state);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const audio = new Audio('/sounds/click.mp3');
   const [currentHour, setCurrentHour] = useState(`${hour} ${ampm}`);
 
   const [showStreamChoice, setShowStreamChoice] = useState(false);
 
   // Importing the musicHelper functions
   const handlePrev = () =>
-    musicHelper.handlePrev(audioRef, music, setMusic, hourlyMode);
+    musicHelper.handlePrev(
+      audioRef,
+      music,
+      setMusic,
+      hourlyMode,
+      nextMode,
+      excludedAlbums
+    );
   const handleNext = () =>
     musicHelper.handleNext(
       audioRef,
@@ -51,7 +59,8 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       setMusic,
       hourlyMode,
       nextMode,
-      isLive
+      isLive,
+      excludedAlbums
     );
   const play = () => musicHelper.play(audioRef, volume);
   const pause = () => musicHelper.pause(audioRef);
@@ -84,6 +93,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     if (!hourlyMode) {
       handleChangeMusic();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [music]);
 
   useEffect(() => {
@@ -101,6 +111,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     });
     if (!isLive) setHourlyMode(true);
     handleChangeMusic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game]);
 
   useEffect(() => {
@@ -116,21 +127,24 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     return () => {
       document.removeEventListener('keydown', handleSpaceBar);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPlaying]);
 
   useEffect(() => {
     const intervalId = setInterval(updateMusic, 1000);
 
-    // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentHour, isPlaying, game, hourlyMode]);
 
   useEffect(() => {
     updateMusic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hour]);
 
   useEffect(() => {
     updateMusic();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weather]);
 
   if ('mediaSession' in navigator) {
@@ -204,6 +218,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
           <p
             className="text-sm hover:underline custom-pointer"
             onClick={() => {
+              setNextMode(NextMode.NEXT);
               setHourlyMusic();
               handleChangeMusic();
             }}
@@ -236,16 +251,17 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
             <span className="bg-red-500 rounded-full py-1 px-2 sm:px-3 text-xs sm:text-sm font-semibold mr-2">
               LIVE
             </span>
-            <p
+            <a
               className="custom-pointer text-white group-hover:underline text-xs sm:text-base"
-              onClick={() => {
-                audio.play();
-                setShowStreamChoice(true);
-              }}
+              // onClick={() => {
+              //   audio.play();
+              //   setShowStreamChoice(true);
+              // }}
+              href="https://www.twitch.tv/animal_crossing_radio/"
+              target="_blank"
             >
-              24/7 live on <span className="font-semibold">Youtube</span> and{' '}
-              <span className="font-semibold">Twitch</span> !
-            </p>
+              24/7 live on <span className="font-semibold">Twitch</span> !
+            </a>
             <span
               className="custom-pointer ml-2 text-xs hover:underline"
               onClick={() => setShowLiveMessage(false)}
@@ -256,6 +272,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
         )}
         <StreamChoice open={showStreamChoice} setOpen={setShowStreamChoice} />
       </div>
+      <RandomModePopup changeMusic={handleChangeMusic} />
     </div>
   );
 }

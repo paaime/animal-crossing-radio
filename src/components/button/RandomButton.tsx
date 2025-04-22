@@ -1,19 +1,19 @@
 import Button from '.';
-import MusicIcon from '../icons/MusicIcon';
+import ShuffleIcon from '../icons/SuffleIcon';
 import { useModalStore } from '@/stores/modal';
 
-export default function MusicButton() {
-  const { setLibraryOpen } = useModalStore();
+export default function RandomModeButton() {
+  const { setRandomPopupOpen } = useModalStore();
   const audio = new Audio('/sounds/click.mp3');
 
   return (
     <Button
       onClick={() => {
         audio.play();
-        setLibraryOpen(true);
+        setRandomPopupOpen(true);
       }}
     >
-      <MusicIcon />
+      <ShuffleIcon height={30} />
     </Button>
   );
 }

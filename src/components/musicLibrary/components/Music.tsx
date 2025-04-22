@@ -1,5 +1,6 @@
 import { useMusicStore } from '@/stores/music';
 import { ISound } from '@/types/Album';
+import { NextMode } from '@/types/Enum';
 import { useEffect, useState } from 'react';
 
 export default function Music({
@@ -12,7 +13,8 @@ export default function Music({
   index: number;
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { music, setMusic, setHourlyMode } = useMusicStore((state) => state);
+  const { music, setMusic, setHourlyMode, setNextMode, nextMode } =
+    useMusicStore((state) => state);
 
   useEffect(() => {
     if (music.name === sound.name && music.album === album) {
@@ -34,6 +36,8 @@ export default function Music({
           name: sound.name,
           index: index,
         });
+        if (nextMode === NextMode.RANDOM_ALBUM || NextMode.RANDOM_ALBUM_WEATHER)
+          setNextMode(NextMode.NEXT);
       }}
     >
       <p className="text-sm sm:text-base">

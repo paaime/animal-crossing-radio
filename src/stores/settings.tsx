@@ -10,6 +10,8 @@ type Settings = {
   weather: Weather;
   showExtensionMessage: boolean;
   showLiveMessage: boolean;
+  excludedAlbums: string[];
+  setExcludedAlbums: (albums: string[]) => void;
   setVolume: (volume: number) => void;
   setGame: (game: string) => void;
   setBackground: (background: string) => void;
@@ -33,6 +35,14 @@ export const useSettingsStore = create(
         hour: 0,
         minute: 0,
       },
+      excludedAlbums: [
+        'K.K. Slider',
+        'Happy Home Paradise',
+        'Pocket Camp',
+        'Amiibo Festival',
+        'Happy Home Designer',
+      ],
+      setExcludedAlbums: (albums: string[]) => set({ excludedAlbums: albums }),
       setVolume: (volume: number) => set({ volume }),
       setGame: (game: string) => set({ game }),
       setBackground: (background: string) => set({ background }),

@@ -2,23 +2,21 @@
 
 import Clock from '@/components/clock';
 import SettingsButton from '@/components/button/SettingsButton';
-import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Settings from '@/components/settings';
 import { useSettingsStore } from '@/stores/settings';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import MusicButton from '@/components/button/MusicButton';
 import MusicLibrary from '@/components/musicLibrary';
-import TwitchButton from '@/components/button/TwitchButton';
-import StreamChoice from '@/components/streamChoice';
+import RandomModeButton from '@/components/button/RandomButton';
+import { useModalStore } from '@/stores/modal';
 
 const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
   ssr: false,
 });
 
 export default function Home() {
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [libraryOpen, setLibraryOpen] = useState(false);
+  const { settingsOpen, libraryOpen, randomPopupOpen } = useModalStore();
   const background = useSettingsStore((state) => state.background);
 
   return (
@@ -30,8 +28,8 @@ export default function Home() {
         backgroundPosition: 'center',
       }}
     >
-      <Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />
-      {(settingsOpen || libraryOpen) && (
+      <Settings />
+      {(settingsOpen || libraryOpen || randomPopupOpen) && (
         <div className="hider absolute top-0 left-0 w-full h-full bg-[#00000000] z-20 backdrop-blur"></div>
       )}
       {process.env.NEXT_PUBLIC_ENV === 'production' && (
@@ -39,14 +37,17 @@ export default function Home() {
       )}
       <div className="flex gap-4 self-end">
         {/* <TwitchButton /> */}
-        <SettingsButton setSettingsOpen={setSettingsOpen} />
+        <SettingsButton />
       </div>
       <MusicPlayer isLive={false} />
       <div className="self-start w-full flex items-end justify-between">
         <Clock />
-        <MusicButton setLibraryOpen={setLibraryOpen} />
+        <div className="flex gap-4">
+          <RandomModeButton />
+          <MusicButton />
+        </div>
       </div>
-      <MusicLibrary open={libraryOpen} setLibraryOpen={setLibraryOpen} />
+      <MusicLibrary />
     </main>
   );
 }

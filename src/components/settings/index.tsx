@@ -1,19 +1,15 @@
 import Volume from './components/Volume';
 import Games from './components/Games';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Backgrounds from './components/Backgrounds';
 import Time from './components/Time';
 import About from '../about';
 import Weather from './components/Weather';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useModalStore } from '@/stores/modal';
 
-export default function Settings({
-  settingsOpen,
-  setSettingsOpen,
-}: {
-  settingsOpen: boolean;
-  setSettingsOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function Settings() {
+  const { settingsOpen, setSettingsOpen } = useModalStore();
   const audio = new Audio('/sounds/click.mp3');
   const ref = useRef<HTMLDivElement>(null);
 

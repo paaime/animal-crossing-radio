@@ -1,13 +1,10 @@
 'use client';
+import { useModalStore } from '@/stores/modal';
 import Button from '.';
 import SettingsIcon from '../icons/SettingsIcon';
-import { Dispatch, SetStateAction } from 'react';
 
-export default function SettingsButton({
-  setSettingsOpen,
-}: {
-  setSettingsOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function SettingsButton() {
+  const { setSettingsOpen } = useModalStore();
   const audio = new Audio('/sounds/click.mp3');
 
   return (
