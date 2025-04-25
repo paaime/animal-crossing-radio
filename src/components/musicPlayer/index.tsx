@@ -60,7 +60,8 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       hourlyMode,
       nextMode,
       isLive,
-      excludedAlbums
+      excludedAlbums,
+      volume
     );
   const play = () => musicHelper.play(audioRef, volume);
   const pause = () => musicHelper.pause(audioRef);
@@ -74,7 +75,8 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       setIsPlaying,
       play,
       pause,
-      hourlyMode
+      hourlyMode,
+      volume
     );
   const updateMusic = () =>
     musicHelper.updateMusic(

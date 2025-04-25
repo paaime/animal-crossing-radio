@@ -92,7 +92,8 @@ export const handleNext = (
   hourlyMode: boolean,
   nextMode: NextMode,
   isLive: boolean,
-  excludedAlbums: string[]
+  excludedAlbums: string[],
+  volume: number
 ) => {
   if (audioRef.current) {
     if (!hourlyMode && music.index !== null) {
@@ -166,7 +167,43 @@ export const handleNext = (
         });
       }
     } else {
-      audioRef.current.play();
+      // Fade out, reload, and fade in for hourly mode looping
+      const fadeOut = (callback: () => void) => {
+        let vol = audioRef.current!.volume;
+        const step = 0.05;
+        const fade = () => {
+          if (vol > 0.05) {
+            vol -= step;
+            audioRef.current!.volume = Math.max(vol, 0);
+            setTimeout(fade, 20);
+          } else {
+            audioRef.current!.volume = 0;
+            callback();
+          }
+        };
+        fade();
+      };
+
+      const fadeIn = () => {
+        let vol = 0;
+        const target = volume / 100;
+        const step = 0.05;
+        audioRef.current!.volume = 0;
+        const fade = () => {
+          if (vol < target) {
+            vol += step;
+            audioRef.current!.volume = Math.min(vol, target);
+            setTimeout(fade, 20);
+          }
+        };
+        fade();
+      };
+
+      fadeOut(() => {
+        audioRef.current!.currentTime = 0;
+        audioRef.current!.play();
+        fadeIn();
+      });
     }
   }
 };
@@ -176,17 +213,39 @@ export const play = (
   volume: number
 ) => {
   if (audioRef.current) {
-    audioRef.current.volume = volume / 100;
+    // Fade in
+    let vol = 0;
+    const target = volume / 100;
+    const step = 0.05;
+    audioRef.current.volume = 0;
     audioRef.current.play();
+    const fade = () => {
+      if (vol < target) {
+        vol += step;
+        audioRef.current!.volume = Math.min(vol, target);
+        setTimeout(fade, 20);
+      }
+    };
+    fade();
   }
 };
 
 export const pause = (audioRef: React.RefObject<HTMLAudioElement>) => {
   if (audioRef.current) {
-    while (audioRef.current.volume > 0) {
-      audioRef.current.volume -= Math.min(audioRef.current.volume, 0.01);
-    }
-    audioRef.current.pause();
+    // Fade out
+    let vol = audioRef.current.volume;
+    const step = 0.05;
+    const fade = () => {
+      if (vol > 0.05) {
+        vol -= step;
+        audioRef.current!.volume = Math.max(vol, 0);
+        setTimeout(fade, 20);
+      } else {
+        audioRef.current!.volume = 0;
+        audioRef.current!.pause();
+      }
+    };
+    fade();
   }
 };
 
@@ -211,20 +270,53 @@ export const handleChangeMusic = (
   setIsPlaying: (isPlaying: boolean) => void,
   play: () => void,
   pause: () => void,
-  hourlyMode: boolean
+  hourlyMode: boolean,
+  volume: number
 ) => {
   if (audioRef.current) {
-    pause();
-    audioRef.current.src = getMusicPath();
-    audioRef.current.load();
-    if (isPlaying) {
-      play();
-    } else {
-      if (!hourlyMode) {
+    // Fade out
+    const fadeOut = (callback: () => void) => {
+      let vol = audioRef.current!.volume;
+      const step = 0.05;
+      const fade = () => {
+        if (vol > 0.05) {
+          vol -= step;
+          audioRef.current!.volume = Math.max(vol, 0);
+          setTimeout(fade, 20);
+        } else {
+          audioRef.current!.volume = 0;
+          callback();
+        }
+      };
+      fade();
+    };
+
+    // Fade in
+    const fadeIn = () => {
+      let vol = 0;
+      const target = volume / 100;
+      const step = 0.05;
+      audioRef.current!.volume = 0;
+      const fade = () => {
+        if (vol < target) {
+          vol += step;
+          audioRef.current!.volume = Math.min(vol, target);
+          setTimeout(fade, 20);
+        }
+      };
+      fade();
+    };
+
+    fadeOut(() => {
+      pause();
+      audioRef.current!.src = getMusicPath();
+      audioRef.current!.load();
+      if (isPlaying || !hourlyMode) {
         setIsPlaying(true);
         play();
+        fadeIn();
       }
-    }
+    });
   }
 };
 
