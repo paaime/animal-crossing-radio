@@ -1,30 +1,31 @@
-import { liveAlbums } from '@/data/liveAlbums';
 import { useMusicStore } from '@/stores/music';
 import { NextMode } from '@/types/Enum';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export default function LiveMusicName() {
+export default function LiveMusicName({
+  handleNext,
+}: {
+  handleNext: () => void;
+}) {
   const { music } = useMusicStore((state) => state);
   const { setHourlyMode, setMusic, setNextMode } = useMusicStore(
     (state) => state
   );
 
   const startLive = () => {
-    const nextAlbum = liveAlbums[Math.floor(Math.random() * liveAlbums.length)];
-    const nextIndex = Math.floor(Math.random() * nextAlbum.sounds.length);
-    const nextMusic = nextAlbum.sounds[nextIndex];
     setHourlyMode(false);
-    setNextMode(NextMode.RANDOM);
+    setNextMode(NextMode.RANDOM_ALBUM);
     setMusic({
-      album: nextAlbum?.name!,
-      name: nextMusic.name,
-      index: nextIndex,
+      album: 'New Horizons',
+      name: '1 AM',
+      index: 0,
     });
+    handleNext();
   };
 
   return (
-    <div className=" absolute bottom-10 left-10">
+    <div className="absolute bottom-10 left-10">
       <div
         className="flex h-full bg-black/55 rounded-2xl min-w-[500px]"
         onClick={startLive}

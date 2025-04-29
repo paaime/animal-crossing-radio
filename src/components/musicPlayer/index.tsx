@@ -11,6 +11,7 @@ import * as musicHelper from '@/utils/musicPlayer';
 import StreamChoice from '../streamChoice';
 import { NextMode } from '@/types/Enum';
 import RandomModePopup from '../randomMode';
+import LiveMusicName from '../liveMusicName';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
@@ -275,6 +276,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
         <StreamChoice open={showStreamChoice} setOpen={setShowStreamChoice} />
       </div>
       <RandomModePopup changeMusic={handleChangeMusic} />
+      {isLive && <LiveMusicName handleNext={handleNext} />}
     </div>
   );
 }

@@ -10,11 +10,12 @@ const MusicPlayer = dynamic(() => import('@/components/musicPlayer'), {
 });
 
 const videoIds = [
-  // 'https://youtu.be/9QU5HFXlsPM?t=34',
-  'https://youtu.be/CBG0Px9oaWY',
-  'https://youtu.be/sykEDY-wmxw',
-  'https://youtu.be/b9s_PfMWsbg?t=29',
-  'https://youtu.be/u-4NV0jn2Lc',
+  'https://youtu.be/QJvFojp2oEI?t=26',
+  'https://youtu.be/TjC92khsso4?t=15',
+  'https://youtu.be/DHtplTxNQkE?t=27',
+  'https://youtu.be/lVehsRqmQqs?t=15',
+  'https://www.youtube.com/watch?v=GsY331YBUkg',
+  'https://www.youtube.com/watch?v=Y6uJH3ubEuY',
 ];
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
       <main className="flex h-dvh flex-col items-center justify-between p-5 md:p-8 cursor-none">
         <LiveAds />
         <div className="absolute h-full w-full top-0 overflow-hidden aspect-video pointer-events-none z-[-10]">
+          <div className="w-full h-full bg-black/30 absolute"></div>
           <ReactPlayer
             url={videoIds[currentVideoIndex]}
             onEnded={handleVideoEnd}
@@ -57,10 +59,21 @@ export default function Home() {
             width={'100%'}
             height={'100%'}
             className="iframe-player"
+            onUnstarted={() => {
+              let newIndex = (currentVideoIndex + 1) % videoIds.length;
+              setCurrentVideoIndex(newIndex);
+              videoRef.current?.setAttribute('src', videoIds[newIndex]);
+              videoRef.current?.play();
+            }}
+            onError={() => {
+              let newIndex = (currentVideoIndex + 1) % videoIds.length;
+              setCurrentVideoIndex(newIndex);
+              videoRef.current?.setAttribute('src', videoIds[newIndex]);
+              videoRef.current?.play();
+            }}
           />
         </div>
         <MusicPlayer isLive />
-        <LiveMusicName />
       </main>
     </>
   );

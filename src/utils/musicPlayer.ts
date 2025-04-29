@@ -4,6 +4,120 @@ import { NextMode } from '@/types/Enum';
 import { SetStateAction } from 'react';
 import { liveAlbums } from '@/data/liveAlbums';
 
+const recentlyPlayed: string[] = [];
+const HISTORY_LIMIT = 10;
+
+function updateRecentlyPlayed(trackName: string, albumName: string) {
+  const uniqueId = `${albumName}:${trackName}`;
+  recentlyPlayed.push(uniqueId);
+  if (recentlyPlayed.length > HISTORY_LIMIT) {
+    recentlyPlayed.shift();
+  }
+}
+
+function selectRandomTrackFromAlbums(
+  albums: any[],
+  excludedAlbums: string[],
+  includeWeather: boolean,
+  currentAlbum: any
+) {
+  // Filter available albums
+  const availableAlbums = albums.filter(
+    (album) => !excludedAlbums.includes(album.name)
+  );
+
+  if (availableAlbums.length === 0) {
+    const randomSound = getRandomTrack(currentAlbum.sounds);
+    return {
+      album: currentAlbum,
+      sound: randomSound,
+      index: currentAlbum.sounds.findIndex(
+        (sound: { name: string }) => sound.name === randomSound.name
+      ),
+    };
+  }
+
+  // Create a flat list of all sounds from all available albums
+  const allSounds = availableAlbums.flatMap((album) => {
+    const filteredSounds = includeWeather
+      ? album.sounds
+      : album.sounds.filter(
+          (sound: { name: string }) =>
+            !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+        );
+
+    return filteredSounds.map((sound: any) => ({
+      sound,
+      album,
+      uniqueId: `${album.name}_${sound.name}`, // Create a unique identifier
+    }));
+  });
+
+  if (allSounds.length === 0) {
+    const randomSound = getRandomTrack(currentAlbum.sounds);
+    return {
+      album: currentAlbum,
+      sound: randomSound,
+      index: currentAlbum.sounds.findIndex(
+        (sound: { name: string }) => sound.name === randomSound.name
+      ),
+    };
+  }
+
+  const tracksWithIds = allSounds.map((item) => ({
+    name: item.sound.name,
+    albumId: item.album.name,
+  }));
+
+  // Get random track from combined pool
+  const randomTrack = getRandomTrack(tracksWithIds);
+
+  // Find the complete track info using both name AND album
+  const trackInfo = allSounds.find(
+    (item) =>
+      item.sound.name === randomTrack.name &&
+      item.album.name === randomTrack.albumId
+  );
+
+  const fallbackTrackInfo =
+    trackInfo || allSounds.find((item) => item.sound.name === randomTrack.name);
+
+  if (fallbackTrackInfo) {
+    return {
+      album: fallbackTrackInfo.album,
+      sound: fallbackTrackInfo.sound,
+      index: fallbackTrackInfo.album.sounds.findIndex(
+        (sound: { name: string }) => sound.name === fallbackTrackInfo.sound.name
+      ),
+    };
+  } else {
+    const randomSound = getRandomTrack(currentAlbum.sounds);
+    return {
+      album: currentAlbum,
+      sound: randomSound,
+      index: currentAlbum.sounds.findIndex(
+        (sound: { name: string }) => sound.name === randomSound.name
+      ),
+    };
+  }
+}
+
+// Helper to get a random track not in history
+function getRandomTrack(tracks: { name: string; albumId?: string }[]) {
+  const available = tracks.filter((track) => {
+    if (track.albumId) {
+      return !recentlyPlayed.includes(`${track.albumId}:${track.name}`);
+    }
+    return !recentlyPlayed.some((item) => item.endsWith(`:${track.name}`));
+  });
+
+  if (available.length === 0) {
+    recentlyPlayed.length = 0;
+    return tracks[Math.floor(Math.random() * tracks.length)];
+  }
+  return available[Math.floor(Math.random() * available.length)];
+}
+
 export const handlePrev = (
   audioRef: React.RefObject<HTMLAudioElement>,
   music: IMusic,
@@ -29,8 +143,10 @@ export const handlePrev = (
             break;
           }
           case NextMode.RANDOM: {
-            prevIndex = Math.floor(Math.random() * album.sounds.length);
-            prevMusic = album.sounds[prevIndex];
+            prevMusic = getRandomTrack(album.sounds);
+            prevIndex = album.sounds.findIndex(
+              (sound) => sound.name === prevMusic.name
+            );
             break;
           }
           case NextMode.REPEAT: {
@@ -39,35 +155,29 @@ export const handlePrev = (
             break;
           }
           case NextMode.RANDOM_ALBUM: {
-            const randomAlbum = albums.filter(
-              (album) => !excludedAlbums.includes(album.name)
-            );
-            prevAlbum =
-              randomAlbum[Math.floor(Math.random() * randomAlbum.length)];
-            let availableSounds = [...prevAlbum.sounds]; // Start with all sounds
-            const nonWeatherSounds = availableSounds.filter(
-              (sound) =>
-                !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+            const result = selectRandomTrackFromAlbums(
+              albums,
+              excludedAlbums,
+              false,
+              album
             );
 
-            availableSounds = nonWeatherSounds;
-
-            prevIndex = Math.floor(Math.random() * availableSounds.length);
-            prevMusic = availableSounds[prevIndex];
-            prevIndex = prevAlbum.sounds.findIndex(
-              (sound) => sound.name === prevMusic.name
-            );
+            prevAlbum = result.album;
+            prevMusic = result.sound;
+            prevIndex = result.index;
             break;
           }
           case NextMode.RANDOM_ALBUM_WEATHER: {
-            const randomAlbum = albums.filter(
-              (album) => !excludedAlbums.includes(album.name)
+            const result = selectRandomTrackFromAlbums(
+              albums,
+              excludedAlbums,
+              true,
+              album
             );
-            prevAlbum = randomAlbum[
-              Math.floor(Math.random() * randomAlbum.length)
-            ] as typeof album;
-            prevIndex = Math.floor(Math.random() * prevAlbum.sounds.length);
-            prevMusic = prevAlbum.sounds[prevIndex];
+
+            prevAlbum = result.album;
+            prevMusic = result.sound;
+            prevIndex = result.index;
             break;
           }
         }
@@ -77,6 +187,7 @@ export const handlePrev = (
           name: prevMusic.name,
           index: prevIndex,
         });
+        updateRecentlyPlayed(prevMusic.name, prevAlbum?.name!);
       }
       audioRef.current.play();
     } else {
@@ -98,8 +209,7 @@ export const handleNext = (
   if (audioRef.current) {
     if (!hourlyMode && music.index !== null) {
       const album = albums.find((album) => album.name === music.album);
-      let nextAlbum = album; // Default to the current album
-
+      let nextAlbum = album;
       if (album) {
         let nextIndex;
         let nextMusic: { name: string };
@@ -110,15 +220,10 @@ export const handleNext = (
             break;
           }
           case NextMode.RANDOM: {
-            if (isLive) {
-              nextAlbum =
-                liveAlbums[Math.floor(Math.random() * liveAlbums.length)];
-              nextIndex = Math.floor(Math.random() * nextAlbum.sounds.length);
-              nextMusic = nextAlbum.sounds[nextIndex];
-            } else {
-              nextIndex = Math.floor(Math.random() * album.sounds.length);
-              nextMusic = album.sounds[nextIndex];
-            }
+            nextMusic = getRandomTrack(album.sounds);
+            nextIndex = album.sounds.findIndex(
+              (sound) => sound.name === nextMusic.name
+            );
             break;
           }
           case NextMode.REPEAT: {
@@ -127,35 +232,29 @@ export const handleNext = (
             break;
           }
           case NextMode.RANDOM_ALBUM: {
-            const randomAlbum = albums.filter(
-              (album) => !excludedAlbums.includes(album.name)
-            );
-            nextAlbum =
-              randomAlbum[Math.floor(Math.random() * randomAlbum.length)];
-            let availableSounds = [...nextAlbum.sounds]; // Start with all sounds
-            const nonWeatherSounds = availableSounds.filter(
-              (sound) =>
-                !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+            const result = selectRandomTrackFromAlbums(
+              isLive ? liveAlbums : albums,
+              isLive ? [] : excludedAlbums,
+              false,
+              album
             );
 
-            availableSounds = nonWeatherSounds;
-
-            nextIndex = Math.floor(Math.random() * availableSounds.length);
-            nextMusic = availableSounds[nextIndex];
-            nextIndex = nextAlbum.sounds.findIndex(
-              (sound) => sound.name === nextMusic.name
-            );
+            nextAlbum = result.album;
+            nextMusic = result.sound;
+            nextIndex = result.index;
             break;
           }
           case NextMode.RANDOM_ALBUM_WEATHER: {
-            const randomAlbum = albums.filter(
-              (album) => !excludedAlbums.includes(album.name)
+            const result = selectRandomTrackFromAlbums(
+              albums,
+              excludedAlbums,
+              true,
+              album
             );
-            nextAlbum = randomAlbum[
-              Math.floor(Math.random() * randomAlbum.length)
-            ] as typeof album;
-            nextIndex = Math.floor(Math.random() * nextAlbum.sounds.length);
-            nextMusic = nextAlbum.sounds[nextIndex];
+
+            nextAlbum = result.album;
+            nextMusic = result.sound;
+            nextIndex = result.index;
             break;
           }
         }
@@ -165,6 +264,7 @@ export const handleNext = (
           name: nextMusic.name,
           index: nextIndex,
         });
+        updateRecentlyPlayed(nextMusic.name, nextAlbum?.name!);
       }
     } else {
       // Fade out, reload, and fade in for hourly mode looping
