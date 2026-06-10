@@ -89,7 +89,7 @@ export default function Home() {
         <LiveAds />
         <div className="absolute h-full w-full top-0 overflow-hidden aspect-video pointer-events-none z-[-10]">
           <div className="w-full h-full bg-black/30 absolute z-10"></div>
-          <video
+          {/* <video
             ref={videoRef}
             key={currentVideoIndex} // Force re-render on video change
             src={videoIds[currentVideoIndex]}
@@ -106,18 +106,18 @@ export default function Home() {
             style={{
               transform: 'translateZ(0)', // Hardware acceleration hint
             }}
-          />
-          {isLoading && (
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <Image
-                src="/img/celeste.png"
-                alt="Loading..."
-                width={1920}
-                height={1080}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          )}
+          /> */}
+          {/* {isLoading && ( */}
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <Image
+              src="/img/celeste.png"
+              alt="Loading..."
+              width={1920}
+              height={1080}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          {/* )} */}
         </div>
         <MusicPlayer isLive />
       </main>

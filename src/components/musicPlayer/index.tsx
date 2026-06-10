@@ -12,6 +12,8 @@ import StreamChoice from '../streamChoice';
 import { NextMode } from '@/types/Enum';
 import RandomModePopup from '../randomMode';
 import LiveMusicName from '../liveMusicName';
+import LivePoll from '../livePoll';
+import { useLivePoll } from '@/hooks/useLivePoll';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
@@ -91,6 +93,16 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       handleChangeMusic,
       getWeather
     );
+
+  // Twitch chat song poll (live page only). When a track ends, the poll winner
+  // plays next; if nobody voted, it falls back to the normal random next track.
+  const { onSongEnd } = useLivePoll({
+    isLive,
+    hourlyMode,
+    music,
+    setMusic,
+    fallbackNext: handleNext,
+  });
 
   useEffect(() => {
     if (!hourlyMode) {
@@ -204,7 +216,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
         className="hidden"
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
-        onEnded={handleNext}
+        onEnded={isLive ? onSongEnd : handleNext}
       >
         <source
           src={`/sounds/${music.album}/${music.name}.mp3`}
@@ -277,6 +289,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       </div>
       <RandomModePopup changeMusic={handleChangeMusic} />
       {isLive && <LiveMusicName handleNext={handleNext} />}
+      {isLive && <LivePoll />}
     </div>
   );
 }
