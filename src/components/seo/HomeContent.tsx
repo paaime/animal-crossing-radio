@@ -39,8 +39,7 @@ export default function HomeContent() {
           <p>
             Pick between{' '}
             <strong>
-              New Horizons, New Leaf, City Folk, Wild World and the GameCube
-              original
+              New Horizons, New Leaf, City Folk, Wild World and Population Growing
             </strong>
             , switch the weather to hear the rain and snow arrangements, or open
             the library and play any of the {totalTracks} tracks directly. It is
