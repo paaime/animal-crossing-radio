@@ -39,7 +39,7 @@ export default function Player() {
 
   return (
     <main
-      className="relative flex h-dvh flex-col items-center justify-between p-5 md:p-8"
+      className="relative flex h-lvh flex-col items-center justify-between p-5 md:p-8"
       style={{
         backgroundImage: `url('/img/${background}.png')`,
         backgroundSize: 'cover',
@@ -56,7 +56,7 @@ export default function Player() {
       <MusicPlayer isLive={false} />
       <div className="self-start w-full flex items-end justify-between">
         <Clock />
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <RandomModeButton />
           <MusicButton />
         </div>
