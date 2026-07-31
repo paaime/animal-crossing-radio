@@ -69,16 +69,6 @@ export default function SiteFooter({ year }: { year: number }) {
               </li>
               <li>
                 <a
-                  href={SOCIAL_LINKS.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="custom-pointer hover:underline"
-                >
-                  X / Twitter
-                </a>
-              </li>
-              <li>
-                <a
                   href={SOCIAL_LINKS.reddit}
                   target="_blank"
                   rel="noopener noreferrer"
