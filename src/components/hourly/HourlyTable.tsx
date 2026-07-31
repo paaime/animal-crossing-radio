@@ -52,12 +52,9 @@ export default function HourlyTable({
               </th>
               <td className="py-2.5 pr-4">
                 {row.clear ? (
-                  <a
-                    href={soundUrl(game.album, row.clear.name)}
-                    className="custom-pointer font-medium text-[#775B46] hover:underline"
-                  >
+                  <p className="font-medium text-[#775B46]">
                     {row.label} — {game.album}
-                  </a>
+                  </p>
                 ) : (
                   <span className="text-[#a29886]">—</span>
                 )}
