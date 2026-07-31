@@ -1,17 +1,18 @@
 'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useModalStore } from '@/stores/modal';
 import Button from '.';
 import SettingsIcon from '../icons/SettingsIcon';
 
 export default function SettingsButton() {
   const { setSettingsOpen } = useModalStore();
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   return (
     <Button
       onClick={() => {
         setSettingsOpen(true);
-        audio.play();
+        playClick();
       }}
     >
       <SettingsIcon />

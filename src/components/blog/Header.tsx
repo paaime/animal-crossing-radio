@@ -13,9 +13,9 @@ export default function Header() {
     <header className="flex items-center justify-between py-5">
       <Link href="/" className="flex items-center gap-3">
         <Image src="/img/icon.png" width={35} height={35} alt="logo" />
-        <h1 className="font-medium text-xl tracking-tight">
+        <span className="font-medium text-xl tracking-tight">
           Animal Crossing Radio
-        </h1>
+        </span>
       </Link>
       <nav className="hidden md:block">
         <ul className="flex gap-8">

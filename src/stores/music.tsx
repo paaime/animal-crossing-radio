@@ -3,6 +3,7 @@ import { useSettingsStore } from './settings';
 import { useTimeStore } from './time';
 import { IMusic, IMusicStore } from '@/types/Music';
 import { NextMode } from '@/types/Enum';
+import { soundUrl } from '@/utils/trackName';
 
 export const useMusicStore = create<IMusicStore>((set, get) => ({
   hourlyMode: true,
@@ -14,7 +15,7 @@ export const useMusicStore = create<IMusicStore>((set, get) => ({
   },
   getMusicPath: () => {
     const { album, name } = get().music;
-    return `/sounds/${album}/${name}.mp3`;
+    return soundUrl(album, name);
   },
   setNextMode: (nextMode: NextMode) => set({ nextMode }),
   setMusic: (music: IMusic) => set({ music }),

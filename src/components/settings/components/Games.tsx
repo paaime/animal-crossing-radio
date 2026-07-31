@@ -1,12 +1,14 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useSettingsStore } from '@/stores/settings';
-import { games } from '@/data/games';
+import { games } from '@/data/hourlyGames';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Games({ open }: { open: boolean }) {
   const activeGame = useSettingsStore((state) => state.game);
   const setGame = useSettingsStore((state) => state.setGame);
 
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   return (
     <AnimatePresence>
@@ -44,7 +46,7 @@ export default function Games({ open }: { open: boolean }) {
                   game === activeGame ? 'absolute font-bold' : 'hidden'
                 }  before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
                 onClick={() => {
-                  audio.play();
+                  playClick();
                   setGame(game);
                 }}
               >

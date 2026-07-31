@@ -110,7 +110,7 @@ export default function Home() {
           {/* {isLoading && ( */}
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <Image
-              src="/img/celeste.png"
+              src="/img/Celeste.png"
               alt="Loading..."
               width={1920}
               height={1080}

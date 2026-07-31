@@ -1,30 +1,32 @@
-import { IBlog } from "@/types/Blog";
-import { MetadataRoute } from "next";
-import { blogs } from "@/data/blogs";
+import { MetadataRoute } from 'next';
+import { blogs } from '@/data/blogs';
+import { hourlyGames } from '@/data/hourlyGames';
+import { absoluteUrl } from '@/config/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const postEntries: MetadataRoute.Sitemap = blogs.map((blog) => ({
+    url: absoluteUrl(`/blog/${blog.slug}`),
+    lastModified: new Date(blog.date),
+    changeFrequency: 'yearly',
+    priority: 0.6,
+  }));
 
-    const postEntries: MetadataRoute.Sitemap = blogs.map((blog: IBlog) => {
-        return {
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${blog.slug}`,
-            priority: 0.7,
-            lastModified: new Date(blog.date).toISOString(),
-        };
-    });
+  const hourlyEntries: MetadataRoute.Sitemap = hourlyGames.map((game) => ({
+    url: absoluteUrl(`/hourly/${game.slug}`),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
 
-    return [
-        {
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
-            priority: 1,
-        },
-        {
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
-            priority: 0.9,
-        },
-        {
-            url: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/latest`,
-            priority: 0.8,
-        },
-        ...postEntries,
-    ]
+  return [
+    { url: absoluteUrl('/'), changeFrequency: 'weekly', priority: 1 },
+    { url: absoluteUrl('/hourly'), changeFrequency: 'monthly', priority: 0.9 },
+    ...hourlyEntries,
+    { url: absoluteUrl('/blog'), changeFrequency: 'weekly', priority: 0.7 },
+    {
+      url: absoluteUrl('/blog/latest'),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    ...postEntries,
+  ];
 }

@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useSettingsStore } from '@/stores/settings';
 import DownArrow from '@/components/icons/DownArrow';
 import UpArrow from '@/components/icons/UpArrow';
@@ -22,7 +24,7 @@ export default function Time({ open }: { open: boolean }) {
     updateTime();
   }, [customTime]);
 
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   return (
     <AnimatePresence>
@@ -75,7 +77,7 @@ export default function Time({ open }: { open: boolean }) {
                         hour: customTime.hour + 1,
                         minute: customTime.minute,
                       });
-                    audio.play();
+                    playClick();
                   }}
                 />
                 <p>{hour}</p>
@@ -92,7 +94,7 @@ export default function Time({ open }: { open: boolean }) {
                         hour: customTime.hour - 1,
                         minute: customTime.minute,
                       });
-                    audio.play();
+                    playClick();
                   }}
                 />
               </div>
@@ -111,7 +113,7 @@ export default function Time({ open }: { open: boolean }) {
                         hour: customTime.hour,
                         minute: customTime.minute + 1,
                       });
-                    audio.play();
+                    playClick();
                   }}
                 />
                 <p>{minute < 10 ? '0' + minute : minute}</p>
@@ -128,7 +130,7 @@ export default function Time({ open }: { open: boolean }) {
                         hour: customTime.hour,
                         minute: customTime.minute - 1,
                       });
-                    audio.play();
+                    playClick();
                   }}
                 />
               </div>

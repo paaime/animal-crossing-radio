@@ -1,3 +1,4 @@
+'use client';
 import { useMusicStore } from '@/stores/music';
 import { ISound } from '@/types/Album';
 import { NextMode } from '@/types/Enum';

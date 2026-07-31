@@ -1,12 +1,15 @@
 import { Metadata } from 'next';
 import BlogList from '@/components/blog/BlogList';
+import { pageMetadata } from '@/config/metadata';
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://animal-crossing-radio.com'),
-  title: 'Animal Crossing Radio | Blog Posts',
-  description:
-    'Explore all our news, tips, and guides on Animal Crossing with Animal Crossing Radio. Stay updated on all things related to this popular game. Dive into our blog posts for expert insights and community discussions.',
-};
+const description =
+  'Explore all our news, tips, and guides on Animal Crossing with Animal Crossing Radio. Stay updated on all things related to this popular game. Dive into our blog posts for expert insights and community discussions.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Blog Posts',
+  description,
+  path: '/blog',
+});
 
 export default function Blog() {
   return (

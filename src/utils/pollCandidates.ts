@@ -1,12 +1,13 @@
 import { liveAlbums } from '@/data/liveAlbums';
 import { IPollCandidate } from '@/types/Poll';
+import { isWeatherVariant } from './trackName';
 
 interface FlatTrack extends IPollCandidate {
   uniqueId: string;
 }
 
 const isWeatherTrack = (name: string) =>
-  name.includes('🌧️') || name.includes('❄️');
+  isWeatherVariant(name);
 
 /** Every live track flattened to a candidate, skipping weather variants. */
 function flattenLiveTracks(): FlatTrack[] {

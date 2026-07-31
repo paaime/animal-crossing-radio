@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useSettingsStore } from '@/stores/settings';
 import { backgrounds } from '@/data/backgrounds';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,7 +8,7 @@ export default function Backgrounds({ open }: { open: boolean }) {
   const activeBackground = useSettingsStore((state) => state.background);
   const setBackground = useSettingsStore((state) => state.setBackground);
 
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   return (
     <AnimatePresence>
@@ -46,7 +48,7 @@ export default function Backgrounds({ open }: { open: boolean }) {
                     : 'hidden'
                 } before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
                 onClick={() => {
-                  audio.play();
+                  playClick();
                   setBackground(background);
                 }}
               >

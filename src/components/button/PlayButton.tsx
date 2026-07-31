@@ -1,3 +1,4 @@
+'use client';
 import Button from '.';
 import PauseIcon from '../icons/PauseIcon';
 import PlayIcon from '../icons/PlayIcon';

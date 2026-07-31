@@ -1,6 +1,7 @@
 import { Weather } from '@/types/Enum';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { RAIN_SUFFIX, SNOW_SUFFIX } from '@/utils/trackName';
 
 type Settings = {
   volume: number;
@@ -22,8 +23,8 @@ type Settings = {
   setShowLiveMessage: (showLiveMessage: boolean) => void;
 };
 
-export const useSettingsStore = create(
-  persist<Settings>(
+export const useSettingsStore = create<Settings>()(
+  persist(
     (set, get) => ({
       volume: 50,
       game: 'New Horizons',
@@ -55,9 +56,9 @@ export const useSettingsStore = create(
           case Weather.SUNNY:
             return '';
           case Weather.RAINY:
-            return ' 🌧️';
+            return RAIN_SUFFIX;
           case Weather.SNOWY:
-            return ' ❄️';
+            return SNOW_SUFFIX;
         }
       },
       setShowExtensionMessage: (showExtensionMessage: boolean) =>
@@ -67,6 +68,7 @@ export const useSettingsStore = create(
     }),
     {
       name: 'settings',
+      skipHydration: true,
     }
   )
 );

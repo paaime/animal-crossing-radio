@@ -1,9 +1,11 @@
+'use client';
 import Link from 'next/link';
 import RedditIcon from '../icons/RedditIcon';
 import XIcon from '../icons/XIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 import TwitchIcon from '../icons/TwitchIcon';
 import YoutubeIcon from '../icons/YoutubeIcon';
+import { SOCIAL_LINKS } from '@/config/site';
 
 export default function About({ open }: { open: boolean }) {
   return (
@@ -36,7 +38,7 @@ export default function About({ open }: { open: boolean }) {
             </div>
             <div className="flex gap-5">
               <a
-                href="https://twitter.com/crossing_radio_"
+                href={SOCIAL_LINKS.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black rounded-xl w-10 h-10 flex items-center justify-center"
@@ -44,7 +46,7 @@ export default function About({ open }: { open: boolean }) {
                 <XIcon />
               </a>
               <a
-                href="https://www.reddit.com/user/AnimalCrossingRadio"
+                href={SOCIAL_LINKS.reddit}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-red-500 rounded-xl w-10 h-10 flex items-center justify-center"
@@ -52,7 +54,7 @@ export default function About({ open }: { open: boolean }) {
                 <RedditIcon />
               </a>
               <a
-                href="https://www.twitch.tv/animal_crossing_radio"
+                href={SOCIAL_LINKS.twitch}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-700 rounded-xl w-10 h-10 flex items-center justify-center"
@@ -63,7 +65,7 @@ export default function About({ open }: { open: boolean }) {
             <div className="flex items-center mb-3 mt-3">
               <p className="text-[#775B46] font-bold text-lg">Email</p>
             </div>
-            <p className="text-sm ">contact@animal-crossing-radio.com</p>
+            <p className="text-sm ">{SOCIAL_LINKS.email}</p>
             <div className="flex items-center mb-3 mt-3">
               <p className="text-[#775B46] font-bold text-lg">Blogs</p>
             </div>
@@ -76,7 +78,7 @@ export default function About({ open }: { open: boolean }) {
               </p>
             </div>
             <Link
-              href="https://chromewebstore.google.com/detail/animal-crossing-radio-liv/nffhjilgaekcabipkpjkfnkmdacnnink"
+              href={SOCIAL_LINKS.chromeExtension}
               target="_blank"
               className="text-sm"
             >
@@ -95,7 +97,7 @@ export default function About({ open }: { open: boolean }) {
                 <YoutubeIcon />
               </a> */}
               <a
-                href="https://www.twitch.tv/animal_crossing_radio"
+                href={SOCIAL_LINKS.twitch}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-blue-700 rounded-xl w-10 h-10 flex items-center justify-center"

@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useSettingsStore } from '@/stores/settings';
 import { Weather as WeatherEnum } from '@/types/Enum';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -5,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Weather({ open }: { open: boolean }) {
   const { weather, setWeather } = useSettingsStore();
 
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   return (
     <AnimatePresence>
@@ -41,7 +43,7 @@ export default function Weather({ open }: { open: boolean }) {
                 weather === WeatherEnum.SUNNY ? 'absolute font-bold' : 'hidden'
               }  before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setWeather(WeatherEnum.SUNNY);
               }}
             >
@@ -52,7 +54,7 @@ export default function Weather({ open }: { open: boolean }) {
                 weather === WeatherEnum.RAINY ? 'absolute font-bold' : 'hidden'
               }  before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setWeather(WeatherEnum.RAINY);
               }}
             >
@@ -63,7 +65,7 @@ export default function Weather({ open }: { open: boolean }) {
                 weather === WeatherEnum.SNOWY ? 'absolute font-bold' : 'hidden'
               }  before:h-[13px] before:top-[10px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setWeather(WeatherEnum.SNOWY);
               }}
             >

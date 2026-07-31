@@ -1,7 +1,9 @@
+'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import TwitchIcon from '../icons/TwitchIcon';
 import YoutubeIcon from '../icons/YoutubeIcon';
 import { useEffect, useRef } from 'react';
+import { SOCIAL_LINKS } from '@/config/site';
 
 export default function StreamChoice({
   open,
@@ -73,7 +75,7 @@ export default function StreamChoice({
 
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                href="https://www.twitch.tv/animal_crossing_radio/"
+                href={SOCIAL_LINKS.twitch}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center gap-2 p-4 rounded-xl bg-purple-600 text-white hover:bg-purple-700 transition-colors"

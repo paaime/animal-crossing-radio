@@ -1,3 +1,4 @@
+'use client';
 import { useSettingsStore } from '@/stores/settings';
 import { motion, AnimatePresence } from 'framer-motion';
 

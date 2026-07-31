@@ -14,6 +14,7 @@ import RandomModePopup from '../randomMode';
 import LiveMusicName from '../liveMusicName';
 import LivePoll from '../livePoll';
 import { useLivePoll } from '@/hooks/useLivePoll';
+import { SOCIAL_LINKS } from '@/config/site';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   const {
@@ -53,7 +54,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       setMusic,
       hourlyMode,
       nextMode,
-      excludedAlbums
+      excludedAlbums,
     );
   const handleNext = () =>
     musicHelper.handleNext(
@@ -64,7 +65,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       nextMode,
       isLive,
       excludedAlbums,
-      volume
+      volume,
     );
   const play = () => musicHelper.play(audioRef, volume);
   const pause = () => musicHelper.pause(audioRef);
@@ -79,7 +80,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       play,
       pause,
       hourlyMode,
-      volume
+      volume,
     );
   const updateMusic = () =>
     musicHelper.updateMusic(
@@ -91,7 +92,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       currentHour,
       game,
       handleChangeMusic,
-      getWeather
+      getWeather,
     );
 
   // Twitch chat song poll (live page only). When a track ends, the poll winner
@@ -132,9 +133,21 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
   useEffect(() => {
     // when the user hit the space bar, play/pause the music
     const handleSpaceBar = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        handlePlay();
+      if (e.code !== 'Space') return;
+
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.isContentEditable ||
+          ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON', 'A'].includes(
+            target.tagName,
+          ))
+      ) {
+        return;
       }
+
+      e.preventDefault();
+      handlePlay();
     };
 
     document.addEventListener('keydown', handleSpaceBar);
@@ -218,16 +231,13 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
         onPlay={() => setIsPlaying(true)}
         onEnded={isLive ? onSongEnd : handleNext}
       >
-        <source
-          src={`/sounds/${music.album}/${music.name}.mp3`}
-          type="audio/mpeg"
-        />
+        <source src={getMusicPath()} type="audio/mpeg" />
       </audio>
       <div className="flex gap-1 mt-2 items-center flex-col text-white">
         {!isLive && (
-          <h1 className="text-lg tracking-tight text-center">
+          <p className="text-lg tracking-tight text-center">
             {music.album} - <span className="font-medium">{music.name}</span>
-          </h1>
+          </p>
         )}
         {!hourlyMode && !isLive && (
           <p
@@ -247,7 +257,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
               NEW
             </span>
             <Link
-              href="https://chromewebstore.google.com/detail/animal-crossing-radio-liv/nffhjilgaekcabipkpjkfnkmdacnnink"
+              href={SOCIAL_LINKS.chromeExtension}
               target="_blank"
               className="custom-pointer text-white group-hover:underline"
             >
@@ -272,7 +282,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
               //   audio.play();
               //   setShowStreamChoice(true);
               // }}
-              href="https://www.twitch.tv/animal_crossing_radio/"
+              href={SOCIAL_LINKS.twitch}
               target="_blank"
             >
               24/7 live on <span className="font-semibold">Twitch</span> !

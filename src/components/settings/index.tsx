@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import Volume from './components/Volume';
 import Games from './components/Games';
 import { useEffect, useRef, useState } from 'react';
@@ -10,7 +12,7 @@ import { useModalStore } from '@/stores/modal';
 
 export default function Settings() {
   const { settingsOpen, setSettingsOpen } = useModalStore();
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
   const ref = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState({
@@ -94,7 +96,7 @@ export default function Settings() {
                 open.volume ? 'absolute' : 'hidden'
               } before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: !open.volume,
                   games: false,
@@ -112,7 +114,7 @@ export default function Settings() {
                 open.games ? 'absolute' : 'hidden'
               } before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: false,
                   games: !open.games,
@@ -130,7 +132,7 @@ export default function Settings() {
                 open.backgrounds ? 'absolute' : 'hidden'
               } before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: false,
                   games: false,
@@ -148,7 +150,7 @@ export default function Settings() {
                 open.weather ? 'absolute' : 'hidden'
               }  before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: false,
                   games: false,
@@ -166,7 +168,7 @@ export default function Settings() {
                 open.time ? 'absolute' : 'hidden'
               }  before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: false,
                   games: false,
@@ -184,7 +186,7 @@ export default function Settings() {
                 open.about ? 'absolute' : 'hidden'
               }  before:h-[10px] before:top-[13px] before:-inset-1 before:bg-[#FFCC00] before:rounded-full relative inline-block w-fit custom-pointer`}
               onClick={() => {
-                audio.play();
+                playClick();
                 setOpen({
                   volume: false,
                   games: false,

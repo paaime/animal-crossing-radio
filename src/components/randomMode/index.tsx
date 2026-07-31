@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useMusicStore } from '@/stores/music';
 import { albums } from '@/data/albums';
 import { NextMode } from '@/types/Enum';
@@ -5,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSettingsStore } from '@/stores/settings';
 import { useModalStore } from '@/stores/modal';
+import { isWeatherVariant } from '@/utils/trackName';
 
 export default function RandomModePopup({
   changeMusic,
@@ -19,7 +22,7 @@ export default function RandomModePopup({
   const [includeWeather, setIncludeWeather] = useState(
     nextMode === NextMode.RANDOM_ALBUM_WEATHER
   );
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   const handleCheckbox = (album: string) => {
     if (excludedAlbums.includes(album)) {
@@ -27,7 +30,7 @@ export default function RandomModePopup({
     } else {
       setExcludedAlbums([...excludedAlbums, album]);
     }
-    audio.play();
+    playClick();
   };
 
   useEffect(() => {
@@ -35,7 +38,7 @@ export default function RandomModePopup({
   }, [nextMode]);
 
   const handleActivateToggle = () => {
-    audio.play();
+    playClick();
     if (
       nextMode === NextMode.RANDOM_ALBUM ||
       nextMode === NextMode.RANDOM_ALBUM_WEATHER
@@ -57,7 +60,7 @@ export default function RandomModePopup({
 
       if (!includeWeather) {
         const nonWeatherSounds = availableSounds.filter(
-          (sound) => !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+          (sound) => !isWeatherVariant(sound.name)
         );
 
         if (nonWeatherSounds.length > 0) {
@@ -152,7 +155,7 @@ export default function RandomModePopup({
                       ? NextMode.RANDOM_ALBUM_WEATHER
                       : NextMode.RANDOM_ALBUM
                   );
-                  audio.play();
+                  playClick();
                 }}
               />
               <div

@@ -1,3 +1,4 @@
+'use client';
 import Button from '.';
 import PrevIcon from '../icons/PrevIcon';
 

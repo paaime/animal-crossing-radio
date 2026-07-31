@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useMusicStore } from '@/stores/music';
 import { IAlbum } from '@/types/Album';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
@@ -10,7 +12,7 @@ export default function Album({
   setAlbum: Dispatch<SetStateAction<IAlbum | null>>;
 }) {
   const soundsNb = album.sounds.length;
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const { music } = useMusicStore((state) => state);
@@ -29,7 +31,7 @@ export default function Album({
         isPlaying && 'active'
       }`}
       onClick={() => {
-        audio.play();
+        playClick();
         setAlbum(album);
       }}
     >

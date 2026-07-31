@@ -1,21 +1,37 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { blogs } from '@/data/blogs';
 import { IBlog } from '@/types/Blog';
 import Image from 'next/image';
 import Link from 'next/link';
+import { pageMetadata } from '@/config/metadata';
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}) {
-  const blog: IBlog = blogs.find((blog) => blog.slug === params.slug)!;
+}): Promise<Metadata> {
+  const blog = blogs.find((entry) => entry.slug === params.slug);
 
-  if (!blog) return { title: 'Blog not found | Animal Crossing Radio' };
+  if (!blog) return { title: 'Blog not found' };
 
-  return {
-    title: `${blog.title} | Animal Crossing Radio`,
+  return pageMetadata({
+    title: blog.title,
     description: blog.meta,
-  };
+    path: `/blog/${blog.slug}`,
+    openGraph: {
+      type: 'article',
+      publishedTime: new Date(blog.date).toISOString(),
+      tags: blog.tags,
+      images: [{ url: blog.cover, alt: blog.title }],
+    },
+  });
 }
 
 export default function Page({
@@ -25,14 +41,11 @@ export default function Page({
     slug: string;
   };
 }) {
-  const blog: IBlog = blogs.find((blog) => blog.slug === params.slug)!;
+  const blog: IBlog | undefined = blogs.find(
+    (entry) => entry.slug === params.slug
+  );
 
-  if (!blog)
-    return (
-      <div className="h-screen flex items-center justify-center">
-        Blog not found
-      </div>
-    );
+  if (!blog) notFound();
 
   return (
     <div>

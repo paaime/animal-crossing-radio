@@ -3,6 +3,7 @@ import { albums } from '@/data/albums';
 import { NextMode } from '@/types/Enum';
 import { SetStateAction } from 'react';
 import { liveAlbums } from '@/data/liveAlbums';
+import { isWeatherVariant } from './trackName';
 
 const recentlyPlayed: string[] = [];
 const HISTORY_LIMIT = 10;
@@ -43,7 +44,7 @@ function selectRandomTrackFromAlbums(
       ? album.sounds
       : album.sounds.filter(
           (sound: { name: string }) =>
-            !sound.name.includes('🌧️') && !sound.name.includes('❄️')
+            !isWeatherVariant(sound.name)
         );
 
     return filteredSounds.map((sound: any) => ({

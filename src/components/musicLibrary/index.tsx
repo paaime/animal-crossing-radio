@@ -1,3 +1,5 @@
+'use client';
+import { useClickSound } from '@/hooks/useClickSound';
 import { useEffect, useRef, useState } from 'react';
 import Music from './components/Music';
 import { albums } from '@/data/albums';
@@ -13,7 +15,7 @@ import { useModalStore } from '@/stores/modal';
 
 export default function MusicLibrary() {
   const { libraryOpen, setLibraryOpen } = useModalStore();
-  const audio = new Audio('/sounds/click.mp3');
+  const playClick = useClickSound();
   const { nextMode, setNextMode } = useMusicStore((state) => state);
   const [album, setAlbum] = useState<IAlbum | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -63,7 +65,7 @@ export default function MusicLibrary() {
               nextMode === NextMode.REPEAT && 'active'
             }`}
             onClick={() => {
-              audio.play();
+              playClick();
               if (nextMode === NextMode.REPEAT) setNextMode(NextMode.NEXT);
               else setNextMode(NextMode.REPEAT);
             }}
@@ -77,7 +79,7 @@ export default function MusicLibrary() {
               nextMode === NextMode.RANDOM && 'active'
             }`}
             onClick={() => {
-              audio.play();
+              playClick();
               if (nextMode === NextMode.RANDOM) setNextMode(NextMode.NEXT);
               else setNextMode(NextMode.RANDOM);
             }}
@@ -119,7 +121,7 @@ export default function MusicLibrary() {
                   'blob2 1.5s cubic-bezier(0.37, 0, 0.63, 1) 0.3s infinite alternate',
               }}
               onClick={() => {
-                audio.play();
+                playClick();
                 setAlbum(null);
               }}
             >

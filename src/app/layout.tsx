@@ -2,8 +2,14 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-import React from 'react';
-import dynamic from 'next/dynamic';
+import StoreHydration from '@/components/StoreHydration';
+import Analytics from '@/components/Analytics';
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  OG_IMAGE,
+} from '@/config/site';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -36,54 +42,49 @@ const bokutoh = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://animal-crossing-radio.com'),
-  title: 'Animal Crossing Radio | Live Hourly Animal Crossing Music',
-  description:
-    'Animal Crossing music from all the games in live ! Enjoy the best hourly Animal Crossing music right now ! If you love this game, this radio is made for you !',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Animal Crossing Radio | Live Hourly Animal Crossing Music',
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   openGraph: {
     type: 'website',
-    url: 'https://animal-crossing-radio.com',
-    images: [
-      {
-        url: '/img/og-image.png',
-        width: 800,
-        height: 600,
-        alt: 'Animal Crossing Radio',
-      },
-    ],
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@crossing_radio_',
   },
 };
 
-const _NoSSR = ({ children }: { children: React.ReactNode }) => (
-  <React.Fragment>{children}</React.Fragment>
-);
-
-const NoSSR = dynamic(() => Promise.resolve(_NoSSR), {
-  ssr: false,
-});
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function RootLayout({
   children,
-  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" href="/logo192.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href={`${basePath}/img/icon192.png`} />
+        <link rel="manifest" href={`${basePath}/manifest.json`} />
         <link
           rel="shortcut icon"
           type="image/x-icon"
-          href={process.env.NEXT_PUBLIC_BASE_PATH || '' + '/favicon.ico'}
+          href={`${basePath}/favicon.ico`}
         />
       </head>
       <body
         className={`${poppins.variable} ${seurat.variable} ${bokutoh.variable} font-poppins`}
       >
-        <NoSSR>{children}</NoSSR>
+        <StoreHydration />
+        <Analytics />
+        {children}
       </body>
     </html>
   );
