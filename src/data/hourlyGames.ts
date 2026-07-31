@@ -51,7 +51,7 @@ export const hourlyGames: IHourlyGame[] = [
     platform: 'Nintendo GameCube',
     year: 2001,
     blurb:
-      'Where the series began. The GameCube original is the rawest of the five — short loops, prominent synth brass, and a noticeably more melancholy set of late-night hours.',
+      'Where the series began. Population Growing is the rawest of the five — short loops, prominent synth brass, and a noticeably more melancholy set of late-night hours.',
   },
 ];
 

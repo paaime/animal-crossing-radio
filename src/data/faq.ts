@@ -9,12 +9,12 @@ export const homeFaqs: IFaq[] = [
   {
     question: 'Which Animal Crossing games can I listen to?',
     answer:
-      'Five games have a full 24-hour soundtrack: New Horizons (Switch), New Leaf (3DS), City Folk (Wii), Wild World (DS) and the GameCube original, Animal Crossing (Population: Growing!). The music library also includes K.K. Slider, Happy Home Designer, Pocket Camp and Amiibo Festival.',
+      'Five games have a full 24-hour soundtrack: New Horizons (Switch), New Leaf (3DS), City Folk (Wii), Wild World (DS) and Population Growing, Animal Crossing (Population: Growing!). The music library also includes K.K. Slider, Happy Home Designer, Pocket Camp and Amiibo Festival.',
   },
   {
     question: 'Does the music change with the weather?',
     answer:
-      'Yes. Each hour has rain and snow arrangements in addition to the clear-weather version, and you can switch between them in the settings. The GameCube original only shipped snow variants, so it has clear and snow but no rain.',
+      'Yes. Each hour has rain and snow arrangements in addition to the clear-weather version, and you can switch between them in the settings. Population Growing only shipped snow variants, so it has clear and snow but no rain.',
   },
   {
     question: 'Is it free?',

@@ -7,7 +7,7 @@ import { pageMetadata } from '@/config/metadata';
 import GameCard from '@/components/hourly/GameCard';
 
 const description =
-  'Every hourly Animal Crossing soundtrack in one place — New Horizons, New Leaf, City Folk, Wild World and the GameCube original. Full 24-hour tracklists with durations, rain and snow versions, playable free in your browser.';
+  'Every hourly Animal Crossing soundtrack in one place — New Horizons, New Leaf, City Folk, Wild World and Population Growing. Full 24-hour tracklists with durations, rain and snow versions, playable free in your browser.';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Animal Crossing Hourly Music — Every Game, Every Hour',

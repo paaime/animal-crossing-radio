@@ -112,7 +112,7 @@ export default function HourlyGamePage({
         <p className="mt-2 text-sm text-[#7a6f61]">
           {rainCount > 0
             ? `Includes ${rainCount} rain and ${snowCount} snow arrangements.`
-            : `The GameCube original shipped ${snowCount} snow arrangements but no rain versions, so the rain column is empty.`}
+            : `Population Growing shipped ${snowCount} snow arrangements but no rain versions, so the rain column is empty.`}
         </p>
         <div className="mt-4">
           <HourlyTable game={game} rows={rows} />
