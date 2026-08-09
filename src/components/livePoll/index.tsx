@@ -39,7 +39,7 @@ export default function LivePoll() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="absolute bottom-10 right-10 w-[380px] max-w-[calc(100vw-80px)] text-white"
+          className="absolute bottom-10 right-10 w-[390px] max-w-[calc(100vw-80px)] text-white"
           initial={{ opacity: 0, y: 20, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.97 }}
@@ -96,15 +96,15 @@ export default function LivePoll() {
                       <Image
                         src={`/img/artworks/${candidate.album}/512x512.png`}
                         alt={candidate.album}
-                        width={44}
-                        height={44}
-                        className="rounded-lg w-11 h-11 shrink-0"
+                        width={60}
+                        height={60}
+                        className="rounded-lg size-14 shrink-0"
                       />
                       <div className="flex flex-col min-w-0 flex-1">
-                        <span className="font-semibold leading-tight truncate">
+                        <span className="font-semibold text-lg leading-tight truncate">
                           {candidate.name}
                         </span>
-                        <span className="text-xs font-light text-white/70 truncate">
+                        <span className="text-sm font-light text-white/70 truncate">
                           {candidate.album}
                         </span>
                       </div>

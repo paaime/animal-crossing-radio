@@ -14,6 +14,8 @@ import RandomModePopup from '../randomMode';
 import LiveMusicName from '../liveMusicName';
 import LivePoll from '../livePoll';
 import { useLivePoll } from '@/hooks/useLivePoll';
+import { useAudioMonitor } from '@/hooks/useAudioMonitor';
+import DebugOverlay from '../debugOverlay';
 import { SOCIAL_LINKS } from '@/config/site';
 
 export default function MusicPlayer({ isLive }: { isLive: boolean }) {
@@ -104,6 +106,11 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
     setMusic,
     fallbackNext: handleNext,
   });
+
+  // Records media events, media errors, page errors, rejected play() calls and
+  // stalls to a log that survives a reload. Live page only, and observational
+  // only — nothing here changes playback.
+  useAudioMonitor({ audioRef, enabled: isLive });
 
   useEffect(() => {
     if (!hourlyMode) {
@@ -300,6 +307,7 @@ export default function MusicPlayer({ isLive }: { isLive: boolean }) {
       <RandomModePopup changeMusic={handleChangeMusic} />
       {isLive && <LiveMusicName handleNext={handleNext} />}
       {isLive && <LivePoll />}
+      {isLive && <DebugOverlay />}
     </div>
   );
 }

@@ -107,7 +107,6 @@ export default function Home() {
               transform: 'translateZ(0)', // Hardware acceleration hint
             }}
           /> */}
-          {/* {isLoading && ( */}
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <Image
               src="/img/Celeste.png"
@@ -117,7 +116,6 @@ export default function Home() {
               className="h-full w-full object-cover"
             />
           </div>
-          {/* )} */}
         </div>
         <MusicPlayer isLive />
       </main>
