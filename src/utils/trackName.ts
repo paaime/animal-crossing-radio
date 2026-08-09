@@ -20,8 +20,25 @@ export function hourLabel(hour24: number): string {
   return `${hour12} ${ampm}`;
 }
 
+const PATH_SAFE_ESCAPES: Record<string, string> = {
+  '%24': '$',
+  '%26': '&',
+  '%2B': '+',
+  '%2C': ',',
+  '%3A': ':',
+  '%3B': ';',
+  '%3D': '=',
+  '%40': '@',
+};
+
+const encodePathSegment = (segment: string): string =>
+  encodeURIComponent(segment).replace(
+    /%(?:24|26|2B|2C|3A|3B|3D|40)/g,
+    (escape) => PATH_SAFE_ESCAPES[escape],
+  );
+
 export const soundUrl = (album: string, track: string) =>
-  `/sounds/${encodeURIComponent(album)}/${encodeURIComponent(track)}.mp3`;
+  `/sounds/${encodePathSegment(album)}/${encodePathSegment(track)}.mp3`;
 
 /** True when a track name is a rain or snow arrangement rather than the clear version. */
 export const isWeatherVariant = (trackName: string) =>
