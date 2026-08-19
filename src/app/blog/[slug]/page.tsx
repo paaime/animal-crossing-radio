@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { blogs } from '@/data/blogs';
-import { IBlog } from '@/types/Blog';
 import Image from 'next/image';
 import Link from 'next/link';
+import { blogs } from '@/data/blogs';
+import { IBlog } from '@/types/Blog';
 import { pageMetadata } from '@/config/metadata';
+import { formatPostDate, parsePostDate, toIsoDate } from '@/utils/blog';
+import PostBody from '@/components/blog/PostBody';
+import TagList from '@/components/blog/TagList';
 
 export const dynamicParams = false;
 
@@ -27,7 +30,7 @@ export async function generateMetadata({
     path: `/blog/${blog.slug}`,
     openGraph: {
       type: 'article',
-      publishedTime: new Date(blog.date).toISOString(),
+      publishedTime: parsePostDate(blog.date).toISOString(),
       tags: blog.tags,
       images: [{ url: blog.cover, alt: blog.title }],
     },
@@ -48,75 +51,56 @@ export default function Page({
   if (!blog) notFound();
 
   return (
-    <div>
-      <div className="flex flex-col gap-2 border-b border-gray-700 text-center py-5 mb-5">
-        <p className="text-gray-400">{blog.date}</p>
-        <h1 className="text-3xl lg:text-5xl font-semibold !leading-[2.5rem] lg:!leading-[3.5rem]">
+    <article className="pt-4">
+      <Link
+        href="/blog"
+        className="custom-pointer text-sm text-[#7a6f61] hover:underline"
+      >
+        ← All blog posts
+      </Link>
+
+      <header className="mt-6">
+        <time dateTime={toIsoDate(blog.date)} className="text-sm text-[#7a6f61]">
+          {formatPostDate(blog.date)}
+        </time>
+        <h1 className="mt-1.5 font-seurat text-2xl leading-tight text-[#775B46] md:text-4xl">
           {blog.title}
         </h1>
+        <p className="mt-3 leading-relaxed text-[#6b6052] md:text-lg">
+          {blog.description}
+        </p>
+        <TagList tags={blog.tags} className="mt-4" />
+      </header>
+
+      <div className="mt-6 aspect-[3/2] overflow-hidden rounded-2xl">
+        <Image
+          className="h-full w-full object-cover"
+          src={blog.cover}
+          alt=""
+          width={1920}
+          height={1280}
+          priority
+        />
       </div>
-      <p className="text-lg text-gray-400 font-light mb-7">
-        {blog.description}
-      </p>
-      <Image
-        className="mt-7 mb-7 rounded-xl"
-        src={blog.cover}
-        alt={blog.title}
-        width={1920}
-        height={1080}
-        priority
-      />
-      {blog.content.map((content: any, key: number) => {
-        switch (content.type) {
-          case 'title':
-            return (
-              <h2 key={key} className="text-xl lg:text-2xl font-semibold">
-                {content.content}
-              </h2>
-            );
-          case 'paragraph':
-            return (
-              <p key={key} className="text-gray-400 my-7 font-light leading-7">
-                {content.content}
-              </p>
-            );
-          case 'image':
-            return (
-              <Image
-                key={key}
-                className="mb-7 rounded-xl"
-                src={content.src}
-                alt={content.alt}
-                width={1920}
-                height={1080}
-              />
-            );
-          case 'subtitle':
-            return (
-              <h3 key={key} className="text-lg lg:text-xl font-semibold ml-5">
-                {content.content}
-              </h3>
-            );
-          case 'subparagraph':
-            return (
-              <p
-                key={key}
-                className="text-gray-400 my-7 font-light leading-7 ml-5"
-              >
-                {content.content}
-              </p>
-            );
-          default:
-            return null;
-        }
-      })}
-      <Link
-        href="/"
-        className="flex items-center justify-center gap-3 border border-x-0 border-gray-700 py-3 my-10"
-      >
-        <Image src="/img/icon.png" width={25} height={25} alt="logo" />
-        <p>Listen Animal Crossing Radio !</p>
-      </Link>
-    </div>
+
+      <PostBody blocks={blog.content} />
+
+      <aside className="mt-12 rounded-2xl bg-white/70 p-6">
+        <h2 className="font-seurat text-xl text-[#775B46]">
+          Listen while you read
+        </h2>
+        <p className="mt-2 leading-relaxed">
+          Animal Crossing Radio plays the hourly music from every Animal
+          Crossing game, matched to your own clock. Free, no account, nothing to
+          install.
+        </p>
+        <Link
+          href="/"
+          className="custom-pointer mt-4 inline-block rounded-full bg-[#E2826A] px-5 py-2.5 font-medium text-white transition hover:opacity-90"
+        >
+          Open the radio
+        </Link>
+      </aside>
+    </article>
   );
 }

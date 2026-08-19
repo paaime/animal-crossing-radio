@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { albums } from '@/data/albums';
-import { blogs } from '@/data/blogs';
 import { hourlyGames } from '@/data/hourlyGames';
 import { homeFaqs } from '@/data/faq';
 import { getHourlyRows, countHourlyTracks } from '@/utils/hourly';
+import { getSortedPosts } from '@/utils/blog';
 import { SOCIAL_LINKS } from '@/config/site';
 import SiteFooter from './SiteFooter';
 import GameCard from '@/components/hourly/GameCard';
@@ -14,9 +14,7 @@ const totalTracks = albums.reduce(
   0,
 );
 
-const latestPosts = [...blogs]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 3);
+const latestPosts = getSortedPosts().slice(0, 3);
 
 export default function HomeContent() {
   const year = new Date().getFullYear();
