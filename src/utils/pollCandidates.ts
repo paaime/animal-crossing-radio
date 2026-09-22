@@ -1,9 +1,11 @@
 import { liveAlbums } from '@/data/liveAlbums';
 import { IPollCandidate } from '@/types/Poll';
 import { isWeatherVariant } from './trackName';
+import { getLiveTrackWeight, pickWeighted } from './weightedPick';
 
 interface FlatTrack extends IPollCandidate {
   uniqueId: string;
+  weight: number;
 }
 
 const isWeatherTrack = (name: string) =>
@@ -11,21 +13,26 @@ const isWeatherTrack = (name: string) =>
 
 /** Every live track flattened to a candidate, skipping weather variants. */
 function flattenLiveTracks(): FlatTrack[] {
-  return liveAlbums.flatMap((album) =>
-    album.sounds
-      .filter((sound) => !isWeatherTrack(sound.name))
-      .map((sound) => ({
-        album: album.name,
-        name: sound.name,
-        index: album.sounds.findIndex((s) => s.name === sound.name),
-        uniqueId: `${album.name}:${sound.name}`,
-      }))
-  );
+  return liveAlbums.flatMap((album) => {
+    const sounds = album.sounds.filter(
+      (sound) => !isWeatherTrack(sound.name)
+    );
+    const weight = getLiveTrackWeight(album, sounds.length);
+
+    return sounds.map((sound) => ({
+      album: album.name,
+      name: sound.name,
+      index: album.sounds.findIndex((s) => s.name === sound.name),
+      uniqueId: `${album.name}:${sound.name}`,
+      weight,
+    }));
+  });
 }
 
 /**
  * Pick `count` distinct random live tracks for a poll, excluding the track
- * currently playing so the poll never offers what's already on.
+ * currently playing so the poll never offers what's already on. Each game
+ * shows up in proportion to its live `share`.
  */
 export function pickPollCandidates(
   count: number,
@@ -37,15 +44,15 @@ export function pickPollCandidates(
     (track) => track.uniqueId !== excludeId
   );
 
-  // Fisher–Yates partial shuffle: pick `count` without replacement.
-  const picked: FlatTrack[] = [];
-  const working = [...pool];
-  const target = Math.min(count, working.length);
-  for (let i = 0; i < target; i += 1) {
-    const j = i + Math.floor(Math.random() * (working.length - i));
-    [working[i], working[j]] = [working[j], working[i]];
-    picked.push(working[i]);
-  }
+  // Weighted pick of `count` tracks without replacement.
+  const target = Math.min(count, pool.length);
+  const picked = Array.from({ length: target }).reduce<FlatTrack[]>(
+    (chosen) => {
+      const remaining = pool.filter((track) => !chosen.includes(track));
+      return [...chosen, pickWeighted(remaining, (track) => track.weight)];
+    },
+    []
+  );
 
   return picked.map(({ album, name, index }) => ({ album, name, index }));
 }

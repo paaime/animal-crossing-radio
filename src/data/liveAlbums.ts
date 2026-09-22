@@ -1,9 +1,10 @@
-import { IAlbum } from '@/types/Album';
+import { ILiveAlbum } from '@/types/Album';
 
-export const liveAlbums: IAlbum[] = [
+export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'New Horizons',
     platform: 'Switch',
+    share: 20,
     sounds: [
       {
         duration: '3:10',
@@ -166,6 +167,7 @@ export const liveAlbums: IAlbum[] = [
   {
     name: 'New Leaf',
     platform: '3DS',
+    share: 35,
     sounds: [
       {
         duration: '2:06',
@@ -336,6 +338,7 @@ export const liveAlbums: IAlbum[] = [
   {
     name: 'City Folk',
     platform: 'Wii',
+    share: 30,
     sounds: [
       {
         duration: '2:07',
@@ -482,18 +485,151 @@ export const liveAlbums: IAlbum[] = [
   {
     name: 'Population Growing',
     platform: 'GameCube',
+    share: 15,
     sounds: [
+      {
+        duration: '1:02',
+        name: '1 AM',
+      },
+      {
+        duration: '1:40',
+        name: '2 AM',
+      },
+      {
+        duration: '2:31',
+        name: '4 AM',
+      },
+      {
+        duration: '3:08',
+        name: '5 AM',
+      },
+      {
+        duration: '2:56',
+        name: '6 AM',
+      },
+      {
+        duration: '2:31',
+        name: '7 AM',
+      },
+      {
+        duration: '2:34',
+        name: '8 AM',
+      },
+      {
+        duration: '1:25',
+        name: '9 AM',
+      },
+      {
+        duration: '2:11',
+        name: '10 AM',
+      },
+      {
+        duration: '2:36',
+        name: '11 AM',
+      },
+      {
+        duration: '2:06',
+        name: '12 PM',
+      },
+      {
+        duration: '2:31',
+        name: '1 PM',
+      },
+      {
+        duration: '2:19',
+        name: '2 PM',
+      },
+      {
+        duration: '0:50',
+        name: '3 PM',
+      },
+      {
+        duration: '2:23',
+        name: '4 PM',
+      },
+      {
+        duration: '2:18',
+        name: '5 PM',
+      },
+      {
+        duration: '2:18',
+        name: '6 PM',
+      },
+      {
+        duration: '2:20',
+        name: '7 PM',
+      },
+      {
+        duration: '2:06',
+        name: '8 PM',
+      },
       {
         duration: '2:40',
         name: '9 PM',
+      },
+      {
+        duration: '1:50',
+        name: '10 PM',
+      },
+      {
+        duration: '1:30',
+        name: '11 PM',
+      },
+      {
+        duration: '2:18',
+        name: '12 AM',
+      },
+      {
+        duration: '2:23',
+        name: 'Able Sisters',
       },
       {
         duration: '1:09',
         name: 'Main Theme',
       },
       {
+        duration: '2:00',
+        name: "Nook 'N' Go",
+      },
+      {
+        duration: '1:09',
+        name: "Nook's Cranny",
+      },
+      {
+        duration: '2:01',
+        name: "Nookington's",
+      },
+      {
+        duration: '2:02',
+        name: 'Nookway',
+      },
+      {
+        duration: '0:56',
+        name: 'Police Station',
+      },
+      {
+        duration: '2:23',
+        name: 'Post Office',
+      },
+      {
         duration: '1:57',
         name: 'Rainy Day',
+      },
+      {
+        duration: '1:24',
+        name: 'Stop By My Shop Soon',
+      },
+      {
+        duration: '2:55',
+        name: 'The Museums',
+      },
+      {
+        duration: '2:25',
+        name: 'Train Ride',
+      },
+      {
+        duration: '1:50',
+        name: 'Working For Tom Nook',
       },
     ],
   },

@@ -8,3 +8,7 @@ export interface IAlbum {
   platform: string;
   sounds: ISound[];
 }
+
+export interface ILiveAlbum extends IAlbum {
+  share: number;
+}

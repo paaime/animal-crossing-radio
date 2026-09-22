@@ -4,6 +4,7 @@ import { NextMode } from '@/types/Enum';
 import { SetStateAction } from 'react';
 import { liveAlbums } from '@/data/liveAlbums';
 import { isWeatherVariant } from './trackName';
+import { getLiveTrackWeight, pickWeighted } from './weightedPick';
 
 const recentlyPlayed: string[] = [];
 const HISTORY_LIMIT = 10;
@@ -20,7 +21,8 @@ function selectRandomTrackFromAlbums(
   albums: any[],
   excludedAlbums: string[],
   includeWeather: boolean,
-  currentAlbum: any
+  currentAlbum: any,
+  weightByShare = false
 ) {
   // Filter available albums
   const availableAlbums = albums.filter(
@@ -65,9 +67,20 @@ function selectRandomTrackFromAlbums(
     };
   }
 
+  const trackCountByAlbum = allSounds.reduce<Record<string, number>>(
+    (counts, item) => ({
+      ...counts,
+      [item.album.name]: (counts[item.album.name] ?? 0) + 1,
+    }),
+    {}
+  );
+
   const tracksWithIds = allSounds.map((item) => ({
     name: item.sound.name,
     albumId: item.album.name,
+    weight: weightByShare
+      ? getLiveTrackWeight(item.album, trackCountByAlbum[item.album.name])
+      : 1,
   }));
 
   // Get random track from combined pool
@@ -103,8 +116,10 @@ function selectRandomTrackFromAlbums(
   }
 }
 
-// Helper to get a random track not in history
-function getRandomTrack(tracks: { name: string; albumId?: string }[]) {
+// Helper to get a random track not in history. Tracks without a weight count as 1.
+function getRandomTrack(
+  tracks: { name: string; albumId?: string; weight?: number }[]
+) {
   const available = tracks.filter((track) => {
     if (track.albumId) {
       return !recentlyPlayed.includes(`${track.albumId}:${track.name}`);
@@ -112,11 +127,13 @@ function getRandomTrack(tracks: { name: string; albumId?: string }[]) {
     return !recentlyPlayed.some((item) => item.endsWith(`:${track.name}`));
   });
 
+  const getWeight = (track: { weight?: number }) => track.weight ?? 1;
+
   if (available.length === 0) {
     recentlyPlayed.length = 0;
-    return tracks[Math.floor(Math.random() * tracks.length)];
+    return pickWeighted(tracks, getWeight);
   }
-  return available[Math.floor(Math.random() * available.length)];
+  return pickWeighted(available, getWeight);
 }
 
 export const handlePrev = (
@@ -237,7 +254,8 @@ export const handleNext = (
               isLive ? liveAlbums : albums,
               isLive ? [] : excludedAlbums,
               false,
-              album
+              album,
+              isLive
             );
 
             nextAlbum = result.album;
