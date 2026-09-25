@@ -98,13 +98,13 @@ export default function LivePoll() {
                         alt={candidate.album}
                         width={60}
                         height={60}
-                        className="rounded-lg size-14 shrink-0"
+                        className="rounded-lg size-16 shrink-0"
                       />
                       <div className="flex flex-col min-w-0 flex-1">
-                        <span className="font-semibold text-lg leading-tight truncate">
+                        <span className="font-semibold text-xl leading-tight truncate">
                           {candidate.name}
                         </span>
-                        <span className="text-sm font-light text-white/70 truncate">
+                        <span className="text-lg font-light text-white/70 truncate">
                           {candidate.album}
                         </span>
                       </div>

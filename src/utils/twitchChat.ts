@@ -1,11 +1,11 @@
-/** A parsed chat message from Twitch IRC. */
+import { IChatEmote } from '@/types/ChatEmote';
+import { parseEmotesTag } from './chatEmotes/twitchEmotes';
+
 export interface ITwitchChatMessage {
-  /** Stable Twitch user id (preferred dedupe key for votes). */
   userId: string;
-  /** Display name, used only for debugging / potential UI. */
   username: string;
-  /** Raw message text. */
   text: string;
+  emotes?: IChatEmote[];
 }
 
 export type ChatStatus = 'connecting' | 'connected' | 'disconnected';
@@ -175,6 +175,7 @@ export function parsePrivmsg(line: string): ITwitchChatMessage | null {
   const nick = prefix.split('!')[0] || 'unknown';
   const userId = tags['user-id'] || nick;
   const username = tags['display-name'] || nick;
+  const emotes = parseEmotesTag(tags['emotes'], text);
 
-  return { userId, username, text };
+  return { userId, username, text, emotes };
 }

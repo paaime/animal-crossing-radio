@@ -6,6 +6,8 @@ export const SITE_NAME = 'Animal Crossing Radio';
 export const SITE_DESCRIPTION =
   'Listen to hourly Animal Crossing music from every game, synced to your own clock. New Horizons, New Leaf, City Folk, Wild World and Population Growing — free, in your browser.';
 
+export const TWITCH_CHANNEL = 'animal_crossing_radio';
+
 export const SOCIAL_LINKS = {
   twitch: 'https://www.twitch.tv/animal_crossing_radio',
   twitter: 'https://twitter.com/crossing_radio_',

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import LiveAds from '@/components/liveAds';
 import LiveStreamerCard from '@/components/liveStreamerCard';
+import ChatEmotes from '@/components/chatEmotes';
 import Image from 'next/image';
 
 // Video sources
@@ -87,6 +88,7 @@ export default function Home() {
   return (
     <>
       <main className="flex h-dvh flex-col items-center justify-between p-5 md:p-8 cursor-none">
+        <ChatEmotes />
         <LiveAds />
         <LiveStreamerCard />
         <div className="absolute h-full w-full top-0 overflow-hidden aspect-video pointer-events-none z-[-10]">

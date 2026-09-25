@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { IMusic } from '@/types/Music';
 import { usePollStore } from '@/stores/poll';
-import { TwitchChatClient } from '@/utils/twitchChat';
+import { subscribeToChat } from '@/utils/twitchChatBus';
+import { TWITCH_CHANNEL } from '@/config/site';
 import { parseVote } from '@/utils/voteParser';
 import {
   getLiveTrackDurationSeconds,
@@ -39,22 +40,17 @@ export function useLivePoll({
   const openPoll = usePollStore((state) => state.openPoll);
   const closePoll = usePollStore((state) => state.closePoll);
 
-  // Connect to Twitch chat once while live; tear down on leave/unmount.
+  // Count votes off the shared chat connection while live. The villager crowd
+  // reads the same socket, so subscribing here must not open a second one.
   useEffect(() => {
     if (!isLive) return;
 
-    const client = new TwitchChatClient({
-      channel: 'animal_crossing_radio',
-      onMessage: ({ userId, text }) => {
-        const { candidates, registerVote } = usePollStore.getState();
-        if (candidates.length === 0) return; // no open poll
-        const choice = parseVote(text, candidates.length);
-        if (choice !== null) registerVote(userId, choice);
-      },
+    return subscribeToChat(TWITCH_CHANNEL, ({ userId, text }) => {
+      const { candidates, registerVote } = usePollStore.getState();
+      if (candidates.length === 0) return; // no open poll
+      const choice = parseVote(text, candidates.length);
+      if (choice !== null) registerVote(userId, choice);
     });
-
-    client.connect();
-    return () => client.disconnect();
   }, [isLive]);
 
   // Open a new poll whenever a track starts; close it outside live playback.
