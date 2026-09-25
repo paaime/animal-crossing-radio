@@ -4,7 +4,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'New Horizons',
     platform: 'Switch',
-    share: 20,
+    share: 19,
     sounds: [
       {
         duration: '3:10',
@@ -167,7 +167,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'New Leaf',
     platform: '3DS',
-    share: 35,
+    share: 33,
     sounds: [
       {
         duration: '2:06',
@@ -338,7 +338,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'City Folk',
     platform: 'Wii',
-    share: 30,
+    share: 29,
     sounds: [
       {
         duration: '2:07',
@@ -485,7 +485,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'Population Growing',
     platform: 'GameCube',
-    share: 15,
+    share: 14,
     sounds: [
       {
         duration: '1:02',
@@ -630,6 +630,54 @@ export const liveAlbums: ILiveAlbum[] = [
       {
         duration: '1:50',
         name: 'Working For Tom Nook',
+      },
+    ],
+  },
+  {
+    name: 'Happy Home Designer',
+    platform: '3DS',
+    share: 2,
+    sounds: [
+      {
+        duration: '1:40',
+        name: 'Agency After',
+      },
+      {
+        duration: '1:27',
+        name: 'Agency Usually',
+      },
+    ],
+  },
+  {
+    name: 'Amiibo Festival',
+    platform: 'Wii U',
+    share: 1,
+    sounds: [
+      {
+        duration: '1:57',
+        name: 'Lounge',
+      },
+    ],
+  },
+  {
+    name: 'Pocket Camp',
+    platform: 'Mobile',
+    share: 1,
+    sounds: [
+      {
+        duration: '1:06',
+        name: 'Main Theme',
+      },
+    ],
+  },
+  {
+    name: 'Plaza',
+    platform: 'Wii U',
+    share: 1,
+    sounds: [
+      {
+        duration: '1:49',
+        name: 'Lounge',
       },
     ],
   },

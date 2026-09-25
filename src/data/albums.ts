@@ -184,7 +184,7 @@ export const albums: IAlbum[] = [
       },
       {
         duration: '2:13',
-        name: '3 PM. ❄️',
+        name: '3 PM ❄️',
       },
       {
         duration: '2:17',
@@ -3613,6 +3613,40 @@ export const albums: IAlbum[] = [
       {
         duration: '0:48',
         name: 'Welcome',
+      },
+    ],
+  },
+  {
+    name: 'Plaza',
+    platform: 'Wii U',
+    sounds: [
+      {
+        duration: '1:43',
+        name: 'Berlina',
+      },
+      {
+        duration: '0:28',
+        name: 'Channel Intro',
+      },
+      {
+        duration: '0:29',
+        name: 'Honyarara',
+      },
+      {
+        duration: '1:43',
+        name: 'K.K. Slider Guitar (Ver 1)',
+      },
+      {
+        duration: '1:43',
+        name: 'K.K. Slider Guitar (Ver 2)',
+      },
+      {
+        duration: '1:49',
+        name: 'Lounge',
+      },
+      {
+        duration: '1:43',
+        name: 'Pyontaro',
       },
     ],
   },
