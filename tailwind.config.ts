@@ -14,7 +14,8 @@ const config: Config = {
         'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        pink: '#ec4899'
+        pink: '#ec4899',
+        twitch: '#9146FF',
       },
       fontFamily: {
         poppins: 'var(--font-poppins)',

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import LiveAds from '@/components/liveAds';
+import LiveStreamerCard from '@/components/liveStreamerCard';
 import Image from 'next/image';
 
 // Video sources
@@ -87,6 +88,7 @@ export default function Home() {
     <>
       <main className="flex h-dvh flex-col items-center justify-between p-5 md:p-8 cursor-none">
         <LiveAds />
+        <LiveStreamerCard />
         <div className="absolute h-full w-full top-0 overflow-hidden aspect-video pointer-events-none z-[-10]">
           <div className="w-full h-full bg-black/30 absolute z-10"></div>
           {/* <video
