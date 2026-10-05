@@ -42,6 +42,21 @@ export function getHourlyRows(albumName: string): IHourlyRow[] {
   });
 }
 
+const HOURLY_TRACK_NAMES = new Set(
+  Array.from({ length: 24 }, (_, hour) => hourLabel(hour)).flatMap((label) => [
+    label,
+    label + RAIN_SUFFIX,
+    label + SNOW_SUFFIX,
+  ]),
+);
+
+export function getOtherTracks(albumName: string): ISound[] {
+  const album = albums.find((entry) => entry.name === albumName);
+  if (!album) return [];
+
+  return album.sounds.filter((sound) => !HOURLY_TRACK_NAMES.has(sound.name));
+}
+
 /**
  * albums.ts stores durations two ways: 'm:ss' for most tracks, and a bare
  * 'seconds.hundredths' float for short loops (e.g. Population Growing's

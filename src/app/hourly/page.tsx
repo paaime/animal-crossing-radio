@@ -7,10 +7,10 @@ import { pageMetadata } from '@/config/metadata';
 import GameCard from '@/components/hourly/GameCard';
 
 const description =
-  'Every hourly Animal Crossing soundtrack in one place — New Horizons, New Leaf, City Folk, Wild World and Population Growing. Full 24-hour tracklists with durations, rain and snow versions, playable free in your browser.';
+  'Every hourly Animal Crossing soundtrack (OST) in one place — New Horizons, New Leaf, City Folk, Wild World and Population Growing. Full 24-hour tracklists with durations, rain and snow versions, playable free in your browser.';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Animal Crossing Hourly Music — Every Game, Every Hour',
+  title: 'Animal Crossing Hourly Music & Soundtrack (OST) — Every Game',
   description,
   path: '/hourly',
 });
@@ -32,12 +32,13 @@ export default function HourlyIndexPage() {
     <>
       <div className="pt-6">
         <h1 className="font-seurat text-3xl md:text-5xl leading-tight text-[#775B46]">
-          Animal Crossing hourly music
+          Animal Crossing hourly music & soundtrack
         </h1>
         <div className="mt-5 space-y-4 leading-relaxed">
           <p>
             Every Animal Crossing game gives each hour of the day its own piece
-            of music, and swaps it the moment the clock ticks over. Across the
+            of music, and swaps it the moment the clock ticks over. These hourly
+            themes are the heart of every Animal Crossing soundtrack: across the
             five games below that is {grandTotal} hourly tracks, counting the
             rain and snow arrangements.
           </p>

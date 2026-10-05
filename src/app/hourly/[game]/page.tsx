@@ -7,8 +7,10 @@ import {
   getGameBySlug,
   getHourlyRows,
   countHourlyTracks,
+  getOtherTracks,
 } from '@/utils/hourly';
 import HourlyTable from '@/components/hourly/HourlyTable';
+import SoundtrackTable from '@/components/hourly/SoundtrackTable';
 import { pageMetadata } from '@/config/metadata';
 import GameCard from '@/components/hourly/GameCard';
 
@@ -27,12 +29,13 @@ export async function generateMetadata({
   if (!game) return { title: 'Not found' };
 
   const hasRain = getHourlyRows(game.album).some((row) => row.rain);
-  const title = `${game.title} Hourly Music — All 24 Tracks`;
-  const description = `Listen to every hourly track from ${game.title} (${
+  const otherCount = getOtherTracks(game.album).length;
+  const title = `${game.title} Hourly Music & Soundtrack (OST)`;
+  const description = `Listen to the full ${game.title} soundtrack (${
     game.platform
-  }, ${game.year}) — 12 AM through 11 PM${
-    hasRain ? ', with rain and snow versions' : ', plus snow versions'
-  }. Free, in your browser, synced to your own clock.`;
+  }, ${game.year}): every hourly theme from 12 AM to 11 PM${
+    hasRain ? ' with rain and snow versions' : ' with snow versions'
+  }, plus ${otherCount} more tracks from the game. Free, in your browser.`;
 
   return pageMetadata({
     title,
@@ -61,6 +64,7 @@ export default function HourlyGamePage({
   if (!game) notFound();
 
   const rows = getHourlyRows(game.album);
+  const otherTracks = getOtherTracks(game.album);
   const others = hourlyGames.filter((entry) => entry.slug !== game.slug);
   const clearCount = rows.filter((row) => row.clear).length;
   const rainCount = rows.filter((row) => row.rain).length;
@@ -80,11 +84,11 @@ export default function HourlyGamePage({
           />
           <div>
             <h1 className="font-seurat text-2xl md:text-4xl leading-tight text-[#775B46]">
-              {game.title} — Hourly Music
+              {game.title} — Hourly Music & Soundtrack
             </h1>
             <p className="mt-1.5 text-sm text-[#7a6f61]">
               {game.platform} · {game.year} · {countHourlyTracks(rows)} hourly
-              tracks
+              tracks · {otherTracks.length} other tracks
             </p>
           </div>
         </header>
@@ -92,8 +96,9 @@ export default function HourlyGamePage({
         <div className="mt-8 space-y-4 leading-relaxed">
           <p>{game.blurb}</p>
           <p>
-            Every hour of the day has its own track, and the music changes on
-            the hour just as it does in game. Below is the complete {clearCount}
+            The hourly themes are the heart of the {game.album} soundtrack
+            (OST): every hour of the day has its own track, and the music
+            changes on the hour just as it does in game. Below is the complete {clearCount}
             -track hourly list with durations — press play on any row to hear it
             right here, or{' '}
             <Link
@@ -107,7 +112,7 @@ export default function HourlyGamePage({
         </div>
 
         <h2 className="mt-12 font-seurat text-xl md:text-2xl text-[#775B46]">
-          Full hourly tracklist
+          Full hourly soundtrack
         </h2>
         <p className="mt-2 text-sm text-[#7a6f61]">
           {rainCount > 0
@@ -126,6 +131,17 @@ export default function HourlyGamePage({
             ? `In ${game.title} the hourly theme is re-arranged when it rains or snows — same melody, different instrumentation and mood. You can switch the weather in the radio's settings to hear any hour in any condition, without waiting for the real forecast.`
             : `${game.title} predates the rain arrangements later games added, but it does include a full set of snow versions for winter. You can switch to snow in the radio's settings to hear any hour in its winter arrangement.`}
         </p>
+
+        <h2 className="mt-12 font-seurat text-xl md:text-2xl text-[#775B46]">
+          The rest of the {game.album} soundtrack
+        </h2>
+        <p className="mt-3 leading-relaxed">
+          Beyond the hourly themes, the {game.album} OST has{' '}
+          {otherTracks.length} more tracks. Press play on any row to hear it.
+        </p>
+        <div className="mt-4">
+          <SoundtrackTable game={game} tracks={otherTracks} />
+        </div>
 
         <div className="mt-12 rounded-2xl bg-white/70 p-6">
           <h2 className="font-seurat text-xl text-[#775B46]">
