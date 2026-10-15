@@ -5,6 +5,7 @@ import { SetStateAction } from 'react';
 import { liveAlbums } from '@/data/liveAlbums';
 import { isWeatherVariant } from './trackName';
 import { getLiveTrackWeight, pickWeighted } from './weightedPick';
+import { withRandomWeather } from './liveWeather';
 
 const recentlyPlayed: string[] = [];
 const HISTORY_LIMIT = 10;
@@ -278,11 +279,12 @@ export const handleNext = (
           }
         }
 
-        setMusic({
+        const next = {
           album: nextAlbum?.name!,
           name: nextMusic.name,
           index: nextIndex,
-        });
+        };
+        setMusic(isLive ? withRandomWeather(next) : next);
         updateRecentlyPlayed(nextMusic.name, nextAlbum?.name!);
       }
     } else {

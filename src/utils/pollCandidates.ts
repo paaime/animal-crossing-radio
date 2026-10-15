@@ -1,7 +1,10 @@
+import { albums } from '@/data/albums';
 import { liveAlbums } from '@/data/liveAlbums';
+import { IAlbum } from '@/types/Album';
 import { IPollCandidate } from '@/types/Poll';
-import { isWeatherVariant } from './trackName';
+import { isWeatherVariant, stripWeatherSuffix } from './trackName';
 import { getLiveTrackWeight, pickWeighted } from './weightedPick';
+import { withRandomWeather } from './liveWeather';
 
 interface FlatTrack extends IPollCandidate {
   uniqueId: string;
@@ -32,13 +35,16 @@ function flattenLiveTracks(): FlatTrack[] {
 /**
  * Pick `count` distinct random live tracks for a poll, excluding the track
  * currently playing so the poll never offers what's already on. Each game
- * shows up in proportion to its live `share`.
+ * shows up in proportion to its live `share`, and tracks with a weather
+ * version may be offered rainy or snowy.
  */
 export function pickPollCandidates(
   count: number,
   exclude?: { album: string; name: string }
 ): IPollCandidate[] {
-  const excludeId = exclude ? `${exclude.album}:${exclude.name}` : null;
+  const excludeId = exclude
+    ? `${exclude.album}:${stripWeatherSuffix(exclude.name)}`
+    : null;
 
   const pool = flattenLiveTracks().filter(
     (track) => track.uniqueId !== excludeId
@@ -54,20 +60,26 @@ export function pickPollCandidates(
     []
   );
 
-  return picked.map(({ album, name, index }) => ({ album, name, index }));
+  return picked.map(({ album, name, index }) =>
+    withRandomWeather({ album, name, index })
+  );
 }
 
+const findSound = (source: IAlbum[], album: string, name: string) =>
+  source.find((a) => a.name === album)?.sounds.find((s) => s.name === name);
+
 /**
- * Duration (in seconds) of a live track, parsed from its "m:ss" label, or null
- * if the track isn't in the live pool. Used to size the poll countdown.
+ * Duration (in seconds) of a live track (or its weather variant), parsed from
+ * its "m:ss" label, or null if the track isn't in the live pool. Used to size
+ * the poll countdown.
  */
 export function getLiveTrackDurationSeconds(
   album: string,
   name: string
 ): number | null {
-  const sound = liveAlbums
-    .find((a) => a.name === album)
-    ?.sounds.find((s) => s.name === name);
+  const sound =
+    findSound(liveAlbums, album, name) ??
+    (isWeatherVariant(name) ? findSound(albums, album, name) : undefined);
   if (!sound) return null;
 
   const [minutes, seconds] = sound.duration.split(':').map(Number);

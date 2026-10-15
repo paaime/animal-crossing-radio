@@ -44,3 +44,6 @@ export const soundUrl = (album: string, track: string) =>
 export const isWeatherVariant = (trackName: string) =>
   trackName.includes(RAIN_SUFFIX.trim()) ||
   trackName.includes(SNOW_SUFFIX.trim());
+
+export const stripWeatherSuffix = (trackName: string) =>
+  trackName.replace(RAIN_SUFFIX, '').replace(SNOW_SUFFIX, '');
