@@ -4,7 +4,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'New Horizons',
     platform: 'Switch',
-    share: 19,
+    share: 18,
     sounds: [
       {
         duration: '3:10',
@@ -167,7 +167,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'New Leaf',
     platform: '3DS',
-    share: 33,
+    share: 31,
     sounds: [
       {
         duration: '2:06',
@@ -338,7 +338,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'City Folk',
     platform: 'Wii',
-    share: 29,
+    share: 28,
     sounds: [
       {
         duration: '2:07',
@@ -485,7 +485,7 @@ export const liveAlbums: ILiveAlbum[] = [
   {
     name: 'Population Growing',
     platform: 'GameCube',
-    share: 14,
+    share: 13,
     sounds: [
       {
         duration: '1:02',
@@ -678,6 +678,33 @@ export const liveAlbums: ILiveAlbum[] = [
       {
         duration: '1:49',
         name: 'Lounge',
+      },
+    ],
+  },
+  {
+    name: 'The Movie',
+    platform: 'Film',
+    share: 5,
+    sounds: [
+      {
+        duration: '1:18',
+        name: 'Main Theme',
+      },
+      {
+        duration: '1:48',
+        name: "Margie's Cherry Pie",
+      },
+      {
+        duration: '0:54',
+        name: 'Part-Time Work',
+      },
+      {
+        duration: '0:31',
+        name: 'Rosie',
+      },
+      {
+        duration: '1:19',
+        name: 'Winter Festival',
       },
     ],
   },

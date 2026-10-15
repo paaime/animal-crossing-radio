@@ -3650,4 +3650,214 @@ export const albums: IAlbum[] = [
       },
     ],
   },
+  {
+    name: 'The Movie',
+    platform: 'Film',
+    sounds: [
+      {
+        duration: '2:43',
+        name: '1 PM',
+      },
+      {
+        duration: '2:39',
+        name: '2 AM',
+      },
+      {
+        duration: '2:45',
+        name: '8 PM',
+      },
+      {
+        duration: '1:20',
+        name: 'A Lonely Night',
+      },
+      {
+        duration: '0:49',
+        name: 'Able Sisters',
+      },
+      {
+        duration: '0:22',
+        name: 'Afro!',
+      },
+      {
+        duration: '0:09',
+        name: 'Arrival!',
+      },
+      {
+        duration: '0:12',
+        name: 'Captured!',
+      },
+      {
+        duration: '0:28',
+        name: 'Champ the Monkey',
+      },
+      {
+        duration: '0:29',
+        name: 'Crash',
+      },
+      {
+        duration: '0:46',
+        name: 'Crazy Redd',
+      },
+      {
+        duration: '1:04',
+        name: 'Encounter With Gulliver',
+      },
+      {
+        duration: '0:26',
+        name: 'I Fell...',
+      },
+      {
+        duration: '0:46',
+        name: "It's a Serious Matter!",
+      },
+      {
+        duration: '1:48',
+        name: 'K.K. Bossa',
+      },
+      {
+        duration: '2:19',
+        name: 'K.K. Bossa (Orchestra)',
+      },
+      {
+        duration: '3:26',
+        name: "Let's Go to the Forest",
+      },
+      {
+        duration: '0:53',
+        name: "Let's Work Part-Time",
+      },
+      {
+        duration: '1:18',
+        name: 'Main Theme',
+      },
+      {
+        duration: '0:36',
+        name: 'Margie Returns',
+      },
+      {
+        duration: '1:48',
+        name: "Margie's Cherry Pie",
+      },
+      {
+        duration: '0:56',
+        name: "Margie's Letter",
+      },
+      {
+        duration: '1:07',
+        name: 'Memories of K.K. Bossa',
+      },
+      {
+        duration: '0:52',
+        name: 'More Part-Time Work',
+      },
+      {
+        duration: '0:17',
+        name: 'Mother',
+      },
+      {
+        duration: '1:11',
+        name: 'Mr. Resetti',
+      },
+      {
+        duration: '0:46',
+        name: 'My Big Dream',
+      },
+      {
+        duration: '0:14',
+        name: 'My House',
+      },
+      {
+        duration: '2:40',
+        name: 'New Year Party',
+      },
+      {
+        duration: '0:47',
+        name: 'Nice Catch!!',
+      },
+      {
+        duration: '0:18',
+        name: 'Ninja!',
+      },
+      {
+        duration: '0:19',
+        name: "Nook's Cranny Theme",
+      },
+      {
+        duration: '1:52',
+        name: 'Only Way Up is to Climb!',
+      },
+      {
+        duration: '0:54',
+        name: 'Part-Time Work',
+      },
+      {
+        duration: '1:28',
+        name: 'Pirate!',
+      },
+      {
+        duration: '0:15',
+        name: 'Questions',
+      },
+      {
+        duration: '0:31',
+        name: 'Rosie',
+      },
+      {
+        duration: '0:52',
+        name: 'Run Away!',
+      },
+      {
+        duration: '0:52',
+        name: 'Seismosaurus',
+      },
+      {
+        duration: '1:29',
+        name: 'Silver World',
+      },
+      {
+        duration: '0:35',
+        name: 'Soulful K.K.',
+      },
+      {
+        duration: '0:35',
+        name: 'Soulful K.K. (Piano Version)',
+      },
+      {
+        duration: '2:22',
+        name: 'Stale Cupcakes',
+      },
+      {
+        duration: '1:18',
+        name: 'Sudden Farewell',
+      },
+      {
+        duration: '0:50',
+        name: 'Summer Festival',
+      },
+      {
+        duration: '2:17',
+        name: 'Summer Vacation',
+      },
+      {
+        duration: '1:32',
+        name: 'The Museum',
+      },
+      {
+        duration: '2:41',
+        name: 'The Roost',
+      },
+      {
+        duration: '4:06',
+        name: 'The Starlit Forest',
+      },
+      {
+        duration: '0:50',
+        name: 'Town Hall',
+      },
+      {
+        duration: '1:19',
+        name: 'Winter Festival',
+      },
+    ],
+  },
 ];
