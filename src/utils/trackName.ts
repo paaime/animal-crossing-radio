@@ -1,3 +1,5 @@
+import { TrackWeather } from '@/types/Weather';
+
 export const RAIN_SUFFIX = ' 🌧️';
 export const SNOW_SUFFIX = ' ❄️';
 
@@ -40,10 +42,15 @@ const encodePathSegment = (segment: string): string =>
 export const soundUrl = (album: string, track: string) =>
   `/sounds/${encodePathSegment(album)}/${encodePathSegment(track)}.mp3`;
 
+export const getTrackWeather = (trackName: string): TrackWeather => {
+  if (trackName.includes(RAIN_SUFFIX.trim())) return 'rain';
+  if (trackName.includes(SNOW_SUFFIX.trim())) return 'snow';
+  return 'clear';
+};
+
 /** True when a track name is a rain or snow arrangement rather than the clear version. */
 export const isWeatherVariant = (trackName: string) =>
-  trackName.includes(RAIN_SUFFIX.trim()) ||
-  trackName.includes(SNOW_SUFFIX.trim());
+  getTrackWeather(trackName) !== 'clear';
 
 export const stripWeatherSuffix = (trackName: string) =>
   trackName.replace(RAIN_SUFFIX, '').replace(SNOW_SUFFIX, '');

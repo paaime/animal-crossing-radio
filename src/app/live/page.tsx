@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import LiveAds from '@/components/liveAds';
 import LiveStreamerCard from '@/components/liveStreamerCard';
 import ChatEmotes from '@/components/chatEmotes';
+import LiveWeather from '@/components/liveWeather';
 import Image from 'next/image';
 
 // Video sources
@@ -88,6 +89,7 @@ export default function Home() {
   return (
     <>
       <main className="flex h-dvh flex-col items-center justify-between p-5 md:p-8 cursor-none">
+        <LiveWeather />
         <ChatEmotes />
         <LiveAds />
         <LiveStreamerCard />

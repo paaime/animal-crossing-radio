@@ -706,6 +706,10 @@ export const liveAlbums: ILiveAlbum[] = [
         duration: '1:19',
         name: 'Winter Festival',
       },
+      {
+        duration: '3:26',
+        name: "Let's Go to the Forest",
+      },
     ],
   },
 ];
