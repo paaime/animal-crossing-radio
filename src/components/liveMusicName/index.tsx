@@ -2,7 +2,7 @@
 import { useMusicStore } from '@/stores/music';
 import { NextMode } from '@/types/Enum';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function LiveMusicName({
   handleNext,
@@ -11,7 +11,7 @@ export default function LiveMusicName({
 }) {
   const { music } = useMusicStore((state) => state);
   const { setHourlyMode, setMusic, setNextMode } = useMusicStore(
-    (state) => state
+    (state) => state,
   );
 
   const startLive = () => {
@@ -27,6 +27,21 @@ export default function LiveMusicName({
 
   return (
     <div className="absolute bottom-10 left-10">
+      <AnimatePresence>
+        {music.album === 'K.K. Slider Live' && (
+          <motion.div
+            className="w-fit bg-black/55 rounded-xl px-5 py-3 mb-3 text-white"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-2xl font-semibold tracking-tight">
+              K.K. Slider&apos;s Saturday night concert <span className="text-sm font-normal">(beta)</span>
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div
         className="flex h-full bg-black/55 rounded-2xl min-w-[500px]"
         onClick={startLive}

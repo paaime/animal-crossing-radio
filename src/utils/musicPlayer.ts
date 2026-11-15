@@ -2,7 +2,7 @@ import { IMusic } from '@/types/Music';
 import { albums } from '@/data/albums';
 import { NextMode } from '@/types/Enum';
 import { SetStateAction } from 'react';
-import { liveAlbums } from '@/data/liveAlbums';
+import { getLiveAlbums } from './kkSaturday';
 import { isWeatherVariant } from './trackName';
 import { getLiveTrackWeight, pickWeighted } from './weightedPick';
 import { withRandomWeather } from './liveWeather';
@@ -252,7 +252,7 @@ export const handleNext = (
           }
           case NextMode.RANDOM_ALBUM: {
             const result = selectRandomTrackFromAlbums(
-              isLive ? liveAlbums : albums,
+              isLive ? getLiveAlbums() : albums,
               isLive ? [] : excludedAlbums,
               false,
               album,

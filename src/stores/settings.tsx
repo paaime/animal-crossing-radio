@@ -38,6 +38,7 @@ export const useSettingsStore = create<Settings>()(
       },
       excludedAlbums: [
         'K.K. Slider',
+        'K.K. Slider Live',
         'Happy Home Paradise',
         'Pocket Camp',
         'Amiibo Festival',

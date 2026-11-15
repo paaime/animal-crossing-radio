@@ -1,10 +1,10 @@
 import { albums } from '@/data/albums';
-import { liveAlbums } from '@/data/liveAlbums';
 import { IAlbum } from '@/types/Album';
 import { IPollCandidate } from '@/types/Poll';
 import { isWeatherVariant, stripWeatherSuffix } from './trackName';
 import { getLiveTrackWeight, pickWeighted } from './weightedPick';
 import { withRandomWeather } from './liveWeather';
+import { getLiveAlbums } from './kkSaturday';
 
 interface FlatTrack extends IPollCandidate {
   uniqueId: string;
@@ -16,7 +16,7 @@ const isWeatherTrack = (name: string) =>
 
 /** Every live track flattened to a candidate, skipping weather variants. */
 function flattenLiveTracks(): FlatTrack[] {
-  return liveAlbums.flatMap((album) => {
+  return getLiveAlbums().flatMap((album) => {
     const sounds = album.sounds.filter(
       (sound) => !isWeatherTrack(sound.name)
     );
@@ -32,12 +32,6 @@ function flattenLiveTracks(): FlatTrack[] {
   });
 }
 
-/**
- * Pick `count` distinct random live tracks for a poll, excluding the track
- * currently playing so the poll never offers what's already on. Each game
- * shows up in proportion to its live `share`, and tracks with a weather
- * version may be offered rainy or snowy.
- */
 export function pickPollCandidates(
   count: number,
   exclude?: { album: string; name: string }
@@ -68,18 +62,11 @@ export function pickPollCandidates(
 const findSound = (source: IAlbum[], album: string, name: string) =>
   source.find((a) => a.name === album)?.sounds.find((s) => s.name === name);
 
-/**
- * Duration (in seconds) of a live track (or its weather variant), parsed from
- * its "m:ss" label, or null if the track isn't in the live pool. Used to size
- * the poll countdown.
- */
 export function getLiveTrackDurationSeconds(
   album: string,
   name: string
 ): number | null {
-  const sound =
-    findSound(liveAlbums, album, name) ??
-    (isWeatherVariant(name) ? findSound(albums, album, name) : undefined);
+  const sound = findSound(albums, album, name);
   if (!sound) return null;
 
   const [minutes, seconds] = sound.duration.split(':').map(Number);

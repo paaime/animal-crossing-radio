@@ -2883,6 +2883,244 @@ export const albums: IAlbum[] = [
     ],
   },
   {
+    name: 'K.K. Slider Live',
+    platform: 'Music',
+    sounds: [
+      {
+        duration: '2:16',
+        name: 'Aloha K.K.',
+      },
+      {
+        duration: '2:18',
+        name: 'Café K.K.',
+      },
+      {
+        duration: '2:20',
+        name: 'Comrade K.K.',
+      },
+      {
+        duration: '2:20',
+        name: 'DJ K.K.',
+      },
+      {
+        duration: '2:17',
+        name: 'Go K.K. Rider!',
+      },
+      {
+        duration: '2:17',
+        name: 'I Love You',
+      },
+      {
+        duration: '2:17',
+        name: 'Imperial K.K.',
+      },
+      {
+        duration: '2:22',
+        name: 'K.K. Aria',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. Ballad',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Blues',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Bossa',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. Calypso',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Casbah',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Chorale',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Condor',
+      },
+      {
+        duration: '2:19',
+        name: 'K.K. Country',
+      },
+      {
+        duration: '2:26',
+        name: 'K.K. Cruisin',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. D&B',
+      },
+      {
+        duration: '2:06',
+        name: 'K.K. Dirge',
+      },
+      {
+        duration: '2:14',
+        name: 'K.K. Étude',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. Faire',
+      },
+      {
+        duration: '2:12',
+        name: 'K.K. Folk',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Fusion',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. Gumbo',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Jazz',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Lament',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Love Song',
+      },
+      {
+        duration: '2:20',
+        name: 'K.K. Lullaby',
+      },
+      {
+        duration: '2:14',
+        name: 'K.K. Mambo',
+      },
+      {
+        duration: '2:21',
+        name: 'K.K. March',
+      },
+      {
+        duration: '2:19',
+        name: 'K.K. Parade',
+      },
+      {
+        duration: '2:19',
+        name: 'K.K. Ragtime',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Reggae',
+      },
+      {
+        duration: '2:21',
+        name: 'K.K. Rock',
+      },
+      {
+        duration: '2:22',
+        name: 'K.K. Safari',
+      },
+      {
+        duration: '2:13',
+        name: 'K.K. Salsa',
+      },
+      {
+        duration: '2:15',
+        name: 'K.K. Samba',
+      },
+      {
+        duration: '2:13',
+        name: 'K.K. Ska',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Song',
+      },
+      {
+        duration: '2:16',
+        name: 'K.K. Soul',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Steppe',
+      },
+      {
+        duration: '2:18',
+        name: 'K.K. Swing',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Tango',
+      },
+      {
+        duration: '2:20',
+        name: 'K.K. Technopop',
+      },
+      {
+        duration: '2:17',
+        name: 'K.K. Waltz',
+      },
+      {
+        duration: '2:15',
+        name: 'K.K. Western',
+      },
+      {
+        duration: '2:17',
+        name: 'Lucky K.K.',
+      },
+      {
+        duration: '2:18',
+        name: 'Mr. K.K.',
+      },
+      {
+        duration: '2:15',
+        name: 'Not My Bag 1',
+      },
+      {
+        duration: '2:17',
+        name: 'Not My Bag 2',
+      },
+      {
+        duration: '2:28',
+        name: 'Not My Bag 3',
+      },
+      {
+        duration: '2:27',
+        name: 'Only Me',
+      },
+      {
+        duration: '2:21',
+        name: 'Rockin K.K.',
+      },
+      {
+        duration: '2:17',
+        name: 'Señor K.K.',
+      },
+      {
+        duration: '2:20',
+        name: 'Soulful K.K.',
+      },
+      {
+        duration: '2:18',
+        name: 'Surfin K.K.',
+      },
+      {
+        duration: '2:20',
+        name: 'The K. Funk',
+      },
+      {
+        duration: '2:20',
+        name: 'Two Days Ago',
+      },
+    ],
+  },
+  {
     name: 'Happy Home Designer',
     platform: '3DS',
     sounds: [

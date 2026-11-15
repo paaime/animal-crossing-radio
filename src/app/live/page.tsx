@@ -6,6 +6,7 @@ import LiveStreamerCard from '@/components/liveStreamerCard';
 import ChatEmotes from '@/components/chatEmotes';
 import LiveWeather from '@/components/liveWeather';
 import Image from 'next/image';
+import { useMusicStore } from '@/stores/music';
 
 // Video sources
 // https://doradrop.com/HB6Z4x
@@ -41,6 +42,9 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const isKKLive = useMusicStore(
+    (state) => state.music.album === 'K.K. Slider Live',
+  );
 
   const handleVideoEnd = () => {
     const newIndex = (currentVideoIndex + 1) % videoIds.length;
@@ -115,7 +119,7 @@ export default function Home() {
           /> */}
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <Image
-              src="/img/Celeste.png"
+              src={isKKLive ? '/img/K.K. Slider Live.png' : '/img/Celeste.png'}
               alt="Loading..."
               width={1920}
               height={1080}
