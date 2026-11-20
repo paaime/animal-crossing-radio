@@ -9,6 +9,9 @@ import {
   pickPollCandidates,
 } from '@/utils/pollCandidates';
 
+const SKIP_COMMAND = /^!skip\b/i;
+const SKIP_COOLDOWN_MS = 5_000;
+
 interface UseLivePollArgs {
   isLive: boolean;
   hourlyMode: boolean;
@@ -90,6 +93,24 @@ export function useLivePoll({
       fallbackNext();
     }
   }, [setMusic, fallbackNext]);
+
+  const onSongEndRef = useRef(onSongEnd);
+
+  useEffect(() => {
+    onSongEndRef.current = onSongEnd;
+  });
+
+  useEffect(() => {
+    if (!isLive) return;
+    let lastSkipAt = 0;
+
+    return subscribeToChat(TWITCH_CHANNEL, ({ text, isModerator }) => {
+      if (!isModerator || !SKIP_COMMAND.test(text.trim())) return;
+      if (Date.now() - lastSkipAt < SKIP_COOLDOWN_MS) return;
+      lastSkipAt = Date.now();
+      onSongEndRef.current();
+    });
+  }, [isLive]);
 
   return { onSongEnd };
 }

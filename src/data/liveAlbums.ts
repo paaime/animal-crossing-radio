@@ -329,10 +329,6 @@ export const liveAlbums: ILiveAlbum[] = [
         duration: '3:44',
         name: 'Tortimer Island - Lobby (Nighttime)',
       },
-      {
-        duration: '2:22',
-        name: "We'll Be Closing Shortly...",
-      },
     ],
   },
   {

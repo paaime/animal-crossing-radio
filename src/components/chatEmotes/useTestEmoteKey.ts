@@ -38,6 +38,7 @@ export function useTestEmoteKey(): void {
         username: 'emote-test',
         text: emotes.map((emote) => emote.name).join(' '),
         emotes,
+        isModerator: false,
       });
     };
 

@@ -6,6 +6,7 @@ export interface ITwitchChatMessage {
   username: string;
   text: string;
   emotes?: IChatEmote[];
+isModerator: boolean;
 }
 
 export type ChatStatus = 'connecting' | 'connected' | 'disconnected';
@@ -176,6 +177,8 @@ export function parsePrivmsg(line: string): ITwitchChatMessage | null {
   const userId = tags['user-id'] || nick;
   const username = tags['display-name'] || nick;
   const emotes = parseEmotesTag(tags['emotes'], text);
+  const isModerator =
+    tags['mod'] === '1' || Boolean(tags['badges']?.includes('broadcaster/'));
 
-  return { userId, username, text, emotes };
+  return { userId, username, text, emotes, isModerator };
 }
