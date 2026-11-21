@@ -9,6 +9,6 @@ const kkLiveAlbum: ILiveAlbum = {
 
 export function getLiveAlbums(): ILiveAlbum[] {
   const now = new Date();
-  const isKKNight = now.getDay() === 6 && now.getHours() >= 18;
+  const isKKNight = now.getDay() === 6 && now.getHours() >= 12;
   return isKKNight ? [kkLiveAlbum] : liveAlbums;
 }
